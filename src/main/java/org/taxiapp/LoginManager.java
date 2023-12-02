@@ -1,6 +1,8 @@
 package org.taxiapp;
 
 import java.io.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public class LoginManager {
@@ -22,12 +24,23 @@ public class LoginManager {
         }
     }
 
-    public static void customerSignUp() {
+    public static void customerSignUp() throws NoSuchAlgorithmException {
         System.out.println("Enter username: ");
         username = input.nextLine();
         System.out.println("Enter password: ");
         password = input.nextLine();
-        userSignUp(username, password);
+        userSignUp(username, passwordHash(password));
+    }
+
+    private static String passwordHash(String password) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] passwordBytes = password.getBytes();
+        byte[] hashBytes = digest.digest(passwordBytes);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (byte b : hashBytes) {
+            stringBuilder.append(String.format("%02x", b));
+        }
+        return stringBuilder.toString();
     }
 
     public static void customerLogin() {
@@ -45,7 +58,7 @@ public class LoginManager {
             user.readLine();
             while ((line = user.readLine()) != null) {
                 String[] data = line.split(",");
-                if(username.equals(data[0]) && password.equals(data[1])) {
+                if(username.equals(data[0]) && passwordHash(password).equals(data[1])) {
                     System.out.println("user exists");
                     userFound = true;
                     break;
@@ -55,7 +68,7 @@ public class LoginManager {
                 System.out.println("user does not exist.");
             }
 
-        } catch (IOException e) {
+        } catch (IOException | NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }
