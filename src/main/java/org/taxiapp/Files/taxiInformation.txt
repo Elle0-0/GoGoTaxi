@@ -1,0 +1,11 @@
+Name, Ride Type, Rating, car reg, Region, Location
+Isabella Rodriguez, PREMIUM, 2, 192-D-3456, FROSTFIELD, Sycamore 
+Emily Chang, PREMIUM, 3, 211-G-7890, EVERGREEN, Pinecrest High School
+Harper O'Malley, REGULAR, 3, 201-W-1234, EVERGREEN, Madge's Café
+Savannah Patel, PREMIUM, 5, 182-C-5678, EMBERWOOD, Redwood Drive
+Mia Thompson, REGULAR, 4, 221-L-9012, SUNHAVEN, Riverside Park Community
+Liam Johnson, REGULAR, 1, 203-O-2345, EVERGREEN, Evergreen University
+Oliver Williams, REGULAR, 2, 191-T-6789, SUNHAVEN, Birchwood Avenue
+Lucas Martinez, PREMIUM, 5, 200-D-8901, FROSTFIELD, Juniper Court
+Ethan Brown, REGULAR, 4, 214-M-3456, EMBERWOOD, Greenfield Heights
+Mason Lee, PREMIUM, 1, 195-G-6789, SUNHAVEN, People's Bank
