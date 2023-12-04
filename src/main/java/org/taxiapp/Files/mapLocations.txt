@@ -1,0 +1,18 @@
+Region, Location, x, y
+FROSTFIELD, Oakridge Estates, 0, 6
+EVERGREEN, Evergreen University, 1, 1
+EVERGREEN, Brookstone College of Business and Innovation, 2, 2
+EVERGREEN, Madge's Café, 2, 4
+FROSTFIELD, Juniper Court, 2, 9
+EVERGREEN, Ashton Hills Institute of Liberal Arts, 3, 0
+FROSTFIELD, Midland's Hospital, 3, 7
+EVERGREEN, Pinecrest High School, 4, 2
+FROSTFIELD, Sycamore Lane, 4, 5
+FROSTFIELD, Hawthorn Street, 5, 8
+SUNHAVEN, Riverside Park Community, 6, 4
+SUNHAVEN, Birchwood Avenue, 7, 1
+EMBERWOOD, Greenfield Heights, 7, 7
+EMBERWOOD, Meadowbrook Academy, 8, 5
+EMBERWOOD, Redwood Drive, 8, 9
+SUNHAVEN, Train Station, 9, 1
+EMBERWOOD, Esker Hills, 9, 7
