@@ -1,10 +1,10 @@
 package org.taxiapp;
 
-import java.security.NoSuchAlgorithmException;
-
 public class Main {
-    public static void main(String[] args) throws NoSuchAlgorithmException {
+    public static void main(String[] args){
         System.out.println("Hello world!");
-        LoginManager.customerLogin();
+        //LoginManager.customerLogin();
+        Customer c = new Customer();
+        c.tripExperience();
     }
 }

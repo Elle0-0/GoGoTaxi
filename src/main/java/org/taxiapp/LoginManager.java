@@ -83,7 +83,8 @@ public class LoginManager {
                 String[] data = line.split(",");
                 username = data[0];
                 password = data[1];
-                System.out.println(username + " " + password);
+                System.out.println(username);
+                //System.out.println(password); //password not required to be printed but i have established it anyways.
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
