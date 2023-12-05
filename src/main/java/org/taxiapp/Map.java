@@ -26,9 +26,8 @@ public class Map {
     }
     public void changeCoord(int x, int y, String icon){
         Map[x][y] = icon;
-
     }
-    public void moveToCustomer(Taxi selectedTaxi, Taxi customer){
+    public void moveToCustomer(Taxi selectedTaxi, Customer customer){
         int taxiX = selectedTaxi.location.getX();
         int taxiY = selectedTaxi.location.getY();
         int customerX = customer.location.getX();
