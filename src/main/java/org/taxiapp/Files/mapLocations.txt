@@ -1,4 +1,4 @@
-Region, Location, x, y
+Region, Location, x, y, map icon
 FROSTFIELD, Oakridge Estates, 0, 6
 EVERGREEN, Evergreen University, 1, 1
 EVERGREEN, Brookstone College of Business and Innovation, 2, 2
