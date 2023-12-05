@@ -17,14 +17,15 @@ public class Taxi extends User{
     private Vehicle Taxi;
     private mapRegions region;
     private String locationName;
-    private Location coordinates;
+    private String icon;
 
     /*when calling this from the launcher, you will need to check that no other taxis in the array of taxis
      has the same info */
     public Taxi(){
         // initialises the objects
         Taxi = new Vehicle();
-        coordinates = new Location();
+        location = new Location();
+        icon = " \uD83D\uDE97";
     }
 
     public void setRegion(mapRegions region) {
@@ -41,6 +42,10 @@ public class Taxi extends User{
 
     public String getLocationName() {
         return locationName;
+    }
+
+    public String getIcon() {
+        return icon;
     }
 
     public void assignRandomInformation(){
@@ -90,7 +95,7 @@ public class Taxi extends User{
         // stores the coordinates of the taxi's randomly generated location
         Coordinates taxiLocation = new Coordinates();
         int[] taxiCoords = taxiLocation.retrieveCoordinates(region, locationName);
-        coordinates.setX(taxiCoords[0]); coordinates.setY(taxiCoords[1]);
+        location.setX(taxiCoords[0]); location.setY(taxiCoords[1]);
 
     }
     public void displayInformation(){
