@@ -18,6 +18,7 @@ public class Taxi extends User{
     private mapRegions region;
     private String locationName;
     private String icon;
+    private String name;
 
     /*when calling this from the launcher, you will need to check that no other taxis in the array of taxis
      has the same info */
@@ -48,6 +49,14 @@ public class Taxi extends User{
         return icon;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void assignRandomInformation(){
         File file = new File("src/main/java/org/taxiapp/Files/taxiInformation.txt");
         int length = 0;
@@ -73,13 +82,13 @@ public class Taxi extends User{
                   // stores the values in taxiInformation.txt into accessible variables
 
                   String[] fileData = Line.split(", ");
-                  name = fileData[0];
+                  setName(fileData[0]);
                   Taxi.setVehicleType(VehicleTypes.valueOf(fileData[1]));
                   Rate = Taxi.getVehicleType().rate;
-                  Rating = Integer.parseInt(fileData[2]);
-                  Taxi.setCarReg(fileData[3]);
-                  setRegion(mapRegions.valueOf(fileData[4]));
-                  setLocationName(fileData[5]);
+                  //Rating = Integer.parseInt(fileData[2]);
+                  Taxi.setCarReg(fileData[2]);
+                  setRegion(mapRegions.valueOf(fileData[3]));
+                  setLocationName(fileData[4]);
               }
               i ++;
 
@@ -99,14 +108,14 @@ public class Taxi extends User{
 
     }
     public void displayInformation(){
-        System.out.println("Name: " + name);
+        System.out.println("Name: " + getName());
         System.out.println("Ride Type: " + Taxi.getVehicleType());
         System.out.println("Rate per km: €" + Rate);
-        System.out.print("Rating: ");
+        /*System.out.print("Rating: ");
         for (int i = 0; i < Rating; i++){
             System.out.print("★");
         }
-        System.out.println();
+        System.out.println();*/
         System.out.println("Car Registration: " + Taxi.getCarReg());
         System.out.println("Location: " + getRegion() + ", " + getLocationName());
     }
