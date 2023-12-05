@@ -12,7 +12,7 @@ public class Customer extends User{
 
     String username;
     String password;
-    Location destination;
+    Location destination = new Location();
     double tip;
     double time;
     String region;
@@ -42,21 +42,21 @@ public class Customer extends User{
             LoginManager.customerSignUp();
         }
         username = LoginManager.getUsername();
-
     }
     public void insertDestination() {
+        boolean enteredLocation = false;
         System.out.println("Enter region: \n-EVERGREEN \n-FROSTFIELD\n-SUNHAVEN\n-EMBERWOOD");
-        mapRegion = input.nextLine();
-        locationGetter();
-        System.out.println("Enter in your location: ");
-        mapLocation = input.nextLine();
-        if(mapLocation.equalsIgnoreCase(regionLocation)) {
-            System.out.println("your coords: ");
-            System.out.println(x + "," + y);
-            destination.setX(x);
-            destination.setY(y);
-        }
-
+        input.nextLine();
+            mapRegion = input.nextLine();
+            locationGetter();
+            System.out.println("Enter in your location: ");
+            mapLocation = input.nextLine();
+            if (mapLocation.equalsIgnoreCase(regionLocation)) {
+                System.out.println("your coords: ");
+                System.out.println(x + "," + y);
+                destination.setX(x);
+                destination.setY(y);
+            }
     }
 
     public void locationGetter() {
@@ -96,8 +96,11 @@ public class Customer extends User{
         System.out.println("Rate your experience out of 5: ");
         rating = input.nextInt();
         input.nextLine();
-        System.out.println("you rated this trip: " + rating + "/5");
-
+        System.out.print("you rated this trip: ");
+        for (int i =0; i < rating; i++) {
+            System.out.print("★");
+        }
+        System.out.println();
     }
     public void  tipTaxi() {
         System.out.println("Would you like to tip the driver?(yes/no): ");
@@ -110,17 +113,13 @@ public class Customer extends User{
         }
 
     }
-    public void closeApp() {
 
-    }
     //testing purposes only.
     public static void main(String[] args) throws NoSuchAlgorithmException {
         Customer c = new Customer();
-        c.signIn();
-        //c.tripExperience();
-        //c.locationGetter();
-        //c.insertDestination();
-        //c.tipTaxi();
-        //c.input.close();
+//        c.signIn();
+//        c.insertDestination()
+        c.tripExperience();
+//        c.tipTaxi();
     }
 }
