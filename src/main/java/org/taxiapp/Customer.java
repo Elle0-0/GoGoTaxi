@@ -53,6 +53,8 @@ public class Customer extends User{
         if(mapLocation.equalsIgnoreCase(regionLocation)) {
             System.out.println("your coords: ");
             System.out.println(x + "," + y);
+            destination.setX(x);
+            destination.setY(y);
         }
 
     }
