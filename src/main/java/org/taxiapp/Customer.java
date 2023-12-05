@@ -31,6 +31,10 @@ public class Customer extends User{
             "You book a taxi, but the driver arrives late, without any apology or explanation.\n The vehicle appears poorly maintained, and the driver is impolite and drives recklessly.\n The ride is uncomfortable and stressful, leaving you dissatisfied and wishing for a better experience."
     };
 
+    public Customer() {
+        location = new Location();
+    }
+
 
     public void signIn() throws NoSuchAlgorithmException {
         System.out.println("Welcome to GoGoTaxi service!, pick 1 for login or 2 to sign up: ");
@@ -80,7 +84,9 @@ public class Customer extends User{
         }
     }
 
-    public void getListOfTaxis() {
+    public void getListOfTaxis(Customer customer) {
+        int customerX = customer.location.getX();
+        int customerY = customer.location.getY();
 
     }
     public void calculateTimeTaken() {
