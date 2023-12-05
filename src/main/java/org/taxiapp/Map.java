@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.Buffer;
 
 public class Map {
+
     private String[][] Map = new String[10][10];
     public void establishMap(){
         for (String[] row: Map){
