@@ -19,6 +19,7 @@ public class Coordinates {
                 if (mapRegions.valueOf(fileData[0]).equals(region) && fileData[1].equals(locationName)){
                     XYCoords[0] = Integer.parseInt(fileData[2]);
                     XYCoords[1] = Integer.parseInt(fileData[3]);
+                    break;
                 }
             }
 
