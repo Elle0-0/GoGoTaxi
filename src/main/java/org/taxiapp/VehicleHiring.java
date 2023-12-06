@@ -40,8 +40,8 @@ public class VehicleHiring {
     }
 
     public void getTaxisInRange(Customer customer){
-        int customerX = /*customer.location.getX()*/ 6;
-        int customerY = /*customer.location.getY()*/ 4;
+        int customerX = customer.location.getX();
+        int customerY = customer.location.getY();
         ArrayList<String> names = new ArrayList<>();
         for (Taxi taxi: currentTaxis){
             int taxiX = taxi.location.getX();
@@ -51,15 +51,15 @@ public class VehicleHiring {
                 if (names.contains(taxi.getName()) == false){
                     availableTaxis.add(taxi);
                     taxi.displayInformation();
+                    System.out.println();
                     names.add(taxi.getName());
                 }
 
 
             }
-            if (availableTaxis.size() == 0){
-                taxiRange ++;
-                getTaxisInRange(customer);
-            }
+        }if (availableTaxis.size() == 0){
+            taxiRange ++;
+            getTaxisInRange(customer);
         }
     }
 
