@@ -8,7 +8,7 @@ public class VehicleHiring {
     Taxi[] currentTaxis; // will contain 20 taxis
     ArrayList<Taxi> availableTaxis; // contains how many taxis will be available to the taxi
     Map worldMap;
-    final int taxiRange;
+    int taxiRange;
 
     public VehicleHiring() {
         possibleTaxis = new Taxi[70];
@@ -55,6 +55,10 @@ public class VehicleHiring {
                 }
 
 
+            }
+            if (availableTaxis.size() == 0){
+                taxiRange ++;
+                getTaxisInRange(customer);
             }
         }
     }
