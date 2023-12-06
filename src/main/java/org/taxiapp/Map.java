@@ -24,54 +24,70 @@ public class Map {
             System.out.println();
         }
     }
-    public void changeCoord(int x, int y, String icon){
-        Map[x][y] = icon;
+    public boolean changeCoord(int x, int y, String icon){
+        try {
+            Map[x][y] = icon;
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Hmm, it seems you are off the map.");
+            System.out.println("Don't worry, we'll handle it!");
+            return false;
+        }
+return true;
+
     }
-    public void moveToCustomer(Taxi selectedTaxi, Customer customer){
+    public void moveToCustomer(Taxi selectedTaxi, Customer customer) {
         int taxiX = selectedTaxi.location.getX();
         int taxiY = selectedTaxi.location.getY();
-        int customerX = customer.location.getX();
-        int customerY = customer.location.getY();
+        int customerX = /**customer.location.getX() **/6;
+        int customerY = /**customer.location.getY()**/10;
 
         changeCoord(customerX, customerY, " \uD83E\uDDCD\uD83C\uDFFB\u200D♀\uFE0F ");
 
-        while ((taxiX != customerX) && (taxiY != customerY)){
-            if (taxiX < customerX){
-                while (taxiX != customerX){
-                    taxiX ++ ;
-                    changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
-                    changeCoord((taxiX-1), taxiY, " + ");
-                    printMap();
-                    System.out.println();
+        while ((taxiX != customerX) && (taxiY != customerY)) {
+            if (taxiX < customerX) {
+                while (taxiX != customerX) {
+                    taxiX++;
+                    // ensure it can't go out of bounds
+                    if (taxiX > 9 || taxiX < 0) {
+                        throw new RuntimeException("Taxi can't move out of the map bounds");
+                    } else {
+                        changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
+                        changeCoord((taxiX - 1), taxiY, " + ");
+                        printMap();
+                        System.out.println();
+                    }
                 }
-            } else if (taxiX > customerX){
-                while (taxiX != customerX){
-                    taxiX -- ;
+            } else if (taxiX > customerX) {
+                while (taxiX != customerX) {
+                    taxiX--;
                     changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
-                    changeCoord((taxiX+1), taxiY, " + ");
+                    changeCoord((taxiX + 1), taxiY, " + ");
                     printMap();
                     System.out.println();
                 }
             }
-            if (taxiY < customerY){
-                while (taxiY != customerY){
-                    taxiY ++ ;
+            if (taxiY < customerY) {
+                while (taxiY != customerY) {
+                    taxiY++;
+
                     changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
-                    changeCoord(taxiX, (taxiY-1), " + ");
+                    changeCoord(taxiX, (taxiY - 1), " + ");
                     printMap();
                     System.out.println();
                 }
-            } else if (taxiY > customerY){
-                while (taxiY != customerY){
-                    taxiY -- ;
+            } else if (taxiY > customerY) {
+                while (taxiY != customerY) {
+                    taxiY--;
                     changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
-                    changeCoord(taxiX, (taxiY+1), " + ");
+                    changeCoord(taxiX, (taxiY + 1), " + ");
                     printMap();
                     System.out.println();
                 }
 
             }
         }
+        System.out.println("The taxi is here!");
+    }
 }
 
-}
+
