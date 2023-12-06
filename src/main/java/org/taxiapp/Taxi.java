@@ -3,10 +3,7 @@ package org.taxiapp;
 import org.taxiapp.TaxiManagement.Vehicle;
 import org.taxiapp.TaxiManagement.VehicleTypes;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 
 public class Taxi extends User{
@@ -47,6 +44,15 @@ public class Taxi extends User{
     public String getIcon() {
         return icon;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
     public void assignRandomInformation(){
         File file = new File("src/main/java/org/taxiapp/Files/taxiInformation.txt");
@@ -144,6 +150,28 @@ public class Taxi extends User{
         }
     }
 
+    public void getAllTaxis() {
+        String line;
+        String name, rideType, carreg, region, location;
+        String filePath = "src/main/java/org/taxiapp/Files/taxiInformation.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            reader.readLine();
+            while((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                name = data[0];
+                rideType = data[1];
+                carreg = data[2];
+                region = data[3];
+                location = data[4];
+                System.out.println(name + " " + rideType + " " + carreg + " " + region + " " + location);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-
+    public static void main(String[] args) {
+        Taxi t = new Taxi();
+        t.getAllTaxis();
+    }
 }
