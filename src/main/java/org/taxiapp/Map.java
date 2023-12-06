@@ -76,7 +76,7 @@ public class Map {
 
             }
         }
-}
+    }
     public int getDistanceTravelled() {
         return distance;
     }

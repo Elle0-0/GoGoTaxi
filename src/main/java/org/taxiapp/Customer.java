@@ -19,7 +19,7 @@ public class Customer extends User{
     String region;
     String regionLocation;
     int x, y;
-    String mapRegion;
+    mapRegions regions;
     String mapLocation;
     int rating;
     VehicleHiring vehicleHiring = new VehicleHiring();
@@ -143,11 +143,12 @@ public class Customer extends User{
 
     //testing purposes only.
     public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException {
-        Customer c = new Customer();
+        Customer c = new CustomerLocation();
 //        c.signIn();
-//        c.insertDestination();
-        c.tripExperience();
+        c.insertDestination();
+//        c.tripExperience();
 //        c.tipTaxi();
+
 
     }
 }

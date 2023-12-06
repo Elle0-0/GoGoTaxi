@@ -8,6 +8,5 @@ public class Main {
         System.out.println("Hello world!");
         //LoginManager.customerLogin();
         Customer c = new Customer();
-        c.tripExperience();
     }
 }
