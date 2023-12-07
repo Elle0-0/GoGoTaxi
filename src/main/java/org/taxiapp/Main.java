@@ -7,7 +7,15 @@ import java.security.NoSuchAlgorithmException;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException, NoSuchAlgorithmException {
-        Program myProgram = new Program();
-        myProgram.launch();
+       // Program myProgram = new Program();
+       // myProgram.launch();
+        VehicleHiring hiring = new VehicleHiring();
+        Customer customer = new CustomerLocation();
+        customer.signIn();
+        customer.insertDestination();
+        Taxi taxi = hiring.getATaxi(customer);
+        Map map = new Map();
+        map.moveToCustomer(taxi, customer);
+        customer.tripExperience();
     }
 }
