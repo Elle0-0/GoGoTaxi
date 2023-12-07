@@ -10,9 +10,10 @@ public class CustomerLocation extends Customer {
     Scanner input = new Scanner(System.in);
     String filePath = "src/main/java/org/taxiapp/Files/mapLocations.txt";
     boolean checker = false;
+    int temp;
 
     @Override
-    public void insertDestination() {
+    public void insertDestination(Location location) {
         boolean enteredLocation = false;
         int userInput;
         while (!enteredLocation) {
@@ -29,8 +30,8 @@ public class CustomerLocation extends Customer {
                     if (checker) {
                         System.out.println("your coords: ");
                         System.out.println(x + "," + y);
-                        destination.setX(x);
-                        destination.setY(y);
+                        location.setX(x);
+                        location.setY(y);
                         enteredLocation = true;
                     }
                 } else continue;
@@ -41,6 +42,20 @@ public class CustomerLocation extends Customer {
             }
         }
     }
+
+    @Override
+    public void getCustomerLocation() {
+        System.out.println("---------Where are you currently?---------");
+        insertDestination(location);
+        System.out.println("Thank you for entering in your location!\n\n");
+    }
+
+    @Override
+    public void getCustomerDestination() {
+        System.out.println("---------Where do you want to go?---------");
+        insertDestination(destination);
+    }
+
     @Override
     public void returnRegion(int i) {
         if (i == 1) regions = mapRegions.EVERGREEN;
@@ -61,10 +76,7 @@ public class CustomerLocation extends Customer {
                 if (regions.equals(region)) {
                     regionLocation = data[1].trim();
                     System.out.println(regionLocation);
-                    x = Integer.parseInt(data[2]);
-                    y = Integer.parseInt(data[3]);
                 }
-                //System.out.println(region + regionLocation + x + y);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

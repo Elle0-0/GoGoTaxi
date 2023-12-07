@@ -27,9 +27,9 @@ public class taxiRating extends Taxi{
                 double sum = 0.0;
                 double avgValue;
                 String[] data = line.split(",");
-                counter += data.length;
-                for (String value : data) {
-                    sum += Double.parseDouble(value);
+                counter += data.length - 1;
+                for (int i = 1; i <data.length; i++) {
+                    sum += Double.parseDouble(data[i]);
                 }
                 double storeRating = sum/counter;
                 System.out.println(df.format(storeRating));

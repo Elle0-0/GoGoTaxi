@@ -104,8 +104,8 @@ return true;
         m.moveToCustomer(t,c);
         System.out.println(m.distance);
     }
-        System.out.println("The taxi is here!");
+        //System.out.println("The taxi is here!");
     }
-}
+
 
 

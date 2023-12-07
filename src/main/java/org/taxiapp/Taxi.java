@@ -158,12 +158,13 @@ public class Taxi extends User{
             reader.readLine();
             while((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                name = data[0];
-                rideType = data[1];
+                //name = data[0];
+                //rideType = data[1];
                 carreg = data[2];
-                region = data[3];
-                location = data[4];
-                System.out.println(name + " " + rideType + " " + carreg + " " + region + " " + location);
+                //region = data[3];
+                //location = data[4];
+                //System.out.println(name + " " + rideType + " " + carreg + " " + region + " " + location);
+                System.out.println(carreg);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
