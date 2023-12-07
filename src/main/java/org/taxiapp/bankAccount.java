@@ -12,7 +12,6 @@ public class bankAccount {
             amount.append((char)funds);
             amount.append(",");
             amount.newLine();
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

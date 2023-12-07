@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.Buffer;
 
 public class Map {
-
+    int distance = 0;
     private String[][] Map = new String[10][10];
     public void establishMap(){
         for (String[] row: Map){
@@ -43,19 +43,16 @@ return true;
 
         changeCoord(customerX, customerY, " \uD83E\uDDCD\uD83C\uDFFB\u200D♀\uFE0F ");
 
-        while ((taxiX != customerX) && (taxiY != customerY)) {
-            if (taxiX < customerX) {
-                while (taxiX != customerX) {
-                    taxiX++;
-                    // ensure it can't go out of bounds
-                    if (taxiX > 9 || taxiX < 0) {
-                        throw new RuntimeException("Taxi can't move out of the map bounds");
-                    } else {
-                        changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
-                        changeCoord((taxiX - 1), taxiY, " + ");
-                        printMap();
-                        System.out.println();
-                    }
+
+        while ((taxiX != customerX) && (taxiY != customerY)){
+            if (taxiX < customerX){
+                while (taxiX != customerX){
+                    taxiX ++ ;
+                    changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
+                    changeCoord((taxiX-1), taxiY, " + ");
+                    printMap();
+                    System.out.println();
+                    distance ++;
                 }
             } else if (taxiX > customerX) {
                 while (taxiX != customerX) {
@@ -64,6 +61,7 @@ return true;
                     changeCoord((taxiX + 1), taxiY, " + ");
                     printMap();
                     System.out.println();
+                    distance ++;
                 }
             }
             if (taxiY < customerY) {
@@ -74,6 +72,7 @@ return true;
                     changeCoord(taxiX, (taxiY - 1), " + ");
                     printMap();
                     System.out.println();
+                    distance ++;
                 }
             } else if (taxiY > customerY) {
                 while (taxiY != customerY) {
@@ -82,10 +81,29 @@ return true;
                     changeCoord(taxiX, (taxiY + 1), " + ");
                     printMap();
                     System.out.println();
+                    distance ++;
                 }
 
             }
         }
+
+    }
+    public int getDistanceTravelled() {
+        return distance;
+    }
+    public static void main(String[] args) {
+        Map m = new Map();
+        m.establishMap();
+        m.printMap();
+        Taxi t = new Taxi();
+        t.location.setX(3);
+        t.location.setY(4);
+        Customer c = new Customer();
+        c.location.setX(2);
+        c.location.setY(8);
+        m.moveToCustomer(t,c);
+        System.out.println(m.distance);
+    }
         System.out.println("The taxi is here!");
     }
 }

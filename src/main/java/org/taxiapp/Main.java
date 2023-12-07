@@ -2,12 +2,12 @@ package org.taxiapp;
 
 import org.taxiapp.Aesthetics.Icons;
 
-public class Main {
-    public static void main(String[] args) {
+import java.io.FileNotFoundException;
+import java.security.NoSuchAlgorithmException;
 
-        System.out.println("Hello world!");
-        //LoginManager.customerLogin();
-        Customer c = new Customer();
-        c.tripExperience();
+public class Main {
+    public static void main(String[] args) throws FileNotFoundException, NoSuchAlgorithmException {
+        Program myProgram = new Program();
+        myProgram.launch();
     }
 }
