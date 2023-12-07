@@ -12,7 +12,7 @@ public class Customer extends User{
 
     String username;
     Location destination = new Location();
-    Location currentLocation = new Location();
+    //Location currentLocation = new Location();
     double tip;
     double time;
     String region;

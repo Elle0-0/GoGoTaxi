@@ -46,7 +46,7 @@ public class CustomerLocation extends Customer {
     @Override
     public void getCustomerLocation() {
         System.out.println("---------Where are you currently?---------");
-        insertDestination(currentLocation);
+        insertDestination(location);
         System.out.println("Thank you for entering in your location!\n\n");
     }
 
