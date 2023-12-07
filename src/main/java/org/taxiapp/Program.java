@@ -8,13 +8,15 @@ public class Program {
     VehicleHiring vehicleHiring = new VehicleHiring();
 
     public void launch() throws NoSuchAlgorithmException, FileNotFoundException {
-        customer.signIn();
-        customer.insertDestination();
-        vehicleHiring.initialiseTaxis();
-        vehicleHiring.getTaxisInRange(customer);
-        customer.calculateTimeTaken(vehicleHiring);
-        customer.tripExperience();
-        customer.getRating();
+//        customer.signIn();
+//        customer.insertDestination();
+//        vehicleHiring.initialiseTaxis();
+//        vehicleHiring.getTaxisInRange(customer);
+//        customer.calculateTimeTaken(vehicleHiring);
+//        customer.tripExperience();
+//        customer.getRating();
+        customer.getCustomerLocation();
+        customer.getCustomerDestination();
     }
 
 }
