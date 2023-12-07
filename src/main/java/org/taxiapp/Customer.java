@@ -47,7 +47,7 @@ public class Customer extends User{
         boolean enteredLocation = false;
         System.out.println("Enter region: \n-EVERGREEN \n-FROSTFIELD\n-SUNHAVEN\n-EMBERWOOD");
         input.nextLine();
-            mapRegion = input.nextLine();
+            mapRegion = input.nextLine().toUpperCase();
             locationGetter();
             System.out.println("Enter in your location: ");
             mapLocation = input.nextLine();
