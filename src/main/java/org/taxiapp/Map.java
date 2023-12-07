@@ -43,6 +43,8 @@ return true;
         int taxiY = selectedTaxi.location.getY();
         int customerX = /**customer.location.getX() **/6;
         int customerY = /**customer.location.getY()**/5;
+        int destinationX = customer.destination.getX();
+        int destinationY = customer.destination.getY();
 
         changeCoord(customerX, customerY, Icons.person);
 
