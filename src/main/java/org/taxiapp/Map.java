@@ -1,5 +1,7 @@
 package org.taxiapp;
 
+import org.taxiapp.Aesthetics.Icons;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -36,12 +38,13 @@ return true;
 
     }
     public void moveToCustomer(Taxi selectedTaxi, Customer customer) {
+        establishMap();
         int taxiX = selectedTaxi.location.getX();
         int taxiY = selectedTaxi.location.getY();
         int customerX = /**customer.location.getX() **/6;
-        int customerY = /**customer.location.getY()**/10;
+        int customerY = /**customer.location.getY()**/5;
 
-        changeCoord(customerX, customerY, " \uD83E\uDDCD\uD83C\uDFFB\u200D♀\uFE0F ");
+        changeCoord(customerX, customerY, Icons.person);
 
         while ((taxiX != customerX) && (taxiY != customerY)) {
             if (taxiX < customerX) {
@@ -51,7 +54,7 @@ return true;
                     if (taxiX > 9 || taxiX < 0) {
                         throw new RuntimeException("Taxi can't move out of the map bounds");
                     } else {
-                        changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                         changeCoord((taxiX - 1), taxiY, " + ");
                         printMap();
                         System.out.println();
@@ -60,7 +63,7 @@ return true;
             } else if (taxiX > customerX) {
                 while (taxiX != customerX) {
                     taxiX--;
-                    changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
+                    changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                     changeCoord((taxiX + 1), taxiY, " + ");
                     printMap();
                     System.out.println();
@@ -70,7 +73,7 @@ return true;
                 while (taxiY != customerY) {
                     taxiY++;
 
-                    changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
+                    changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                     changeCoord(taxiX, (taxiY - 1), " + ");
                     printMap();
                     System.out.println();
@@ -78,7 +81,7 @@ return true;
             } else if (taxiY > customerY) {
                 while (taxiY != customerY) {
                     taxiY--;
-                    changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
+                    changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                     changeCoord(taxiX, (taxiY + 1), " + ");
                     printMap();
                     System.out.println();
