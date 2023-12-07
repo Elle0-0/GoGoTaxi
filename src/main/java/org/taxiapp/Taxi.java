@@ -82,10 +82,10 @@ public class Taxi extends User{
                   name = fileData[0];
                   Taxi.setVehicleType(VehicleTypes.valueOf(fileData[1]));
                   Rate = Taxi.getVehicleType().rate;
-                  Rating = Integer.parseInt(fileData[2]);
-                  Taxi.setCarReg(fileData[3]);
-                  setRegion(mapRegions.valueOf(fileData[4]));
-                  setLocationName(fileData[5]);
+                  //Rating = Integer.parseInt(fileData[2]);
+                  Taxi.setCarReg(fileData[2]);
+                  setRegion(mapRegions.valueOf(fileData[3]));
+                  setLocationName(fileData[4]);
               }
               i ++;
 

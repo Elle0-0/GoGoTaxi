@@ -1,11 +1,13 @@
 package org.taxiapp;
 
 import java.io.*;
+import java.text.DecimalFormat;
 
 public class taxiRating extends Taxi{
 
     double rating;
     String filePath = "src/main/java/org/taxiapp/Files/taxiRating.txt";
+    DecimalFormat df = new DecimalFormat("#.#");
 
     public void setRating(Taxi taxi, Customer customer) {
         int customerRating = customer.getRating();
@@ -16,7 +18,7 @@ public class taxiRating extends Taxi{
             throw new RuntimeException(e);
         }
     }
-    public void getAverageRating(){
+    public double getAverageRating(){
         String line;
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             reader.readLine();
@@ -29,10 +31,11 @@ public class taxiRating extends Taxi{
                 for (String value : data) {
                     sum += Double.parseDouble(value);
                 }
-
-                System.out.println(counter + " " + sum);
+                double storeRating = sum/counter;
+                System.out.println(df.format(storeRating));
+                rating = Double.parseDouble(df.format(storeRating));
             }
-
+        return rating;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -41,9 +44,13 @@ public class taxiRating extends Taxi{
         return rating;
     }
 
-    public void setTaxiRating() {
+
+    //seems unnecessary rn.
+    public double setTaxiRating() {
         getName();
         getRating();
+        getAverageRating();
+        return rating;
     }
 
     public static void main(String[] args) {

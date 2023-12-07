@@ -61,7 +61,7 @@ public class Customer extends User{
     }
 
     public void signIn() throws NoSuchAlgorithmException {
-        System.out.println("Welcome to GoGoTaxi service!, pick 1 for login or 2 to sign up: ");
+        System.out.println("Welcome to GoGoTaxi service!, please select an option:\n [1] login\n [2] sign up: ");
         boolean validInput = false;
         while (!validInput) {
             try {
@@ -81,15 +81,13 @@ public class Customer extends User{
         }
         username = LoginManager.getUsername();
     }
-    public void calculateTimeTaken() {
+    public void calculateTimeTaken(VehicleHiring vehicleHiring) {
         double distanceTravelled = vehicleHiring.worldMap.getDistanceTravelled();
         System.out.println("Your journey took " + (distanceTravelled*1.2) + "minutes.");
         System.out.println("And you travelled " + distanceTravelled + "kilometers");
 
     }
-    public void startJourney() {
 
-    }
     public void tripExperience() throws FileNotFoundException {
         getExprience();
         Random random = new Random();
