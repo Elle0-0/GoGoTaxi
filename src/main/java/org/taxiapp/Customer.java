@@ -9,8 +9,6 @@ import java.util.Scanner;
 
 public class Customer extends User{
 
-    // TODO: get taxis in location
-    // TODO: get cost
 
     String username;
     Location destination = new Location();
@@ -43,6 +41,7 @@ public class Customer extends User{
     public void returnRegion(int i) {}
 
     public void locationGetter() {}
+    public void coordinateGetter() {}
 
 
     public void getExprience() throws FileNotFoundException {

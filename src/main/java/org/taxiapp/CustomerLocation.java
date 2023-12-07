@@ -71,6 +71,7 @@ public class CustomerLocation extends Customer {
         }
     }
 
+    @Override
     public void coordinateGetter() {
         String line;
         try(BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
