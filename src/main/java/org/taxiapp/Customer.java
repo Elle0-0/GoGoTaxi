@@ -12,6 +12,7 @@ public class Customer extends User{
 
     String username;
     Location destination = new Location();
+    Location currentLocation = new Location();
     double tip;
     double time;
     String region;
@@ -29,14 +30,14 @@ public class Customer extends User{
     public Customer() {
         location = new Location();
     }
-    public void insertDestination() {}
+    public void insertDestination(Location location) {}
 
     public void returnRegion(int i) {}
 
     public void locationGetter() {}
     public void coordinateGetter() {}
-
-
+    public void getCustomerLocation() {}
+    public void getCustomerDestination() {}
     public void getExprience() throws FileNotFoundException {
         String line;
         try (BufferedReader reader = new BufferedReader(new FileReader(experienceFilePath))) {
@@ -131,11 +132,15 @@ public class Customer extends User{
         }
     }
 
+    public void getTaxi() {
+
+    }
+
     //testing purposes only.
     public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException {
         Customer c = new CustomerLocation();
 //        c.signIn();
-        c.insertDestination();
+//        c.insertDestination();
 //        c.tripExperience();
 //        c.tipTaxi();
 

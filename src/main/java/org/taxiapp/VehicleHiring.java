@@ -43,8 +43,8 @@ public class VehicleHiring {
     }
 
     public void getTaxisInRange(Customer customer){
-        int customerX = /*customer.location.getX()*/ 3;
-        int customerY = /*customer.location.getY()*/ 6;
+        int customerX = customer.location.getX();
+        int customerY = customer.location.getY();
         worldMap.changeCoord(customerX, customerY, Icons.person);
         ArrayList<String> names = new ArrayList<>();
         for (Taxi taxi: currentTaxis){
