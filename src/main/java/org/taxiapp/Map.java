@@ -24,16 +24,25 @@ public class Map {
             System.out.println();
         }
     }
-    public void changeCoord(int x, int y, String icon){
-        Map[x][y] = icon;
+    public boolean changeCoord(int x, int y, String icon){
+        try {
+            Map[x][y] = icon;
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Hmm, it seems you are off the map.");
+            System.out.println("Don't worry, we'll handle it!");
+            return false;
+        }
+return true;
+
     }
-    public void moveToCustomer(Taxi selectedTaxi, Customer customer){
+    public void moveToCustomer(Taxi selectedTaxi, Customer customer) {
         int taxiX = selectedTaxi.location.getX();
         int taxiY = selectedTaxi.location.getY();
-        int customerX = customer.location.getX();
-        int customerY = customer.location.getY();
+        int customerX = /**customer.location.getX() **/6;
+        int customerY = /**customer.location.getY()**/10;
 
         changeCoord(customerX, customerY, " \uD83E\uDDCD\uD83C\uDFFB\u200D♀\uFE0F ");
+
 
         while ((taxiX != customerX) && (taxiY != customerY)){
             if (taxiX < customerX){
@@ -45,30 +54,31 @@ public class Map {
                     System.out.println();
                     distance ++;
                 }
-            } else if (taxiX > customerX){
-                while (taxiX != customerX){
-                    taxiX -- ;
+            } else if (taxiX > customerX) {
+                while (taxiX != customerX) {
+                    taxiX--;
                     changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
-                    changeCoord((taxiX+1), taxiY, " + ");
+                    changeCoord((taxiX + 1), taxiY, " + ");
                     printMap();
                     System.out.println();
                     distance ++;
                 }
             }
-            if (taxiY < customerY){
-                while (taxiY != customerY){
-                    taxiY ++ ;
+            if (taxiY < customerY) {
+                while (taxiY != customerY) {
+                    taxiY++;
+
                     changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
-                    changeCoord(taxiX, (taxiY-1), " + ");
+                    changeCoord(taxiX, (taxiY - 1), " + ");
                     printMap();
                     System.out.println();
                     distance ++;
                 }
-            } else if (taxiY > customerY){
-                while (taxiY != customerY){
-                    taxiY -- ;
+            } else if (taxiY > customerY) {
+                while (taxiY != customerY) {
+                    taxiY--;
                     changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
-                    changeCoord(taxiX, (taxiY+1), " + ");
+                    changeCoord(taxiX, (taxiY + 1), " + ");
                     printMap();
                     System.out.println();
                     distance ++;
@@ -76,6 +86,7 @@ public class Map {
 
             }
         }
+
     }
     public int getDistanceTravelled() {
         return distance;
@@ -93,5 +104,8 @@ public class Map {
         m.moveToCustomer(t,c);
         System.out.println(m.distance);
     }
-
+        System.out.println("The taxi is here!");
+    }
 }
+
+

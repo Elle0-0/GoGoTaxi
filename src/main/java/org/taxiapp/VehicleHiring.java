@@ -1,5 +1,7 @@
 package org.taxiapp;
 
+import org.taxiapp.Aesthetics.Icons;
+
 import java.util.ArrayList;
 import java.lang.Math;
 
@@ -8,13 +10,14 @@ public class VehicleHiring {
     Taxi[] currentTaxis; // will contain 20 taxis
     ArrayList<Taxi> availableTaxis; // contains how many taxis will be available to the taxi
     Map worldMap;
-    final int taxiRange;
+    int taxiRange;
 
     public VehicleHiring() {
         possibleTaxis = new Taxi[70];
         currentTaxis = new Taxi[20];
         availableTaxis = new ArrayList<>();
         worldMap = new Map();
+        worldMap.establishMap();
         taxiRange = 5;
     }
 
@@ -40,8 +43,9 @@ public class VehicleHiring {
     }
 
     public void getTaxisInRange(Customer customer){
-        int customerX = /*customer.location.getX()*/ 6;
-        int customerY = /*customer.location.getY()*/ 4;
+        int customerX = /*customer.location.getX()*/ 3;
+        int customerY = /*customer.location.getY()*/ 6;
+        worldMap.changeCoord(customerX, customerY, Icons.person);
         ArrayList<String> names = new ArrayList<>();
         for (Taxi taxi: currentTaxis){
             int taxiX = taxi.location.getX();
@@ -51,12 +55,19 @@ public class VehicleHiring {
                 if (names.contains(taxi.getName()) == false){
                     availableTaxis.add(taxi);
                     taxi.displayInformation();
+                    worldMap.changeCoord(taxiX, taxiY, Icons.taxi);
+                    System.out.println();
                     names.add(taxi.getName());
+
                 }
 
 
             }
+        }if (availableTaxis.size() == 0){
+            taxiRange ++;
+            getTaxisInRange(customer);
         }
+        worldMap.printMap();
     }
 
     }
