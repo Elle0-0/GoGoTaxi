@@ -1,11 +1,11 @@
-Region, Location, x, y,
+Region, Location, x, y
 FROSTFIELD, Oakridge Estates, 0, 6
 EVERGREEN, Evergreen University, 1, 1
 EVERGREEN, Brookstone College of Business and Innovation, 2, 2
-EVERGREEN, Madge's Café, 2, 4
+EVERGREEN, Madges Cafe, 2, 4
 FROSTFIELD, Juniper Court, 2, 9
 EVERGREEN, Ashton Hills Institute of Liberal Arts, 3, 0
-FROSTFIELD, Midland's Hospital, 3, 7
+FROSTFIELD, Midlands Hospital, 3, 7
 EVERGREEN, Pinecrest High School, 4, 2
 FROSTFIELD, Sycamore Lane, 4, 5
 FROSTFIELD, Hawthorn Street, 5, 8

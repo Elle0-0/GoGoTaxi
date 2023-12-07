@@ -3,10 +3,7 @@ package org.taxiapp;
 import org.taxiapp.TaxiManagement.Vehicle;
 import org.taxiapp.TaxiManagement.VehicleTypes;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 
 public class Taxi extends User{
@@ -18,7 +15,6 @@ public class Taxi extends User{
     private mapRegions region;
     private String locationName;
     private String icon;
-    private String name;
 
     /*when calling this from the launcher, you will need to check that no other taxis in the array of taxis
      has the same info */
@@ -57,6 +53,7 @@ public class Taxi extends User{
         this.name = name;
     }
 
+
     public void assignRandomInformation(){
         File file = new File("src/main/java/org/taxiapp/Files/taxiInformation.txt");
         int length = 0;
@@ -82,7 +79,7 @@ public class Taxi extends User{
                   // stores the values in taxiInformation.txt into accessible variables
 
                   String[] fileData = Line.split(", ");
-                  setName(fileData[0]);
+                  name = fileData[0];
                   Taxi.setVehicleType(VehicleTypes.valueOf(fileData[1]));
                   Rate = Taxi.getVehicleType().rate;
                   //Rating = Integer.parseInt(fileData[2]);
@@ -108,14 +105,14 @@ public class Taxi extends User{
 
     }
     public void displayInformation(){
-        System.out.println("Name: " + getName());
+        System.out.println("Name: " + name);
         System.out.println("Ride Type: " + Taxi.getVehicleType());
         System.out.println("Rate per km: €" + Rate);
-        /*System.out.print("Rating: ");
+        System.out.print("Rating: ");
         for (int i = 0; i < Rating; i++){
             System.out.print("★");
         }
-        System.out.println();*/
+        System.out.println();
         System.out.println("Car Registration: " + Taxi.getCarReg());
         System.out.println("Location: " + getRegion() + ", " + getLocationName());
     }
@@ -153,6 +150,28 @@ public class Taxi extends User{
         }
     }
 
+    public void getAllTaxis() {
+        String line;
+        String name, rideType, carreg, region, location;
+        String filePath = "src/main/java/org/taxiapp/Files/taxiInformation.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            reader.readLine();
+            while((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                name = data[0];
+                rideType = data[1];
+                carreg = data[2];
+                region = data[3];
+                location = data[4];
+                System.out.println(name + " " + rideType + " " + carreg + " " + region + " " + location);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-
+    public static void main(String[] args) {
+        Taxi t = new Taxi();
+        t.getAllTaxis();
+    }
 }
