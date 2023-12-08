@@ -12,10 +12,12 @@ public class Main {
         VehicleHiring hiring = new VehicleHiring();
         Customer customer = new CustomerLocation();
         customer.signIn();
-        customer.insertDestination();
+        customer.getCustomerLocation();
+        customer.getCustomerDestination();
         Taxi taxi = hiring.getATaxi(customer);
         Map map = new Map();
-        map.moveToCustomer(taxi, customer);
+        map.moveToTarget(taxi, customer.location.getX(), customer.location.getY(), Icons.person);
+        map.moveToTarget(taxi, customer.destination.getX(), customer.destination.getY(), Icons.destination);
         customer.tripExperience();
     }
 }
