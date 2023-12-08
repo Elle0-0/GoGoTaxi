@@ -46,7 +46,7 @@ public class VehicleHiring {
 
     public void getTaxisInRange(Customer customer){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please choose a taxi");
+
         int customerX = customer.location.getX();
         int customerY = customer.location.getY();
         worldMap.changeCoord(customerX, customerY, Icons.person);
@@ -56,7 +56,7 @@ public class VehicleHiring {
             int taxiX = taxi.location.getX();
             int taxiY = taxi.location.getY();
             double perpDistance = Math.sqrt(Math.pow((customerX - taxiX), 2) + Math.pow((customerY - taxiY), 2));
-            if (!(perpDistance >= taxiRange) && taxiRange != 0) {
+            if (!(perpDistance >= taxiRange) && taxiRange > 0 && customerX != taxiX && customerY != taxiY) {
                 if (names.contains(taxi.getName()) == false){
                     availableTaxis.add(taxi);
                     System.out.println("["+i+"]");
@@ -83,6 +83,7 @@ public class VehicleHiring {
     }
     public Taxi getATaxi(Customer customer){
         initialiseTaxis();
+        System.out.println("Please choose a taxi");
         getTaxisInRange(customer);
         return chosenTaxi;
 
