@@ -22,7 +22,7 @@ public class CustomerLocation extends Customer {
         int userInput;
         while (!enteredLocation) {
             try {
-                System.out.println("Enter region: \n-1 for EVERGREEN \n-2 for SUNHAVEN\n-3 for FROSTFIELD\n-4 for EMBERWOOD");
+                System.out.println("Enter region: \n[1] for EVERGREEN \n[2] for SUNHAVEN\n[3] for FROSTFIELD\n[4] for EMBERWOOD");
                 userInput = input.nextInt();
                 input.nextLine();
                 if (userInput >= 1 && userInput <= 4) {
@@ -81,7 +81,7 @@ public class CustomerLocation extends Customer {
                 if (regions.equals(region)) {
                     enteredLocations.add(data[1].trim());
                     regionLocation = data[1].trim();
-                    System.out.print(i + " ");
+                    System.out.print(" ["+i+"] ");
                     System.out.println(regionLocation);
                     i++;
                     //System.out.println(enteredLocations);
