@@ -3,6 +3,7 @@ package org.taxiapp;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -13,6 +14,7 @@ public class CustomerLocation extends Customer {
     boolean checker = false;
     int temp;
     Coordinates coordinates = new Coordinates();
+    ArrayList<String> enteredLocations = new ArrayList<>();
 
     @Override
     public void insertDestination(Location location) {
@@ -27,7 +29,9 @@ public class CustomerLocation extends Customer {
                     returnRegion(userInput);
                     locationGetter();
                     System.out.println("Enter in your location: ");
-                    mapLocation = input.nextLine();
+                    int userLocationInput = input.nextInt();
+                    if (userLocationInput > enteredLocations.size()) continue;
+                    mapLocation = enteredLocations.get(userLocationInput - 1);
                     int [] coords = coordinates.retrieveCoordinates(returnRegion(userInput), mapLocation);
                     if (coords[0] != 0 && coords[1] != 0) {
                         location.setX(coords[0]);
@@ -67,14 +71,20 @@ public class CustomerLocation extends Customer {
     @Override
     public void locationGetter() {
         String line;
+        int i = 1;
+        enteredLocations.clear();
         try(BufferedReader mapLocation = new BufferedReader(new FileReader(filePath))) {
             mapLocation.readLine();
             while ((line = mapLocation.readLine()) != null) {
                 String[] data = line.split(", ");
                 mapRegions region = mapRegions.valueOf(data[0]);
                 if (regions.equals(region)) {
+                    enteredLocations.add(data[1].trim());
                     regionLocation = data[1].trim();
+                    System.out.print(i + " ");
                     System.out.println(regionLocation);
+                    i++;
+                    //System.out.println(enteredLocations);
                 }
             }
         } catch (IOException e) {
