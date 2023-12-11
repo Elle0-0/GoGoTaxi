@@ -2,6 +2,7 @@ package org.taxiapp;
 
 import org.taxiapp.Aesthetics.Icons;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.lang.Math;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class VehicleHiring {
     Taxi chosenTaxi;
     boolean taxiNeeded;
 
-    public VehicleHiring() {
+    public VehicleHiring() throws IOException {
         possibleTaxis = new Taxi[70];
         currentTaxis = new Taxi[20];
         //availableTaxis = new ArrayList<>();

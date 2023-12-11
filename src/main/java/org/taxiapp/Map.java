@@ -3,20 +3,34 @@ package org.taxiapp;
 import org.taxiapp.Aesthetics.Icons;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.Buffer;
+import java.nio.file.Files;
 
 public class Map {
-
     private String[][] Map = new String[10][10];
-    public void establishMap(){
-        for (String[] row: Map){
-            for (int i = 0; i < row.length; i++){
+    int[][] blockedCoordinates;
+
+    public void establishMap() {
+        for (String[] row : Map) {
+            for (int i = 0; i < row.length; i++) {
                 row[i] = " . ";
 
             }
         }
+
+        try {
+            blockedCoordinates = getBlockedCoordinates();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        for (int i = 0; i < blockedCoordinates.length; i ++){
+            changeCoord(blockedCoordinates[i][0], blockedCoordinates[i][1], Icons.restricted);
+        }
+
+
     }
     public void printMap(){
         for (String[] row : Map){
@@ -39,62 +53,149 @@ return true;
     }
     public void moveToTarget(Taxi selectedTaxi, int targetX, int targetY,String icon) {
         establishMap();
+        boolean outOfBounds = false;
         int taxiX = selectedTaxi.location.getX();
         int taxiY = selectedTaxi.location.getY();
-        //int customerX = customer.location.getX();
-       // int customerY = customer.location.getY();
-        //int destinationX = customer.destination.getX();
-       // int destinationY = customer.destination.getY();
-
-
-
-        //changeCoord(customerX, customerY, Icons.person);
         changeCoord(targetX, targetY, icon);
-        //changeCoord(destinationX, destinationY, Icons.destination);
 
-
-        while ((taxiX != targetX) && (taxiY != targetY)) {
+        while ((taxiX != targetX || taxiY != targetY) && (taxiX >= 0 && taxiX < 10) && (taxiY >= 0 && taxiY < 10)) {
             if (taxiX < targetX) {
-                while (taxiX != targetX) {
-                    taxiX++;
-                    // ensure it can't go out of bounds
+                while (taxiX != targetX && taxiX < 10) {
+                    if (!isBlocked(taxiX + 1, taxiY)) {
+                        taxiX++;
                         changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                         changeCoord((taxiX - 1), taxiY, " + ");
                         printMap();
                         System.out.println();
+                    } else if (taxiY < targetY && (!isBlocked(taxiX, taxiY + 1))) {
+                        taxiY++;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord(taxiX, taxiY - 1, " + ");
+                        printMap();
+                        System.out.println();
+                    } else {
+                        taxiY--;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord(taxiX, taxiY + 1, " + ");
+                        printMap();
+                        System.out.println();
+                    }
                 }
             } else if (taxiX > targetX) {
-                while (taxiX != targetX) {
-                    taxiX--;
-                    changeCoord(taxiX, taxiY, Icons.chosenTaxi);
-                    changeCoord((taxiX + 1), taxiY, " + ");
-                    printMap();
-                    System.out.println();
+                while (taxiX != targetX && taxiX >= 0) {
+                    if (!isBlocked(taxiX--, taxiY)) {
+                        taxiX--;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord((taxiX ++), taxiY, " + ");
+                        printMap();
+                        System.out.println();
+                    } else if (taxiY < targetY && (!isBlocked(taxiX, taxiY ++))) {
+                        taxiY++;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord(taxiX, taxiY --, " + ");
+                        printMap();
+                        System.out.println();
+                    } else {
+                        taxiY--;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord(taxiX, taxiY ++, " + ");
+                        printMap();
+                        System.out.println();
+                    }
                 }
             }
             if (taxiY < targetY) {
-                while (taxiY != targetY) {
-                    taxiY++;
-
-                    changeCoord(taxiX, taxiY, Icons.chosenTaxi);
-                    changeCoord(taxiX, (taxiY - 1), " + ");
-                    printMap();
-                    System.out.println();
+                while (taxiY != targetY && taxiY < 10) {
+                    if (!isBlocked(taxiX, taxiY ++)) {
+                        taxiY++;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord(taxiX, (taxiY - 1), " + ");
+                        printMap();
+                        System.out.println();
+                    } else if (taxiX < targetX && (!isBlocked(taxiX ++, taxiY))) {
+                        taxiX++;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord(taxiX --, taxiY, " + ");
+                        printMap();
+                        System.out.println();
+                    } else {
+                        taxiX--;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord(taxiX ++, taxiY, " + ");
+                        printMap();
+                        System.out.println();
+                    }
                 }
             } else if (taxiY > targetY) {
-                while (taxiY != targetY) {
-                    taxiY--;
-                    changeCoord(taxiX, taxiY, Icons.chosenTaxi);
-                    changeCoord(taxiX, (taxiY + 1), " + ");
-                    printMap();
-                    System.out.println();
+                while (taxiY != targetY && taxiY >= 0) {
+                    if (!isBlocked(taxiX, taxiY --)) {
+                        taxiY--;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord(taxiX, (taxiY ++), " + ");
+                        printMap();
+                        System.out.println();
+                    } else if (taxiX < targetX && (!isBlocked(taxiX ++, taxiY))) {
+                        taxiX++;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord(taxiX --, taxiY, " + ");
+                        printMap();
+                        System.out.println();
+                    } else {
+                        taxiX--;
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord(taxiX ++, taxiY, " + ");
+                        printMap();
+                        System.out.println();
+                    }
                 }
-
             }
         }
         selectedTaxi.location.setX(taxiX);
         selectedTaxi.location.setY(taxiY);
         System.out.println("The taxi has arrived!");
+    }
+    public int[][] getBlockedCoordinates() throws IOException {
+
+       File file = new File ("src/main/java/org/taxiapp/Files/blockedCoords.txt");
+       int length = (int) Files.lines(file.toPath()).count();
+       int[][] blockedCoordinatesTemp = new int[length][];
+
+        try{
+            String line = "";
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            int i = 0;
+            while ((line = reader.readLine())!= null){
+                String [] values = line.split(", ");
+                int[] coords = new  int[2];
+                coords[0] = Integer.parseInt(values[0]);
+                coords[1] = Integer.parseInt(values[1]);
+                blockedCoordinatesTemp[i] = coords;
+                i++;
+            }
+        }catch (IOException e){
+            System.out.println("Error handling files");
+        }
+return blockedCoordinatesTemp;
+    }
+    public boolean isBlocked(int x, int y){
+        try{
+            File file = new File ("src/main/java/org/taxiapp/Files/blockedCoords.txt");
+            String line = "";
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            while ((line = reader.readLine())!= null){
+                String [] values = line.split(", ");
+                int[] coords = new  int[2];
+                coords[0] = Integer.parseInt(values[0]);
+                coords[1] = Integer.parseInt(values[1]);
+                if (coords[0] == x && coords[1]== y){
+                    return true;
+                }
+
+            }
+        }catch (IOException e){
+            System.out.println("Error handling files");
+        }
+        return false;
     }
 }
 
