@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class Customer extends User{
 
-
     String username;
     Location destination = new Location();
     //Location currentLocation = new Location();
@@ -32,10 +31,10 @@ public class Customer extends User{
     }
     public void insertDestination(Location location) {}
 
-    public void returnRegion(int i) {}
-
+    public mapRegions returnRegion(int i) {
+        return null;
+    }
     public void locationGetter() {}
-    public void coordinateGetter() {}
     public void getCustomerLocation() {}
     public void getCustomerDestination() {}
     public void getExprience() throws FileNotFoundException {
