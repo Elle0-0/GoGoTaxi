@@ -3,6 +3,7 @@ package org.taxiapp;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class CustomerLocation extends Customer {
     String filePath = "src/main/java/org/taxiapp/Files/mapLocations.txt";
     boolean checker = false;
     int temp;
+    Coordinates coordinates = new Coordinates();
 
     @Override
     public void insertDestination(Location location) {
@@ -26,16 +28,13 @@ public class CustomerLocation extends Customer {
                     locationGetter();
                     System.out.println("Enter in your location: ");
                     mapLocation = input.nextLine();
-                    coordinateGetter();
-                    if (checker) {
-                        System.out.println("your coords: ");
-                        System.out.println(x + "," + y);
-                        location.setX(x);
-                        location.setY(y);
+                    int [] coords = coordinates.retrieveCoordinates(returnRegion(userInput), mapLocation);
+                    if (coords[0] != 0 && coords[1] != 0) {
+                        location.setX(coords[0]);
+                        location.setY(coords[1]);
                         enteredLocation = true;
-                    }
+                    }else continue;
                 } else continue;
-
             } catch (InputMismatchException e) {
                 System.out.println("enter region from the given options: ");
                 input.nextLine();
@@ -57,16 +56,16 @@ public class CustomerLocation extends Customer {
     }
 
     @Override
-    public void returnRegion(int i) {
+    public mapRegions returnRegion(int i) {
         if (i == 1) regions = mapRegions.EVERGREEN;
         else if (i == 2) regions = mapRegions.SUNHAVEN;
         else if (i == 3) regions = mapRegions.FROSTFIELD;
         else if (i == 4) regions = mapRegions.EMBERWOOD;
+        return regions;
     }
 
     @Override
     public void locationGetter() {
-        //mapRegions mapregions = mapRegions.valueOf(mapRegion);
         String line;
         try(BufferedReader mapLocation = new BufferedReader(new FileReader(filePath))) {
             mapLocation.readLine();
@@ -82,25 +81,13 @@ public class CustomerLocation extends Customer {
             throw new RuntimeException(e);
         }
     }
-
-    @Override
-    public void coordinateGetter() {
-        String line;
-        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            reader.readLine();
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(", ");
-                regionLocation = data[1];
-                if (mapLocation.equalsIgnoreCase(regionLocation)) {
-                    x = Integer.parseInt(data[2]);
-                    y = Integer.parseInt(data[3]);
-                    checker = true;
-                    break;
-                }
-                //System.out.println(region + regionLocation + x + y);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public static void main(String[] args) {
+        Customer c = new CustomerLocation();
+        c.getCustomerLocation();
+        System.out.println(c.location.getX());
+        System.out.println(c.location.getY());
+        c.getCustomerDestination();
+        System.out.println(c.destination.getX());
+        System.out.println(c.destination.getY());
     }
 }
