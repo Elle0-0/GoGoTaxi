@@ -25,6 +25,10 @@ public class Taxi extends User{
         icon = " \uD83D\uDE97";
     }
 
+    public Vehicle getTaxi() {
+        return Taxi;
+    }
+
     public void setRegion(mapRegions region) {
         this.region = region;
     }
@@ -52,6 +56,8 @@ public class Taxi extends User{
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setRating(Taxi taxi, Customer customer) {}
 
 
     public void assignRandomInformation(){
@@ -158,13 +164,12 @@ public class Taxi extends User{
             reader.readLine();
             while((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                //name = data[0];
-                //rideType = data[1];
+                name = data[0];
+                rideType = data[1];
                 carreg = data[2];
-                //region = data[3];
-                //location = data[4];
-                //System.out.println(name + " " + rideType + " " + carreg + " " + region + " " + location);
-                System.out.println(carreg);
+                region = data[3];
+                location = data[4];
+                System.out.println(name + " " + rideType + " " + carreg + " " + region + " " + location);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
