@@ -92,6 +92,7 @@ public class CustomerLocation extends Customer {
                 String[] data = line.split(", ");
                 regionLocation = data[1];
                 if (mapLocation.equalsIgnoreCase(regionLocation)) {
+
                     x = Integer.parseInt(data[2]);
                     y = Integer.parseInt(data[3]);
                     checker = true;

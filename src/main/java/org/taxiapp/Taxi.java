@@ -53,6 +53,9 @@ public class Taxi extends User{
         this.name = name;
     }
 
+    public Vehicle getTaxi() {
+        return Taxi;
+    }
 
     public void assignRandomInformation(){
         File file = new File("src/main/java/org/taxiapp/Files/taxiInformation.txt");

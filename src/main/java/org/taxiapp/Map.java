@@ -58,14 +58,10 @@ return true;
                 while (taxiX != targetX) {
                     taxiX++;
                     // ensure it can't go out of bounds
-                    if (taxiX > 9 || taxiX < 0) {
-                        throw new RuntimeException("Taxi can't move out of the map bounds");
-                    } else {
                         changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                         changeCoord((taxiX - 1), taxiY, " + ");
                         printMap();
                         System.out.println();
-                    }
                 }
             } else if (taxiX > targetX) {
                 while (taxiX != targetX) {

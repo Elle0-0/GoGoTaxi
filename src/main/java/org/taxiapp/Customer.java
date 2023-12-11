@@ -11,7 +11,8 @@ public class Customer extends User{
 
 
     String username;
-    Location destination = new Location();
+   // Location destination = new Location();
+    Location destination;
     //Location currentLocation = new Location();
     double tip;
     double time;
@@ -29,6 +30,7 @@ public class Customer extends User{
 
     public Customer() {
         location = new Location();
+        destination = new Location();
     }
     public void insertDestination(Location location) {}
 
