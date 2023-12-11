@@ -1,12 +1,14 @@
 package org.taxiapp;
 
+import org.taxiapp.Aesthetics.Icons;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.Buffer;
 
 public class Map {
-    int distance = 0;
+
     private String[][] Map = new String[10][10];
     public void establishMap(){
         for (String[] row: Map){
@@ -35,77 +37,69 @@ public class Map {
 return true;
 
     }
-    public void moveToCustomer(Taxi selectedTaxi, Customer customer) {
+    public void moveToTarget(Taxi selectedTaxi, int targetX, int targetY,String icon) {
+        establishMap();
         int taxiX = selectedTaxi.location.getX();
         int taxiY = selectedTaxi.location.getY();
-        int customerX = /**customer.location.getX() **/6;
-        int customerY = /**customer.location.getY()**/10;
+        //int customerX = customer.location.getX();
+       // int customerY = customer.location.getY();
+        //int destinationX = customer.destination.getX();
+       // int destinationY = customer.destination.getY();
 
-        changeCoord(customerX, customerY, " \uD83E\uDDCD\uD83C\uDFFB\u200D♀\uFE0F ");
 
 
-        while ((taxiX != customerX) && (taxiY != customerY)){
-            if (taxiX < customerX){
-                while (taxiX != customerX){
-                    taxiX ++ ;
-                    changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
-                    changeCoord((taxiX-1), taxiY, " + ");
-                    printMap();
-                    System.out.println();
-                    distance ++;
+        //changeCoord(customerX, customerY, Icons.person);
+        changeCoord(targetX, targetY, icon);
+        //changeCoord(destinationX, destinationY, Icons.destination);
+
+
+        while ((taxiX != targetX) && (taxiY != targetY)) {
+            if (taxiX < targetX) {
+                while (taxiX != targetX) {
+                    taxiX++;
+                    // ensure it can't go out of bounds
+                    if (taxiX > 9 || taxiX < 0) {
+                        throw new RuntimeException("Taxi can't move out of the map bounds");
+                    } else {
+                        changeCoord(taxiX, taxiY, Icons.chosenTaxi);
+                        changeCoord((taxiX - 1), taxiY, " + ");
+                        printMap();
+                        System.out.println();
+                    }
                 }
-            } else if (taxiX > customerX) {
-                while (taxiX != customerX) {
+            } else if (taxiX > targetX) {
+                while (taxiX != targetX) {
                     taxiX--;
-                    changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
+                    changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                     changeCoord((taxiX + 1), taxiY, " + ");
                     printMap();
                     System.out.println();
-                    distance ++;
                 }
             }
-            if (taxiY < customerY) {
-                while (taxiY != customerY) {
+            if (taxiY < targetY) {
+                while (taxiY != targetY) {
                     taxiY++;
 
-                    changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
+                    changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                     changeCoord(taxiX, (taxiY - 1), " + ");
                     printMap();
                     System.out.println();
-                    distance ++;
                 }
-            } else if (taxiY > customerY) {
-                while (taxiY != customerY) {
+            } else if (taxiY > targetY) {
+                while (taxiY != targetY) {
                     taxiY--;
-                    changeCoord(taxiX, taxiY, selectedTaxi.getIcon());
+                    changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                     changeCoord(taxiX, (taxiY + 1), " + ");
                     printMap();
                     System.out.println();
-                    distance ++;
                 }
 
             }
         }
-
+        selectedTaxi.location.setX(taxiX);
+        selectedTaxi.location.setY(taxiY);
+        System.out.println("The taxi has arrived!");
     }
-    public int getDistanceTravelled() {
-        return distance;
-    }
-    public static void main(String[] args) {
-        Map m = new Map();
-        m.establishMap();
-        m.printMap();
-        Taxi t = new Taxi();
-        t.location.setX(3);
-        t.location.setY(4);
-        Customer c = new Customer();
-        c.location.setX(2);
-        c.location.setY(8);
-        m.moveToCustomer(t,c);
-        System.out.println(m.distance);
-    }
-        //System.out.println("The taxi is here!");
-    }
-
+}
 
 

@@ -4,6 +4,7 @@ import org.taxiapp.Aesthetics.Icons;
 
 import java.util.ArrayList;
 import java.lang.Math;
+import java.util.Scanner;
 
 public class VehicleHiring {
     Taxi[] possibleTaxis; // contains 70 taxis
@@ -11,6 +12,7 @@ public class VehicleHiring {
     ArrayList<Taxi> availableTaxis; // contains how many taxis will be available to the taxi
     Map worldMap;
     int taxiRange;
+    Taxi chosenTaxi;
 
     public VehicleHiring() {
         possibleTaxis = new Taxi[70];
@@ -43,19 +45,24 @@ public class VehicleHiring {
     }
 
     public void getTaxisInRange(Customer customer){
+        Scanner scanner = new Scanner(System.in);
+
         int customerX = customer.location.getX();
         int customerY = customer.location.getY();
         worldMap.changeCoord(customerX, customerY, Icons.person);
         ArrayList<String> names = new ArrayList<>();
+        int i = 1;
         for (Taxi taxi: currentTaxis){
             int taxiX = taxi.location.getX();
             int taxiY = taxi.location.getY();
             double perpDistance = Math.sqrt(Math.pow((customerX - taxiX), 2) + Math.pow((customerY - taxiY), 2));
-            if (!(perpDistance >= taxiRange) && taxiRange != 0) {
+            if (!(perpDistance >= taxiRange) && taxiRange > 0 && customerX != taxiX && customerY != taxiY) {
                 if (names.contains(taxi.getName()) == false){
                     availableTaxis.add(taxi);
+                    System.out.println("["+i+"]");
+                    i++;
                     taxi.displayInformation();
-                    worldMap.changeCoord(taxiX, taxiY, Icons.taxi);
+                    worldMap.changeCoord(taxiX, taxiY, Icons.allcars);
                     System.out.println();
                     names.add(taxi.getName());
 
@@ -67,8 +74,23 @@ public class VehicleHiring {
             taxiRange ++;
             getTaxisInRange(customer);
         }
+
         worldMap.printMap();
+        int userChoice = scanner.nextInt();
+        chosenTaxi = availableTaxis.get(userChoice-1);
+
+
     }
+    public Taxi getATaxi(Customer customer){
+        initialiseTaxis();
+        System.out.println("Please choose a taxi");
+        getTaxisInRange(customer);
+        return chosenTaxi;
+
+
+    }
+
+
 
     }
 

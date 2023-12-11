@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Coordinates {
 
 
-    public int[] retrieveCoordinates(mapRegions region, String locationName){
+    public static int[] retrieveCoordinates(mapRegions region, String locationName){
         int[] XYCoords = new int[2];
 
         try{
