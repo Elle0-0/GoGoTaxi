@@ -14,6 +14,9 @@ public class CustomerLocation extends Customer {
     int temp;
     Coordinates coordinates = new Coordinates();
 
+    public CustomerLocation() throws IOException {
+    }
+
     @Override
     public void insertDestination(Location location) {
         boolean enteredLocation = false;
@@ -81,7 +84,7 @@ public class CustomerLocation extends Customer {
             throw new RuntimeException(e);
         }
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Customer c = new CustomerLocation();
         c.getCustomerLocation();
         System.out.println(c.location.getX());
