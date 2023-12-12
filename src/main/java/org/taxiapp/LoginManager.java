@@ -46,6 +46,7 @@ public class LoginManager {
                 validInput = false;
                 continue;
             }
+            if (username.isEmpty() || password.isEmpty()) continue;
             validInput = true;
             userSignUp(username, passwordHash(password));
         }
@@ -63,19 +64,27 @@ public class LoginManager {
         return stringBuilder.toString();
     }
 
-    public static void customerLogin() {
+    public static void customerLogin() throws NoSuchAlgorithmException {
         System.out.println("------USER LOGIN------");
         while (!userFound) {
             System.out.println("Enter username: ");
             username = input.nextLine();
             System.out.println("Enter password: ");
             password = input.nextLine();
+            if (username.isEmpty() || password.isEmpty()) continue;
             userLogin();
             if (!userFound) {
-                System.out.println("Do you want to try again?(yes/no): ");
-                String answer = input.nextLine();
-                if (!answer.equalsIgnoreCase("yes")) {
-                    break;
+                while (true) {
+                    System.out.println("Press enter to try again OR 1 to sign up.");
+                    String answer = input.nextLine().trim();
+                    if (answer.isEmpty()) {
+                        break;
+                    }else if (answer.equals("1")) {
+                        customerSignUp();
+                        break;
+                    } else {
+                        System.out.println("invalid input. Try again.");
+                    }
                 }
             }
         }
