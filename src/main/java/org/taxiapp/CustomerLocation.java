@@ -30,7 +30,7 @@ public class CustomerLocation extends Customer {
                     locationGetter();
                     System.out.println("Enter in your location: ");
                     int userLocationInput = input.nextInt();
-                    if (userLocationInput > enteredLocations.size()) continue;
+                    if (userLocationInput > enteredLocations.size()) {System.out.println("--please pick a location from the given options--"); continue;};
                     mapLocation = enteredLocations.get(userLocationInput - 1);
                     int [] coords = coordinates.retrieveCoordinates(returnRegion(userInput), mapLocation);
                     if (coords[0] != 0 && coords[1] != 0) {

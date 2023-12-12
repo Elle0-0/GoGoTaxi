@@ -94,12 +94,7 @@ public class Taxi extends User{
                   setLocationName(fileData[4]);
               }
               i ++;
-
-
             }
-
-
-
         } catch (IOException e){
             System.out.println("Error handling files");
             e.printStackTrace();
