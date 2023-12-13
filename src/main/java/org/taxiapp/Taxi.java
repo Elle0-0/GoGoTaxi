@@ -110,7 +110,7 @@ public class Taxi extends User{
         location.setX(taxiCoords[0]); location.setY(taxiCoords[1]);
 
     }
-    public void displayInformation(){
+    public boolean displayInformation(){
         System.out.println("Name: " + name);
         System.out.println("Ride Type: " + Taxi.getVehicleType());
         System.out.println("Rate per km: €" + Rate);
@@ -121,6 +121,7 @@ public class Taxi extends User{
         System.out.println();
         System.out.println("Car Registration: " + Taxi.getCarReg());
         System.out.println("Location: " + getRegion() + ", " + getLocationName());
+        return false;
     }
     public void randomMovement(){
         // find the current coordinates in the maplocation txt
