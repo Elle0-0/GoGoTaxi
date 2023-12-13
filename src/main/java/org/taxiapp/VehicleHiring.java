@@ -48,10 +48,12 @@ public class VehicleHiring {
                 }
             }
         }
+        moveTaxis();
     }
 
     public void moveTaxis() {
-        while (!taxiNeeded) {
+        int random = (int) (Math.random() * (6) );
+        for (int i = 0; i < random; i++) {
             for (Taxi taxi : possibleTaxis) {
                 taxi.randomMovement();
             }
@@ -66,7 +68,7 @@ public class VehicleHiring {
         int customerY = customer.location.getY();
         worldMap.changeCoord(customerX, customerY, Icons.person);
         //ArrayList<String> names = new ArrayList<>();
-        ownList<String> names = new ownList<>();
+        ownList<String> names = new ownList<String>();
 
         int i = 1;
         for (Taxi taxi : currentTaxis) {
@@ -96,15 +98,15 @@ public class VehicleHiring {
         return chosenTaxi;
     }
 
-public Taxi getATaxi(Customer customer) {
-    initialiseTaxis();
-    System.out.println("Please choose a taxi");
-    System.out.println("Taxi's are sorted by nearest");
-    Taxi chosenTaxi = getTaxisInRange(customer);
-    return chosenTaxi;
+    public Taxi getATaxi(Customer customer) {
+        initialiseTaxis();
+        System.out.println("Please choose a taxi");
+        System.out.println("Taxi's are sorted by nearest");
+        Taxi chosenTaxi = getTaxisInRange(customer);
+        return chosenTaxi;
 
 
-}
+    }
 }
 
 
