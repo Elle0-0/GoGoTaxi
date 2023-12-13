@@ -25,10 +25,12 @@ public class ownList <T> {
 
     Node head;
     int size;
+    int maxValue;
 
     public ownList() {
         head = null;
         size = 0;
+        maxValue = 5;
     }
 
     public boolean isEmpty() {
@@ -37,6 +39,13 @@ public class ownList <T> {
         }
         return false;
     }
+    public boolean isFull(){
+        if (size > maxValue){
+            return true;
+        }
+        return  false;
+    }
+
 
     public void simpleInsert(T x){
         Node insertNode = new Node (x);
@@ -76,8 +85,9 @@ public class ownList <T> {
             isInserted = true;
             size++;
         }
+        else if (!isFull()){
         // if new node's distance is less than the head, make it the ditst
-        else if (insertNode.key < head.key) {
+        if (insertNode.key < head.key) {
             insertNode.next = head; // make the next of the new node the head
             head = insertNode; // make the new node the head
             isInserted = true;
@@ -107,7 +117,7 @@ public class ownList <T> {
             current.next = insertNode;
             size++;
         }
-    }
+    }}
     public void printList(){
         Node current = head;
         if (isEmpty()){
