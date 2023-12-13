@@ -25,6 +25,10 @@ public class Taxi extends User{
         icon = " \uD83D\uDE97";
     }
 
+    public Vehicle getTaxi() {
+        return Taxi;
+    }
+
     public void setRegion(mapRegions region) {
         this.region = region;
     }
@@ -53,9 +57,8 @@ public class Taxi extends User{
         this.name = name;
     }
 
-    public Vehicle getTaxi() {
-        return Taxi;
-    }
+    public void setRating(Taxi taxi, Customer customer) {}
+
 
     public void assignRandomInformation(){
         File file = new File("src/main/java/org/taxiapp/Files/taxiInformation.txt");
@@ -107,7 +110,7 @@ public class Taxi extends User{
         location.setX(taxiCoords[0]); location.setY(taxiCoords[1]);
 
     }
-    public String displayInformation(){
+    public void displayInformation(){
         System.out.println("Name: " + name);
         System.out.println("Ride Type: " + Taxi.getVehicleType());
         System.out.println("Rate per km: €" + Rate);
@@ -118,7 +121,6 @@ public class Taxi extends User{
         System.out.println();
         System.out.println("Car Registration: " + Taxi.getCarReg());
         System.out.println("Location: " + getRegion() + ", " + getLocationName());
-        return "";
     }
     public void randomMovement(){
         // find the current coordinates in the maplocation txt
@@ -162,13 +164,12 @@ public class Taxi extends User{
             reader.readLine();
             while((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                //name = data[0];
-                //rideType = data[1];
+                name = data[0];
+                rideType = data[1];
                 carreg = data[2];
-                //region = data[3];
-                //location = data[4];
-                //System.out.println(name + " " + rideType + " " + carreg + " " + region + " " + location);
-                System.out.println(carreg);
+                region = data[3];
+                location = data[4];
+                System.out.println(name + " " + rideType + " " + carreg + " " + region + " " + location);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
