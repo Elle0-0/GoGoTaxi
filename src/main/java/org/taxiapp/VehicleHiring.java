@@ -28,9 +28,9 @@ public class VehicleHiring {
         taxiRange = 5;
     }
 
-    public void initialiseTaxis(){
+    public void initialiseTaxis() {
         // first create 70 null taxis
-        for (int i = 0; i < possibleTaxis.length ; i++){
+        for (int i = 0; i < possibleTaxis.length; i++) {
             possibleTaxis[i] = new Taxi();
         }
         // next randomly assign these 70 taxis information
@@ -38,17 +38,19 @@ public class VehicleHiring {
             taxi.assignRandomInformation();
         }
         // chose 20 random taxis from that list to be used in the current iteration
-        ArrayList<Integer> usedNumbers= new ArrayList<Integer>();
-        for (int i = 0; i < currentTaxis.length; i ++){
-            while (currentTaxis[i] == null){
-                int random = (int) (Math.random() * (possibleTaxis.length -1) );
-                if (!usedNumbers.contains(random)){
+        //ArrayList<Integer> usedNumbers = new ArrayList<Integer>();
+        ownList<Integer> usedNumbers = new ownList<>();
+        for (int i = 0; i < currentTaxis.length; i++) {
+            while (currentTaxis[i] == null) {
+                int random = (int) (Math.random() * (possibleTaxis.length - 1));
+                if (!usedNumbers.contains(random)) {
                     currentTaxis[i] = possibleTaxis[random];
                 }
             }
         }
     }
-    public void moveTaxis(){
+
+    public void moveTaxis() {
         while (!taxiNeeded) {
             for (Taxi taxi : possibleTaxis) {
                 taxi.randomMovement();
@@ -56,7 +58,7 @@ public class VehicleHiring {
         }
     }
 
-    public Taxi getTaxisInRange(Customer customer){
+    public Taxi getTaxisInRange(Customer customer) {
         taxiNeeded = true;
         Scanner scanner = new Scanner(System.in);
 
@@ -67,12 +69,12 @@ public class VehicleHiring {
         ownList<String> names = new ownList<>();
 
         int i = 1;
-        for (Taxi taxi: currentTaxis){
+        for (Taxi taxi : currentTaxis) {
             int taxiX = taxi.location.getX();
             int taxiY = taxi.location.getY();
             double perpDistance = Math.sqrt(Math.pow((customerX - taxiX), 2) + Math.pow((customerY - taxiY), 2));
             if (!(perpDistance >= taxiRange) && taxiRange > 0 && customerX != taxiX && customerY != taxiY) {
-                if (names.contains(taxi.getName()) == false){
+                if (names.contains(taxi.getName()) == false) {
                     availableTaxisList.sortInsert(perpDistance, taxi);
                     worldMap.changeCoord(taxiX, taxiY, Icons.allcars);
                     names.simpleInsert(taxi.getName());
@@ -80,29 +82,31 @@ public class VehicleHiring {
             }
         }
         // if there are no taxis in range, expand range
-        if (availableTaxisList.size == 0){
-            taxiRange ++;
+        if (availableTaxisList.size == 0) {
+            taxiRange++;
             getTaxisInRange(customer);
         }
         // display taxi information
         availableTaxisList.printList();
         worldMap.printMap();
+
+
         int userChoice = scanner.nextInt();
         Taxi chosenTaxi = (Taxi) availableTaxisList.getChosenTaxi(userChoice);
         return chosenTaxi;
     }
-    public Taxi getATaxi(Customer customer){
-        initialiseTaxis();
-        System.out.println("Please choose a taxi");
-        System.out.println("Taxi's are sorted by nearest");
-        Taxi chosenTaxi = getTaxisInRange(customer);
-        return chosenTaxi;
+
+public Taxi getATaxi(Customer customer) {
+    initialiseTaxis();
+    System.out.println("Please choose a taxi");
+    System.out.println("Taxi's are sorted by nearest");
+    Taxi chosenTaxi = getTaxisInRange(customer);
+    return chosenTaxi;
 
 
-    }
+}
+}
 
 
 
-
-    }
 
