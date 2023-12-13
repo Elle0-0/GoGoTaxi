@@ -28,6 +28,7 @@ public class Program {
         map.moveToTarget(taxi, customer.destination.getX(), customer.destination.getY(), Icons.destination);
         customer.tripExperience();
 
+
     }
 
 }
