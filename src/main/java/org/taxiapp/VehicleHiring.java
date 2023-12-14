@@ -86,11 +86,6 @@ public class VehicleHiring {
         System.out.println("Please choose a taxi");
         getTaxisInRange(customer);
         return chosenTaxi;
-
-
-    }
-
-
-
-    }
+   }
+}
 

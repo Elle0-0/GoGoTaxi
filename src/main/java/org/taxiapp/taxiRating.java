@@ -24,11 +24,11 @@ public class taxiRating extends Taxi{
                 String[] data = line.split(", ");
                 String reg = data[2];
                 if (taxi.getTaxi().getCarReg().equals(reg)) {
-                    writer.append(String.valueOf(customerRating));
                     writer.append(", ");
+                    writer.append(String.valueOf(customerRating));
                 }
-                writer.close();
             }
+            writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

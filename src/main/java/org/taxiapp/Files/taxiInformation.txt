@@ -38,28 +38,28 @@ Elena Gray, REGULAR, 235-T-6789, SUNHAVEN, People's Bank, 3
 Maxwell Bryant, PREMIUM, 236-V-9012, FROSTFIELD, Frostfield Mall, 3
 Violet Murphy, REGULAR, 237-D-2345, EVERGREEN, Cedar Lane, 3
 Hudson Torres, PREMIUM, 238-R-5678, EMBERWOOD, Emberwood Central Park, 3
-Lily Baker, REGULAR, 239-M-9012, SUNHAVEN, Birchwood Avenue
-Isaac Williams, REGULAR, 240-Q-5678, FROSTFIELD, Frostfield Community Center
-Camila Bell, PREMIUM, 241-J-1234, EVERGREEN, Green Grove Apartments
-Audrey Mitchell, REGULAR, 242-C-6789, EMBERWOOD, Redwood Drive
-Parker Hughes, REGULAR, 243-K-9012, SUNHAVEN, Sunhaven Elementary School
-Savannah Wood, PREMIUM, 244-G-2345, FROSTFIELD, Juniper Court
-Aria Nelson, REGULAR, 245-N-5678, EVERGREEN, Pinecrest High School
-Nolan Ward, PREMIUM, 246-T-8901, EMBERWOOD, Pinecrest High School
-Ellie Fisher, REGULAR, 247-R-1234, SUNHAVEN, Riverside Park Community
-Adam Brooks, REGULAR, 248-V-6789, FROSTFIELD, Sycamore
-Emma Cox, PREMIUM, 249-B-9012, EVERGREEN, Evergreen University
-Leah Richardson, PREMIUM, 250-M-2345, EMBERWOOD, Redwood Drive
-Jaxon Foster, REGULAR, 251-W-5678, SUNHAVEN, People's Bank
-Aurora Davis, REGULAR, 252-F-9012, FROSTFIELD, Madge's Café
-Bentley Garcia, PREMIUM, 253-L-3456, EVERGREEN, Green Grove Apartments
-Paisley Hill, REGULAR, 254-J-6789, EMBERWOOD, Emberwood Central Park
-Savannah Wood, REGULAR, 255-P-9012, SUNHAVEN, Birchwood Avenue
-Ian Morgan, PREMIUM, 256-H-2345, FROSTFIELD, Frostfield Mall
-Adeline Campbell, PREMIUM, 257-T-6789, EVERGREEN, Cedar Lane
-Jasper King, REGULAR, 258-R-1234, EMBERWOOD, Redwood Drive
-Piper Turner, REGULAR, 259-N-5678, SUNHAVEN, People's Bank
-Aurora Diaz, PREMIUM, 260-C-9012, FROSTFIELD, Sycamore
+Lily Baker, REGULAR, 239-M-9012, SUNHAVEN, Birchwood Avenue, 3
+Isaac Williams, REGULAR, 240-Q-5678, FROSTFIELD, Frostfield Community Center, 3
+Camila Bell, PREMIUM, 241-J-1234, EVERGREEN, Green Grove Apartments, 3
+Audrey Mitchell, REGULAR, 242-C-6789, EMBERWOOD, Redwood Drive, 3
+Parker Hughes, REGULAR, 243-K-9012, SUNHAVEN, Sunhaven Elementary School, 3
+Savannah Wood, PREMIUM, 244-G-2345, FROSTFIELD, Juniper Court, 3
+Aria Nelson, REGULAR, 245-N-5678, EVERGREEN, Pinecrest High School, 3
+Nolan Ward, PREMIUM, 246-T-8901, EMBERWOOD, Pinecrest High School, 3
+Ellie Fisher, REGULAR, 247-R-1234, SUNHAVEN, Riverside Park Community, 3
+Adam Brooks, REGULAR, 248-V-6789, FROSTFIELD, Sycamore, 3
+Emma Cox, PREMIUM, 249-B-9012, EVERGREEN, Evergreen University, 3
+Leah Richardson, PREMIUM, 250-M-2345, EMBERWOOD, Redwood Drive, 3
+Jaxon Foster, REGULAR, 251-W-5678, SUNHAVEN, People's Bank, 3
+Aurora Davis, REGULAR, 252-F-9012, FROSTFIELD, Madge's Café, 3
+Bentley Garcia, PREMIUM, 253-L-3456, EVERGREEN, Green Grove Apartments, 3
+Paisley Hill, REGULAR, 254-J-6789, EMBERWOOD, Emberwood Central Park, 3
+Savannah Wood, REGULAR, 255-P-9012, SUNHAVEN, Birchwood Avenue, 3
+Ian Morgan, PREMIUM, 256-H-2345, FROSTFIELD, Frostfield Mall, 3
+Adeline Campbell, PREMIUM, 257-T-6789, EVERGREEN, Cedar Lane, 3
+Jasper King, REGULAR, 258-R-1234, EMBERWOOD, Redwood Drive, 3
+Piper Turner, REGULAR, 259-N-5678, SUNHAVEN, People's Bank, 3
+Aurora Diaz, PREMIUM, 260-C-9012, FROSTFIELD, Sycamore, 3
 Lincoln Powell, REGULAR, 261-M-2345, EVERGREEN, Pinecrest High School
 Leah Richardson, PREMIUM, 262-V-6789, EMBERWOOD, Riverside Park Community
 Leo Thompson, REGULAR, 263-W-9012, SUNHAVEN, Birchwood Avenue
@@ -107,4 +107,4 @@ Leia Mitchell, REGULAR, 305-L-9012, EVERGREEN, Pinecrest High School
 Jasper Wood, PREMIUM, 306-M-2345, EMBERWOOD, Riverside Park Community
 Elias Richardson, REGULAR, 307-Q-5678, SUNHAVEN, Birchwood Avenue
 Lillian Carter, PREMIUM, 308-N-9012, FROSTFIELD, Juniper Court
-Jasper Bell, REGULAR, 309-V-2345, EVERGREEN, Green Grove Apartments
+Jasper Bell, REGULAR, 309-V-2345, EVERGREEN, Green Grove Apartments, 5
