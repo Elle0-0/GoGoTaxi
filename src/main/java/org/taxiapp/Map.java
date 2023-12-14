@@ -2,16 +2,13 @@ package org.taxiapp;
 
 import org.taxiapp.Aesthetics.Icons;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.Buffer;
-import java.nio.file.Files;
 
 public class Map {
     private String[][] Map = new String[10][10];
-    int[][] blockedCoordinates;
+
+    public String getIcon(int x, int y){
+        return Map[x][y];
+    }
 
     public void establishMap() {
         for (String[] row : Map) {
@@ -46,7 +43,6 @@ public class Map {
 
     public void moveToTarget(Taxi selectedTaxi, int targetX, int targetY, String icon) {
         establishMap();
-        boolean outOfBounds = false;
         int taxiX = selectedTaxi.location.getX();
         int taxiY = selectedTaxi.location.getY();
         //changeCoord(taxiX, taxiY, Icons.chosenTaxi);
