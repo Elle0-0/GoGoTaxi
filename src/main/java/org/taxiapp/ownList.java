@@ -1,4 +1,5 @@
 package org.taxiapp;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 public class ownList <T> {
@@ -146,5 +147,19 @@ public class ownList <T> {
         }
         return current.data;
 
+    }
+
+    public ArrayList<Taxi> arrayOfTaxis() {
+        // purely for testing purposes
+        ArrayList<Taxi> arrayofTaxis = new ArrayList<>();
+        Node current = head;
+        int i = 0;
+        while (current != null) {
+            Taxi taxi = (Taxi) current.data;
+            arrayofTaxis.add(taxi);
+            current = current.next;
+
+        }
+        return  arrayofTaxis;
     }
 }
