@@ -86,7 +86,7 @@ public class Customer extends User{
     public void tripExperience() throws FileNotFoundException {
         getExprience();
         Random random = new Random();
-        int randomExperience = random.nextInt(customerExperience.size());
+        int randomExperience = random.nextInt(customerExperience.size()-1);
         System.out.println(customerExperience.get(randomExperience));
         boolean inputRating = false;
         while (!inputRating) {
