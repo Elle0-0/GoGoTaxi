@@ -15,7 +15,15 @@ public class VehicleHiring {
     Map worldMap;
     int taxiRange;
     Taxi chosenTaxi;
-    boolean taxiNeeded;
+    int userChoice;
+
+    public void setChosenTaxi(Taxi chosenTaxi) {
+        this.chosenTaxi = chosenTaxi;
+    }
+
+    public void setUserChoice(int userChoice) {
+        this.userChoice = userChoice;
+    }
 
     public VehicleHiring() throws IOException {
         possibleTaxis = new Taxi[70];
@@ -24,7 +32,6 @@ public class VehicleHiring {
         availableTaxisList = new ownList();
         worldMap = new Map();
         worldMap.establishMap();
-        taxiNeeded = false;
         taxiRange = 5;
     }
 
@@ -61,9 +68,7 @@ public class VehicleHiring {
     }
 
     public Taxi getTaxisInRange(Customer customer) {
-        taxiNeeded = true;
         Scanner scanner = new Scanner(System.in);
-
         int customerX = customer.location.getX();
         int customerY = customer.location.getY();
         worldMap.changeCoord(customerX, customerY, Icons.person);
@@ -93,8 +98,8 @@ public class VehicleHiring {
         worldMap.printMap();
 
 
-        int userChoice = scanner.nextInt();
-        Taxi chosenTaxi = (Taxi) availableTaxisList.getChosenTaxi(userChoice);
+        userChoice = scanner.nextInt();
+        setChosenTaxi((Taxi) availableTaxisList.getChosenTaxi(userChoice-1));
         return chosenTaxi;
     }
 
