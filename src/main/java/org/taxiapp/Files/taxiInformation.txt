@@ -1,43 +1,43 @@
-Name, Ride Type, car reg, Region, Location
-Isabella Rodriguez, PREMIUM, 192-D-3456, FROSTFIELD, Sycamore
-Emily Chang, PREMIUM, 211-G-7890, EVERGREEN, Pinecrest High School
-Harper O'Malley, REGULAR, 201-W-1234, EVERGREEN, Madge's Café
-Savannah Patel, PREMIUM, 182-C-5678, EMBERWOOD, Redwood Drive
-Mia Thompson, REGULAR, 221-L-9012, SUNHAVEN, Riverside Park Community
-Liam Johnson, REGULAR, 203-O-2345, EVERGREEN, Evergreen University
-Oliver Williams, REGULAR, 191-T-6789, SUNHAVEN, Birchwood Avenue
-Lucas Martinez, PREMIUM, 200-D-8901, FROSTFIELD, Juniper Court
-Ethan Brown, REGULAR, 214-M-3456, EMBERWOOD, Greenfield Heights
-Mason Lee, PREMIUM, 195-G-6789, SUNHAVEN, People's Bank
-Amelia Nguyen, PREMIUM, 193-F-5678, FROSTFIELD, Juniper Court
-William Stewart, REGULAR, 210-P-3456, EVERGREEN, Pinecrest High School
-Victoria Scott, PREMIUM, 222-B-7890, EMBERWOOD, Redwood Drive
-Daniel Price, REGULAR, 204-Q-1234, SUNHAVEN, Riverside Park Community
-Harper Baker, REGULAR, 223-N-9012, FROSTFIELD, Sycamore
-Elijah Murphy, PREMIUM, 215-W-2345, EVERGREEN, Evergreen University
-Scarlett Parker, REGULAR, 216-R-6789, SUNHAVEN, People's Bank
-Addison Turner, PREMIUM, 217-G-8901, FROSTFIELD, Madge's Café
-Mia Roberts, REGULAR, 218-T-4567, EMBERWOOD, Pinecrest High School
-Lincoln Hill, PREMIUM, 219-H-2345, SUNHAVEN, Birchwood Avenue
-Evelyn Cooper, REGULAR, 220-K-8901, FROSTFIELD, Frostfield Mall
-Carter Ward, REGULAR, 221-V-5678, EVERGREEN, Cedar Lane
-Zoey Mitchell, PREMIUM, 222-C-1234, EMBERWOOD, Emberwood Central Park
-Grayson Reed, PREMIUM, 223-L-6789, SUNHAVEN, Riverside Park Community
-Lillian Carter, REGULAR, 224-J-9012, FROSTFIELD, Juniper Court
-Lucas Barnes, PREMIUM, 225-M-3456, EVERGREEN, Green Grove Apartments
-Scarlett Powell, REGULAR, 226-D-8901, EMBERWOOD, Redwood Drive
-Aiden Ward, REGULAR, 227-B-2345, SUNHAVEN, Sunhaven Elementary School
-Layla Perez, PREMIUM, 228-R-5678, FROSTFIELD, Sycamore
-Luke Torres, REGULAR, 229-N-1234, EVERGREEN, Pinecrest High School
-Hazel Rivera, REGULAR, 230-H-6789, EMBERWOOD, Pinecrest High School
-Dylan Evans, PREMIUM, 231-C-9012, SUNHAVEN, Riverside Park Community
-Josephine Coleman, PREMIUM, 232-P-3456, FROSTFIELD, Madge's Café
-Zoey Flores, REGULAR, 233-G-7890, EVERGREEN, Evergreen University
-Lincoln Simmons, PREMIUM, 234-L-1234, EMBERWOOD, Redwood Drive
-Elena Gray, REGULAR, 235-T-6789, SUNHAVEN, People's Bank
-Maxwell Bryant, PREMIUM, 236-V-9012, FROSTFIELD, Frostfield Mall
-Violet Murphy, REGULAR, 237-D-2345, EVERGREEN, Cedar Lane
-Hudson Torres, PREMIUM, 238-R-5678, EMBERWOOD, Emberwood Central Park
+Name, Ride Type, car reg, Region, Location, rating
+Isabella Rodriguez, PREMIUM, 192-D-3456, FROSTFIELD, Sycamore, 2, 3, 5, 1
+Emily Chang, PREMIUM, 211-G-7890, EVERGREEN, Pinecrest High School, 3
+Harper O'Malley, REGULAR, 201-W-1234, EVERGREEN, Madge's Café, 3
+Savannah Patel, PREMIUM, 182-C-5678, EMBERWOOD, Redwood Drive, 3
+Mia Thompson, REGULAR, 221-L-9012, SUNHAVEN, Riverside Park Community, 3
+Liam Johnson, REGULAR, 203-O-2345, EVERGREEN, Evergreen University, 3
+Oliver Williams, REGULAR, 191-T-6789, SUNHAVEN, Birchwood Avenue, 3
+Lucas Martinez, PREMIUM, 200-D-8901, FROSTFIELD, Juniper Court, 3
+Ethan Brown, REGULAR, 214-M-3456, EMBERWOOD, Greenfield Heights, 3
+Mason Lee, PREMIUM, 195-G-6789, SUNHAVEN, People's Bank, 3
+Amelia Nguyen, PREMIUM, 193-F-5678, FROSTFIELD, Juniper Court, 3
+William Stewart, REGULAR, 210-P-3456, EVERGREEN, Pinecrest High School, 3
+Victoria Scott, PREMIUM, 222-B-7890, EMBERWOOD, Redwood Drive, 3
+Daniel Price, REGULAR, 204-Q-1234, SUNHAVEN, Riverside Park Community, 3
+Harper Baker, REGULAR, 223-N-9012, FROSTFIELD, Sycamore, 3
+Elijah Murphy, PREMIUM, 215-W-2345, EVERGREEN, Evergreen University, 3
+Scarlett Parker, REGULAR, 216-R-6789, SUNHAVEN, People's Bank, 3
+Addison Turner, PREMIUM, 217-G-8901, FROSTFIELD, Madge's Café, 3
+Mia Roberts, REGULAR, 218-T-4567, EMBERWOOD, Pinecrest High School, 3
+Lincoln Hill, PREMIUM, 219-H-2345, SUNHAVEN, Birchwood Avenue, 3
+Evelyn Cooper, REGULAR, 220-K-8901, FROSTFIELD, Frostfield Mall, 3
+Carter Ward, REGULAR, 221-V-5678, EVERGREEN, Cedar Lane, 3
+Zoey Mitchell, PREMIUM, 222-C-1234, EMBERWOOD, Emberwood Central Park, 3
+Grayson Reed, PREMIUM, 223-L-6789, SUNHAVEN, Riverside Park Community, 3
+Lillian Carter, REGULAR, 224-J-9012, FROSTFIELD, Juniper Court, 3
+Lucas Barnes, PREMIUM, 225-M-3456, EVERGREEN, Green Grove Apartments, 3
+Scarlett Powell, REGULAR, 226-D-8901, EMBERWOOD, Redwood Drive, 3
+Aiden Ward, REGULAR, 227-B-2345, SUNHAVEN, Sunhaven Elementary School, 3
+Layla Perez, PREMIUM, 228-R-5678, FROSTFIELD, Sycamore, 3
+Luke Torres, REGULAR, 229-N-1234, EVERGREEN, Pinecrest High School, 3
+Hazel Rivera, REGULAR, 230-H-6789, EMBERWOOD, Pinecrest High School, 3
+Dylan Evans, PREMIUM, 231-C-9012, SUNHAVEN, Riverside Park Community, 3
+Josephine Coleman, PREMIUM, 232-P-3456, FROSTFIELD, Madge's Café, 3
+Zoey Flores, REGULAR, 233-G-7890, EVERGREEN, Evergreen University, 3
+Lincoln Simmons, PREMIUM, 234-L-1234, EMBERWOOD, Redwood Drive, 3
+Elena Gray, REGULAR, 235-T-6789, SUNHAVEN, People's Bank, 3
+Maxwell Bryant, PREMIUM, 236-V-9012, FROSTFIELD, Frostfield Mall, 3
+Violet Murphy, REGULAR, 237-D-2345, EVERGREEN, Cedar Lane, 3
+Hudson Torres, PREMIUM, 238-R-5678, EMBERWOOD, Emberwood Central Park, 3
 Lily Baker, REGULAR, 239-M-9012, SUNHAVEN, Birchwood Avenue
 Isaac Williams, REGULAR, 240-Q-5678, FROSTFIELD, Frostfield Community Center
 Camila Bell, PREMIUM, 241-J-1234, EVERGREEN, Green Grove Apartments
@@ -77,7 +77,7 @@ Leah Richardson, REGULAR, 274-T-6789, EMBERWOOD, Riverside Park Community
 Lucas Bell, PREMIUM, 275-G-9012, SUNHAVEN, Birchwood Avenue
 Owen Mitchell, PREMIUM, 276-P-2345, FROSTFIELD, Juniper Court
 Aurora Davis, REGULAR, 277-N-5678, EVERGREEN, Evergreen University
-Nolan Bell, REGULAR, 278-K-9012, EMBERWOOD, Pinecrest High School
+Nolan Bell, REGULAR, 278-K-9012, EMBERWOOD, Pinecrest High School,
 Violet Hill, PREMIUM, 279-W-2345, SUNHAVEN, Riverside Park Community
 Nolan Bell, REGULAR, 280-R-6789, FROSTFIELD, Madge's Café
 Jasper Wood, PREMIUM, 281-C-9012, EVERGREEN, Green Grove Apartments
