@@ -16,7 +16,6 @@ public class Taxi extends User{
     private Vehicle Taxi;
     private mapRegions region;
     private String locationName;
-    private String icon;
 
     /*when calling this from the launcher, you will need to check that no other taxis in the array of taxis
      has the same info */
@@ -24,7 +23,6 @@ public class Taxi extends User{
         // initialises the objects
         Taxi = new Vehicle();
         location = new Location();
-        icon = " \uD83D\uDE97";
     }
 
     public Vehicle getTaxi() {
