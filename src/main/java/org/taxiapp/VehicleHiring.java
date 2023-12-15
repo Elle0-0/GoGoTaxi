@@ -62,7 +62,7 @@ public class VehicleHiring {
         int random = (int) (Math.random() * (6) );
         for (int i = 0; i < random; i++) {
             for (Taxi taxi : possibleTaxis) {
-                taxi.randomMovement();
+                taxi.loopedMovement();
             }
         }
     }
