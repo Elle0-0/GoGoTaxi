@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class TaxiRating extends Taxi{
 
     double avgRating;
-    String filePath = "src/main/java/org/taxiapp/Files/taxiRating.txt";
     String taxiFilePath = "src/main/java/org/taxiapp/Files/taxiInformation.txt";
     DecimalFormat df = new DecimalFormat("#.#");
 
@@ -64,38 +63,4 @@ public class TaxiRating extends Taxi{
             throw new RuntimeException(e);
         }
     }
-
-    public void readTaxiRatings() {
-        String line;
-        String carReg = null;
-        String carReg2 = null;
-        try {
-            BufferedReader reader1 = new BufferedReader(new FileReader(filePath));
-            reader1.readLine();
-            while( (line = reader1.readLine()) != null ) {
-                String[] data1 = line.split(",");
-                carReg = data1[0];
-            }
-            BufferedReader reader2 = new BufferedReader(new FileReader(taxiFilePath));
-            reader2.readLine();
-            while((line = reader2.readLine()) != null) {
-                String[] data2 = line.split(",");
-                carReg2 = data2[2];
-            }
-            if (carReg.equals(carReg2)) {
-                System.out.println(carReg + carReg2);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    public static void main(String[] args) throws IOException {
-        TaxiRating t = new TaxiRating();
-        Customer c = new CustomerLocation();
-        t.getAverageRating(t);
-        t.readTaxiRatings();
-    }
-
 }
