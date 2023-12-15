@@ -223,7 +223,7 @@ public class vehicleHiringTest {
         System.setIn(inputStream);
 
         Taxi actualChosenTaxi = vh.getATaxi(customer);
-        Taxi expectedActualTaxi = (Taxi) vh.availableTaxisList.getChosenTaxi(testInput);
+        Taxi expectedActualTaxi = (Taxi) vh.availableTaxisList.getChosenTaxi(testInput-1);
         assertEquals(expectedActualTaxi, actualChosenTaxi);
 
     }
