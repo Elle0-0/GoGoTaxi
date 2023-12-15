@@ -65,7 +65,7 @@ public class ownList <T> {
             return false;
         } else{
             Node current = head;
-            while (current.next != null){
+            while (current != null){
                 if (current.data.equals(x)){
                     return true;
                 } else {
