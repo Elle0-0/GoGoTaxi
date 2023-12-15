@@ -6,6 +6,8 @@ import org.taxiapp.TaxiManagement.VehicleTypes;
 import java.io.*;
 import java.nio.file.Files;
 
+import static org.taxiapp.Coordinates.retrieveCoordinates;
+
 public class Taxi extends User{
 
     // Attributes
@@ -97,7 +99,7 @@ public class Taxi extends User{
         }
         // stores the coordinates of the taxi's randomly generated location
         Coordinates taxiLocation = new Coordinates();
-        int[] taxiCoords = taxiLocation.retrieveCoordinates(region, locationName);
+        int[] taxiCoords = retrieveCoordinates(region, locationName);
         location.setX(taxiCoords[0]); location.setY(taxiCoords[1]);
 
     }
@@ -114,7 +116,7 @@ public class Taxi extends User{
         System.out.println("Location: " + getRegion() + ", " + getLocationName());
         return "";
     }
-    public void randomMovement(){
+    public void loopedMovement(){
         // find the current coordinates in the maplocation txt
         // move to the next line and store those coordinates
         try {
@@ -140,12 +142,17 @@ public class Taxi extends User{
                 // if at the last line of the location, do a wrap around
                 setRegion(mapRegions.FROSTFIELD);
                 setLocationName("Oakridge Estates");
+
             }
+
 
         }catch (IOException e){
             System.out.println("Error handling files");
             e.printStackTrace();
         }
+        int[] newCoords = retrieveCoordinates(getRegion(), getLocationName());
+        location.setX(newCoords[0]);
+        location.setY(newCoords[1]);
     }
 
     public void getAllTaxis() {
