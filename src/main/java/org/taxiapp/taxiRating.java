@@ -2,11 +2,12 @@ package org.taxiapp;
 
 import java.io.*;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class taxiRating extends Taxi{
 
-    double rating;
+    double avgRating;
     String filePath = "src/main/java/org/taxiapp/Files/taxiRating.txt";
     String taxiFilePath = "src/main/java/org/taxiapp/Files/taxiInformation.txt";
     DecimalFormat df = new DecimalFormat("#.#");
@@ -15,15 +16,18 @@ public class taxiRating extends Taxi{
     public void setRating(Taxi taxi, Customer customer) {
         int customerRating = customer.getRating();
         String line;
+        //ArrayList<String> reg = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(taxiFilePath));
             BufferedWriter writer = new BufferedWriter(new FileWriter(taxiFilePath, true));
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(", ");
-                if (taxi.getTaxi().getCarReg().equals(data[2])) {
-                    writer.write(customerRating);
-                    writer.write(", ");
+                String reg = data[2];
+                if (taxi.getTaxi().getCarReg().equals(reg)) {
+                    writer.append(String.valueOf(customerRating));
+                    writer.append(", ");
                 }
+                writer.close();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -44,9 +48,9 @@ public class taxiRating extends Taxi{
                 }
                 avgValue = sum/counter;
                 System.out.println(df.format(avgValue));
-                rating = Double.parseDouble(df.format(avgValue));
+                avgRating = Double.parseDouble(df.format(avgValue));
             }
-        return rating;
+        return avgRating;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -78,22 +82,19 @@ public class taxiRating extends Taxi{
 
     }
 
-    public double getRating() {
-        return rating;
-    }
-
 
     //seems unnecessary rn.
     public double setTaxiRating() {
         getName();
-        getRating();
+        //getRating();
 //        getAverageRating();
-        return rating;
+        return 0.0;
     }
 
     public static void main(String[] args) {
-        taxiRating t = new taxiRating();
-        t.getAverageRating();
+//        taxiRating t = new taxiRating();
+//        Customer c = new CustomerLocation();
+//        t.getAverageRating();
         //t.readTaxiRatings();
     }
 

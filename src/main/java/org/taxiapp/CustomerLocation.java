@@ -16,6 +16,9 @@ public class CustomerLocation extends Customer {
     Coordinates coordinates = new Coordinates();
     ArrayList<String> enteredLocations = new ArrayList<>();
 
+    public CustomerLocation() throws IOException {
+    }
+
     @Override
     public void insertDestination(Location location) {
         boolean enteredLocation = false;
@@ -30,7 +33,7 @@ public class CustomerLocation extends Customer {
                     locationGetter();
                     System.out.println("Enter in your location: ");
                     int userLocationInput = input.nextInt();
-                    if (userLocationInput > enteredLocations.size()) continue;
+                    if (userLocationInput > enteredLocations.size()) {System.out.println("--please pick a location from the given options--"); continue;};
                     mapLocation = enteredLocations.get(userLocationInput - 1);
                     int [] coords = coordinates.retrieveCoordinates(returnRegion(userInput), mapLocation);
                     if (coords[0] != 0 && coords[1] != 0) {
@@ -91,7 +94,7 @@ public class CustomerLocation extends Customer {
             throw new RuntimeException(e);
         }
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Customer c = new CustomerLocation();
         c.getCustomerLocation();
         System.out.println(c.location.getX());

@@ -77,7 +77,7 @@ Leah Richardson, REGULAR, 274-T-6789, EMBERWOOD, Riverside Park Community
 Lucas Bell, PREMIUM, 275-G-9012, SUNHAVEN, Birchwood Avenue
 Owen Mitchell, PREMIUM, 276-P-2345, FROSTFIELD, Juniper Court
 Aurora Davis, REGULAR, 277-N-5678, EVERGREEN, Evergreen University
-Nolan Bell, REGULAR, 278-K-9012, EMBERWOOD, Pinecrest High School
+Nolan Bell, REGULAR, 278-K-9012, EMBERWOOD, Pinecrest High School,
 Violet Hill, PREMIUM, 279-W-2345, SUNHAVEN, Riverside Park Community
 Nolan Bell, REGULAR, 280-R-6789, FROSTFIELD, Madge's Café
 Jasper Wood, PREMIUM, 281-C-9012, EVERGREEN, Green Grove Apartments
