@@ -227,4 +227,23 @@ public class vehicleHiringTest {
         assertEquals(expectedActualTaxi, actualChosenTaxi);
 
     }
+
+    @Test
+    void loopedMovementTest(){
+        Taxi taxi = new Taxi();
+        // ensuring that the loopeed movement loops around
+        // edge case, testing that after the looped movement function has been ran
+        // if the taxi is at the last line of the file, it wont error but instead will loop around to the first
+
+        /** EMBERWOOD, Esker Hills, 9, 7  (this is the last line of the file) **/
+        /**FROSTFIELD, Oakridge Estates, 0, 6 (the location the taxi should arrive at) **/
+        taxi.location.setX(9);
+        taxi.location.setY(7);
+        taxi.loopedMovement();
+        assertEquals(mapRegions.FROSTFIELD, taxi.getRegion());
+        assertEquals("Oakridge Estates", taxi.getLocationName());
+        assertEquals(0, taxi.location.getX());
+        assertEquals(6, taxi.location.getY());
+
+    }
 }
