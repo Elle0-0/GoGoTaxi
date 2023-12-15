@@ -12,7 +12,7 @@ public class Taxi extends User{
 
     // Attributes
    private double Rate;
-    private int Rating;
+    private double Rating;
     private Vehicle Taxi;
     private mapRegions region;
     private String locationName;
@@ -49,11 +49,8 @@ public class Taxi extends User{
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setRating(Taxi taxi, Customer customer) {}
+    public double getAverageRating(Taxi taxi) {return Rating;}
 
 
     public void assignRandomInformation(){
@@ -171,10 +168,5 @@ public class Taxi extends User{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void main(String[] args) {
-        Taxi t = new Taxi();
-        t.getAllTaxis();
     }
 }
