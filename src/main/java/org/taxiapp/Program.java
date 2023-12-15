@@ -17,18 +17,16 @@ public class Program {
     public void launch() throws NoSuchAlgorithmException, FileNotFoundException {
 //      // Program myProgram = new Program();
 //        // myProgram.launch();
-
-        customer.signIn();
+        //customer.signIn();
         customer.getCustomerLocation();
         customer.getCustomerDestination();
-        System.out.println(customer.destination.getX());
-        System.out.println(customer.destination.getY());
-        Taxi taxi = vehicleHiring.getATaxi(customer);
+        Taxi taxi = new TaxiRating();
+        vehicleHiring.getATaxi(customer);
         map.moveToTarget(taxi, customer.location.getX(), customer.location.getY(), Icons.person);
         map.moveToTarget(taxi, customer.destination.getX(), customer.destination.getY(), Icons.destination);
         customer.tripExperience();
-
-
+        taxi.setRating(vehicleHiring.chosenTaxi, customer);
+        taxi.getAverageRating(vehicleHiring.chosenTaxi);
     }
 
 }

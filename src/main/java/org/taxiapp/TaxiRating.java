@@ -3,9 +3,8 @@ package org.taxiapp;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class taxiRating extends Taxi{
+public class TaxiRating extends Taxi{
 
     double avgRating;
     String filePath = "src/main/java/org/taxiapp/Files/taxiRating.txt";
@@ -16,40 +15,50 @@ public class taxiRating extends Taxi{
     public void setRating(Taxi taxi, Customer customer) {
         int customerRating = customer.getRating();
         String line;
-        //ArrayList<String> reg = new ArrayList<>();
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(taxiFilePath));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(taxiFilePath, true));
+        ArrayList<String> updatedData = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(taxiFilePath))) {
+
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(", ");
                 String reg = data[2];
                 if (taxi.getTaxi().getCarReg().equals(reg)) {
-                    writer.append(", ");
-                    writer.append(String.valueOf(customerRating));
+                    data[data.length - 1] += ", " + customerRating;
+                    line = String.join(", ", data);
+                    //getAverageRating(taxi);
                 }
+                updatedData.add(line);
             }
-            writer.close();
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(taxiFilePath))) {
+                for (String newData : updatedData) writer.write(newData + "\n");
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public double getAverageRating(){
+
+
+    @Override
+    public double getAverageRating(Taxi taxi){
         String line;
+        double avgValue=0;
         try (BufferedReader reader = new BufferedReader(new FileReader(taxiFilePath))) {
             reader.readLine();
             while ((line = reader.readLine()) != null) {
                 double counter = 0.0;
                 double sum = 0.0;
-                double avgValue;
-                String[] data = line.split(",");
-                counter += data.length - 5;
-                for (int i = 5; i <data.length; i++) {
-                    sum += Double.parseDouble(data[i]);
+                String[] data = line.split(", ");
+                String reg = data[2];
+                if (taxi.getTaxi().getCarReg().equals(reg)) {
+                    for (int i = 5; i < data.length; i++) {
+                        sum += Double.parseDouble(data[i].trim());
+                        counter++;
+                    }
+                    avgValue = sum / counter;
                 }
-                avgValue = sum/counter;
-                System.out.println(df.format(avgValue));
-                avgRating = Double.parseDouble(df.format(avgValue));
             }
+            //System.out.println(avgValue);
+            System.out.println(df.format(avgValue));
+            avgRating = Double.parseDouble(df.format(avgValue));
         return avgRating;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -64,14 +73,14 @@ public class taxiRating extends Taxi{
             BufferedReader reader1 = new BufferedReader(new FileReader(filePath));
             reader1.readLine();
             while( (line = reader1.readLine()) != null ) {
-                String[] data = line.split(",");
-                carReg = data[0];
+                String[] data1 = line.split(",");
+                carReg = data1[0];
             }
             BufferedReader reader2 = new BufferedReader(new FileReader(taxiFilePath));
             reader2.readLine();
             while((line = reader2.readLine()) != null) {
-                String[] datao = line.split(",");
-                carReg2 = datao[2];
+                String[] data2 = line.split(",");
+                carReg2 = data2[2];
             }
             if (carReg.equals(carReg2)) {
                 System.out.println(carReg + carReg2);
@@ -82,20 +91,11 @@ public class taxiRating extends Taxi{
 
     }
 
-
-    //seems unnecessary rn.
-    public double setTaxiRating() {
-        getName();
-        //getRating();
-//        getAverageRating();
-        return 0.0;
-    }
-
-    public static void main(String[] args) {
-//        taxiRating t = new taxiRating();
-//        Customer c = new CustomerLocation();
-//        t.getAverageRating();
-        //t.readTaxiRatings();
+    public static void main(String[] args) throws IOException {
+        TaxiRating t = new TaxiRating();
+        Customer c = new CustomerLocation();
+        t.getAverageRating(t);
+        t.readTaxiRatings();
     }
 
 }

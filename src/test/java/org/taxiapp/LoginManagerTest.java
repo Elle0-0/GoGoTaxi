@@ -1,3 +1,5 @@
+package org.taxiapp;
+
 import org.junit.jupiter.api.Test;
 import org.taxiapp.LoginManager;
 
