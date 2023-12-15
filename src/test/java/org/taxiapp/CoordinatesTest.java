@@ -10,13 +10,30 @@ class CoordinatesTest {
     void retrieveCoordinates1() {
         // Testing the happy path
         mapRegions region = mapRegions.EVERGREEN;
-        String locationName = "Madge's Café";
+        String locationName = "Madges Cafe";
       Coordinates testCoordinates = new Coordinates();
       int [] actualCoords = testCoordinates.retrieveCoordinates(region, locationName);
       assertEquals(2, actualCoords[0]);
       assertEquals(4, actualCoords[1]);
-
-
     }
-
+    @Test
+    void retrieveCoordinates2(){
+        // what if they were all lowercase
+        mapRegions region =mapRegions.EVERGREEN;
+        String locationName = "madges cafe";
+        Coordinates testCoordinates = new Coordinates();
+        int [] actualCoords = testCoordinates.retrieveCoordinates(region, locationName);
+        assertEquals(2, actualCoords[0]);
+        assertEquals(4, actualCoords[1]);
+    }
+    @Test
+    void retrieveCoordinates3(){
+        // what if they were all Uppercase
+        mapRegions region =mapRegions.EVERGREEN;
+        String locationName = "MADGES CAFE";
+        Coordinates testCoordinates = new Coordinates();
+        int [] actualCoords = testCoordinates.retrieveCoordinates(region, locationName);
+        assertEquals(2, actualCoords[0]);
+        assertEquals(4, actualCoords[1]);
+    }
 }

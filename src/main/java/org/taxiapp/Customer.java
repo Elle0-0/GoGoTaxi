@@ -10,7 +10,8 @@ import java.util.Scanner;
 public class Customer extends User{
 
     String username;
-    Location destination = new Location();
+   // Location destination = new Location();
+    Location destination;
     //Location currentLocation = new Location();
     double tip;
     double time;
@@ -26,8 +27,9 @@ public class Customer extends User{
     String filePath = "src/main/java/org/taxiapp/Files/mapLocations.txt";
     String experienceFilePath = "src/main/java/org/taxiapp/resources/experience.csv";
 
-    public Customer() {
+    public Customer() throws IOException {
         location = new Location();
+        destination = new Location();
     }
     public void insertDestination(Location location) {}
 
@@ -136,7 +138,7 @@ public class Customer extends User{
     }
 
     //testing purposes only.
-    public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException {
+    public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
         Customer c = new CustomerLocation();
 //        c.signIn();
 //        c.insertDestination();

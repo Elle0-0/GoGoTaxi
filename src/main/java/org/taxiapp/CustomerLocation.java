@@ -16,6 +16,9 @@ public class CustomerLocation extends Customer {
     Coordinates coordinates = new Coordinates();
     ArrayList<String> enteredLocations = new ArrayList<>();
 
+    public CustomerLocation() throws IOException {
+    }
+
     @Override
     public void insertDestination(Location location) {
         boolean enteredLocation = false;
@@ -91,7 +94,7 @@ public class CustomerLocation extends Customer {
             throw new RuntimeException(e);
         }
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Customer c = new CustomerLocation();
         c.getCustomerLocation();
         System.out.println(c.location.getX());

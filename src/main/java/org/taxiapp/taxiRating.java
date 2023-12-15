@@ -92,9 +92,9 @@ public class taxiRating extends Taxi{
     }
 
     public static void main(String[] args) {
-        taxiRating t = new taxiRating();
-        Customer c = new CustomerLocation();
-        t.getAverageRating();
+//        taxiRating t = new taxiRating();
+//        Customer c = new CustomerLocation();
+//        t.getAverageRating();
         //t.readTaxiRatings();
     }
 
