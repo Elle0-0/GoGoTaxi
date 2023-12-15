@@ -30,7 +30,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.USERNAME_THING }}/GoGoTaxi:latest
+          tags: ${{ secrets.USERNAME_THING }}/gogotaxi:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
