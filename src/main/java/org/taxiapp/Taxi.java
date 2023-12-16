@@ -13,10 +13,9 @@ public class Taxi extends User{
     // Attributes
    private double Rate;
     private int Rating;
-    private Vehicle Taxi;
+    private final Vehicle Taxi;
     private mapRegions region;
     private String locationName;
-    private String icon;
 
     /*when calling this from the launcher, you will need to check that no other taxis in the array of taxis
      has the same info */
@@ -24,11 +23,14 @@ public class Taxi extends User{
         // initialises the objects
         Taxi = new Vehicle();
         location = new Location();
-        icon = " \uD83D\uDE97";
     }
 
     public Vehicle getTaxi() {
         return Taxi;
+    }
+
+    public void setRate(double rate) {
+        Rate = rate;
     }
 
     public void setRegion(mapRegions region) {
@@ -55,6 +57,7 @@ public class Taxi extends User{
         this.name = name;
     }
 
+    // is used, just overrided
     public void setRating(Taxi taxi, Customer customer) {}
 
 
@@ -63,11 +66,11 @@ public class Taxi extends User{
         int length = 0;
 
         try{
-            // gets the number of lines in the file
+            // gets the number of lines in the file (not hardcoded length incase length changes)
             length = (int) Files.lines(file.toPath()).count();
         } catch (IOException e){
             System.out.println("Error counting lines");
-            e.printStackTrace();
+            e.getLocalizedMessage();
         }
 
         // generates a random number between 0 and the length of the file to choose a random line of information
@@ -83,9 +86,9 @@ public class Taxi extends User{
                   // stores the values in taxiInformation.txt into accessible variables
 
                   String[] fileData = Line.split(", ");
-                  name = fileData[0];
+                  setName(fileData[0]);
                   Taxi.setVehicleType(VehicleTypes.valueOf(fileData[1]));
-                  Rate = Taxi.getVehicleType().rate;
+                  setRate(Taxi.getVehicleType().rate);
                   //Rating = Integer.parseInt(fileData[2]);
                   Taxi.setCarReg(fileData[2]);
                   setRegion(mapRegions.valueOf(fileData[3]));
@@ -95,10 +98,9 @@ public class Taxi extends User{
             }
         } catch (IOException e){
             System.out.println("Error handling files");
-            e.printStackTrace();
+            e.getLocalizedMessage();
         }
         // stores the coordinates of the taxi's randomly generated location
-        Coordinates taxiLocation = new Coordinates();
         int[] taxiCoords = retrieveCoordinates(region, locationName);
         location.setX(taxiCoords[0]); location.setY(taxiCoords[1]);
 
@@ -107,11 +109,11 @@ public class Taxi extends User{
         System.out.println("Name: " + name);
         System.out.println("Ride Type: " + Taxi.getVehicleType());
         System.out.println("Rate per km: €" + Rate);
-        System.out.print("Rating: ");
+        /**System.out.print("Rating: ");
         for (int i = 0; i < Rating; i++){
             System.out.print("★");
-        }
-        System.out.println();
+        } **/
+        //System.out.println();
         System.out.println("Car Registration: " + Taxi.getCarReg());
         System.out.println("Location: " + getRegion() + ", " + getLocationName());
         return "";
@@ -148,7 +150,7 @@ public class Taxi extends User{
 
         }catch (IOException e){
             System.out.println("Error handling files");
-            e.printStackTrace();
+            e.getLocalizedMessage();
         }
         int[] newCoords = retrieveCoordinates(getRegion(), getLocationName());
         location.setX(newCoords[0]);

@@ -16,6 +16,7 @@ public class Coordinates {
             reader.readLine();
             while ((Line = reader.readLine()) != null){
                 String[] fileData = Line.split(", ");
+                // once at the intended line, save the file data into the XYCoords array
                 if (mapRegions.valueOf(fileData[0]).equals(region) && fileData[1].equalsIgnoreCase(locationName)){
                     XYCoords[0] = Integer.parseInt(fileData[2]);
                     XYCoords[1] = Integer.parseInt(fileData[3]);
@@ -25,7 +26,7 @@ public class Coordinates {
 
         }catch (IOException e){
             System.out.println("Error handling files");
-            e.printStackTrace();
+            e.getCause();
 
         }
         return XYCoords;

@@ -1,8 +1,4 @@
 package org.taxiapp;
-
-import org.taxiapp.Aesthetics.Icons;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
