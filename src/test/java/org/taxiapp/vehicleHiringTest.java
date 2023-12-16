@@ -3,6 +3,7 @@ package org.taxiapp;
 import org.junit.jupiter.api.Test;
 import org.taxiapp.Aesthetics.Colors;
 import org.taxiapp.Aesthetics.Icons;
+import org.taxiapp.TaxiManagement.VehicleTypes;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -34,8 +35,8 @@ public class vehicleHiringTest {
 
         InputStream inputStream = new ByteArrayInputStream(String.valueOf(testInput).getBytes());
         System.setIn(inputStream);
-
-        vh.getTaxisInRange(customer);
+        VehicleTypes taxiType = VehicleTypes.PREMIUM;
+        vh.getTaxisInRange(customer, taxiType );
         assertNotEquals(0, vh.availableTaxisList.size);
 
     }
@@ -59,7 +60,8 @@ public class vehicleHiringTest {
         InputStream inputStream = new ByteArrayInputStream(String.valueOf(testInput).getBytes());
         System.setIn(inputStream);
 
-        vh.getTaxisInRange(customer);
+        VehicleTypes taxiType = VehicleTypes.PREMIUM;
+        vh.getTaxisInRange(customer, taxiType);
         assertNotEquals(0, vh.availableTaxisList.size);
 
     }
@@ -81,8 +83,8 @@ public class vehicleHiringTest {
 
         InputStream inputStream = new ByteArrayInputStream(String.valueOf(testInput).getBytes());
         System.setIn(inputStream);
-
-        vh.getTaxisInRange(customer);
+        VehicleTypes taxiType = VehicleTypes.PREMIUM;
+        vh.getTaxisInRange(customer, taxiType);
         ArrayList<Taxi> taxisInRange = vh.availableTaxisList.arrayOfTaxis();
         for (Taxi taxi : taxisInRange){
            assertEquals( Icons.allcars, vh.worldMap.getIcon(taxi.location.getX(), taxi.location.getY()));
@@ -107,9 +109,16 @@ public class vehicleHiringTest {
         System.setOut(new PrintStream(outputStream));
 
         InputStream inputStream = new ByteArrayInputStream(String.valueOf(testInput).getBytes());
-        System.setIn(inputStream);
 
-        Taxi chosenTaxi = vh.getATaxi(customer);
+
+        vh.initialiseTaxis();
+        VehicleTypes taxiType = VehicleTypes.PREMIUM;
+        System.out.println("Please choose a taxi");
+        System.out.println("The Taxi's nearest to you are: ");
+        System.setIn(inputStream);
+        Taxi chosenTaxi = vh.getTaxisInRange(customer, taxiType);
+
+       // Taxi chosenTaxi = vh.getATaxi(customer);
         int initialX = chosenTaxi.location.getX();
         int initialY = chosenTaxi.location.getY();
         map.moveToTarget(chosenTaxi,customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
@@ -140,9 +149,14 @@ public class vehicleHiringTest {
         System.setOut(new PrintStream(outputStream));
 
         InputStream inputStream = new ByteArrayInputStream(String.valueOf(testInput).getBytes());
-        System.setIn(inputStream);
 
-        Taxi chosenTaxi = vh.getATaxi(customer);
+        vh.initialiseTaxis();
+        VehicleTypes taxiType = VehicleTypes.PREMIUM;
+        System.out.println("Please choose a taxi");
+        System.out.println("The Taxi's nearest to you are: ");
+        System.setIn(inputStream);
+        Taxi chosenTaxi = vh.getTaxisInRange(customer, taxiType);
+
 
         int initialX = chosenTaxi.location.getX();
         int initialY = chosenTaxi.location.getY();
@@ -174,7 +188,13 @@ public class vehicleHiringTest {
         InputStream inputStream = new ByteArrayInputStream(String.valueOf(testInput).getBytes());
         System.setIn(inputStream);
 
-        Taxi chosenTaxi = vh.getATaxi(customer);
+        vh.initialiseTaxis();
+        VehicleTypes taxiType = VehicleTypes.PREMIUM;
+        System.out.println("Please choose a taxi");
+        System.out.println("The Taxi's nearest to you are: ");
+        System.setIn(inputStream);
+        Taxi chosenTaxi = vh.getTaxisInRange(customer, taxiType);
+
         map.moveToTarget(chosenTaxi, customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
         assertEquals(customer.location.getX(), chosenTaxi.location.getX());
         assertEquals(customer.location.getY(), chosenTaxi.location.getY());
@@ -198,7 +218,13 @@ public class vehicleHiringTest {
         InputStream inputStream = new ByteArrayInputStream(String.valueOf(testInput).getBytes());
         System.setIn(inputStream);
 
-        Taxi chosenTaxi = vh.getATaxi(customer);
+        vh.initialiseTaxis();
+        VehicleTypes taxiType = VehicleTypes.PREMIUM;
+        System.out.println("Please choose a taxi");
+        System.out.println("The Taxi's nearest to you are: ");
+        System.setIn(inputStream);
+        Taxi chosenTaxi = vh.getTaxisInRange(customer, taxiType);
+
         map.moveToTarget(chosenTaxi, customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
         map.moveToTarget(chosenTaxi, customer.destination.getX(), customer.destination.getY(), Icons.destination, Colors.pink);
         assertEquals(customer.destination.getX(), chosenTaxi.location.getX());
@@ -222,9 +248,12 @@ public class vehicleHiringTest {
         System.setOut(new PrintStream(outputStream));
 
         InputStream inputStream = new ByteArrayInputStream(String.valueOf(testInput).getBytes());
+        vh.initialiseTaxis();
+        VehicleTypes taxiType = VehicleTypes.PREMIUM;
+        System.out.println("Please choose a taxi");
+        System.out.println("The Taxi's nearest to you are: ");
         System.setIn(inputStream);
-
-        Taxi actualChosenTaxi = vh.getATaxi(customer);
+        Taxi actualChosenTaxi = vh.getTaxisInRange(customer, taxiType);
         Taxi expectedActualTaxi = (Taxi) vh.availableTaxisList.getChosenTaxi(testInput-1);
         assertEquals(expectedActualTaxi, actualChosenTaxi);
 
