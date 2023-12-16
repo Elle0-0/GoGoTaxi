@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 public class Program {
+
+    /** The app launcher */
     Customer customer = new CustomerLocation();
     VehicleHiring vehicleHiring = new VehicleHiring();
     Map map = new Map();

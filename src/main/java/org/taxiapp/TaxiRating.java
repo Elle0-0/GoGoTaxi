@@ -6,10 +6,14 @@ import java.util.ArrayList;
 
 public class TaxiRating extends Taxi{
 
+    /** This class handles all the inputted taxi rating and adds them to the csv file.
+     *  It extends the Taxi class. */
+
     double avgRating;
     String taxiFilePath = "src/main/java/org/taxiapp/Files/taxiInformation.txt";
     DecimalFormat df = new DecimalFormat("#.#");
 
+    //gets the taxi and customer rating for that taxi, writes it to the csv file and updates with the new information.
     @Override
     public void setRating(Taxi taxi, Customer customer) {
         int customerRating = customer.getRating();
@@ -35,6 +39,7 @@ public class TaxiRating extends Taxi{
     }
 
 
+    //calculates the average rating for the given taxi.
     @Override
     public double getAverageRating(Taxi taxi){
         String line;
