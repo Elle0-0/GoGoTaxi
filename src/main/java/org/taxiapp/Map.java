@@ -27,6 +27,7 @@ public class Map {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     public boolean changeCoord(int x, int y, String icon) {
@@ -59,8 +60,11 @@ public class Map {
                     changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                     // change the previous icon to show the path change
                     changeCoord(taxiX, (taxiY - 1), (pathColour + " + " + Colors.reset));
+                    if (pathColour.equals(Colors.pink)){
+                        selectedTaxi.setKmTravelled(selectedTaxi.getKmTravelled() + 1);
+                    }
                     printMap();
-                    System.out.println();
+
                 }
             }
             // if the taxi is to the right of the target
@@ -70,7 +74,9 @@ public class Map {
                     changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                     changeCoord(taxiX, (taxiY + 1),(pathColour + " + " + Colors.reset));
                     printMap();
-                    System.out.println();
+                    if (pathColour.equals(Colors.pink)){
+                        selectedTaxi.setKmTravelled(selectedTaxi.getKmTravelled() + 1);
+                    }
                 }
 
             }
@@ -82,7 +88,9 @@ public class Map {
                     changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                     changeCoord((taxiX - 1), taxiY, (pathColour + " + " + Colors.reset));
                     printMap();
-                    System.out.println();
+                    if (pathColour.equals(Colors.pink)){
+                        selectedTaxi.setKmTravelled(selectedTaxi.getKmTravelled() + 1);
+                    }
                 }
             }
             // if the taxi is above the target
@@ -92,7 +100,9 @@ public class Map {
                     changeCoord(taxiX, taxiY, Icons.chosenTaxi);
                     changeCoord((taxiX + 1), taxiY, (pathColour + " + " + Colors.reset));
                     printMap();
-                    System.out.println();
+                    if (pathColour.equals(Colors.pink)){
+                        selectedTaxi.setKmTravelled(selectedTaxi.getKmTravelled() + 1);
+                    }
                 }
             }
         }
