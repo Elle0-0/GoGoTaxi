@@ -1,6 +1,8 @@
 package org.taxiapp;
 
+import org.taxiapp.Aesthetics.Colors;
 import org.taxiapp.Aesthetics.Icons;
+import org.taxiapp.TaxiManagement.VehicleTypes;
 
 import java.io.IOException;
 import java.lang.Math;
@@ -65,8 +67,7 @@ public class VehicleHiring {
         }
     }
 
-    public Taxi getTaxisInRange(Customer customer) {
-        Scanner scanner = new Scanner(System.in);
+    public Taxi getTaxisInRange(Customer customer, VehicleTypes taxiType) {
 
         int customerX = customer.location.getX();
         int customerY = customer.location.getY();
@@ -82,7 +83,7 @@ public class VehicleHiring {
             double perpDistance = Math.sqrt(Math.pow((customerX - taxiX), 2) + Math.pow((customerY - taxiY), 2));
             if (!(perpDistance >= taxiRange) && taxiRange > 0 && customerX != taxiX && customerY != taxiY) {
                 // if they are and they are not already in the list off available taxis
-                if (!names.contains(taxi.getName())) {
+                if (!names.contains(taxi.getName()) && taxi.getTaxi().getVehicleType().equals(taxiType) ) {
                     // add the user to list of available taxis
                     availableTaxisList.sortInsert(perpDistance, taxi);
                     worldMap.changeCoord(taxiX, taxiY, Icons.allcars);
@@ -91,29 +92,60 @@ public class VehicleHiring {
                 }
             }
         }
+
         // if there are no taxis in range, expand range by 1
         if (availableTaxisList.size == 0) {
             taxiRange++;
-            getTaxisInRange(customer);
+            getTaxisInRange(customer, taxiType);
+        } else {// display taxi information for the user by the nearest
+            availableTaxisList.printList();
+            worldMap.printMap();
+            // takes the user choice
+            Scanner scanner = new Scanner(System.in);
+            int userChoice = scanner.nextInt();
+            setChosenTaxi((Taxi) availableTaxisList.getChosenTaxi(userChoice-1));
         }
-        // display taxi information for the user by the nearest
-        availableTaxisList.printList();
-        worldMap.printMap();
-
-        // takes the user choice
-        int userChoice = scanner.nextInt();
-        setChosenTaxi((Taxi) availableTaxisList.getChosenTaxi(userChoice-1));
         return chosenTaxi;
     }
 
     public Taxi getATaxi(Customer customer) {
         // assigns the user a taxi
         initialiseTaxis();
+        VehicleTypes taxiType = preferredTaxiType();
         System.out.println("Please choose a taxi");
         System.out.println("The Taxi's nearest to you are: ");
-        return getTaxisInRange(customer);
+        return getTaxisInRange(customer, taxiType);
+    }
 
+    public VehicleTypes preferredTaxiType() {
+        Scanner scanner = new Scanner(System.in);
+        VehicleTypes vehicle = null;
+        System.out.println("Please chose the vehicle Type that you would like");
+        System.out.println("[1]Premium \n[2]Regular");
+        boolean valid = false;
+        while (!valid) {
+            int vehicleChoice = scanner.nextInt();
+            if (vehicleChoice == 1) {
+                vehicle = VehicleTypes.PREMIUM;
+                System.out.println("Preferred Taxi Type: " + Colors.italicStart + "PREMIUM" + Colors.italicEnd);
+                valid = true;
+                return VehicleTypes.PREMIUM;
+            } else if (vehicleChoice == 2) {
+                vehicle = VehicleTypes.REGULAR;
+                System.out.println("Preferred Taxi Type: " + Colors.italicStart + "REGULAR" + Colors.italicEnd);
+                valid = true;
+                return VehicleTypes.REGULAR;
 
+            } else {
+                System.out.println("Invalid input. Try again!");
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) throws IOException {
+        VehicleHiring vh = new VehicleHiring();
+        vh.preferredTaxiType();
     }
 }
 
