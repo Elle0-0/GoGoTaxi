@@ -1,5 +1,7 @@
 package org.taxiapp;
 
+import org.taxiapp.Aesthetics.Colors;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -51,14 +53,14 @@ public class CustomerLocation extends Customer {
 
     @Override
     public void getCustomerLocation() {
-        System.out.println("---------Where are you currently?---------");
+        System.out.println(Colors.pink + "---------Where are you currently?---------" + Colors.reset);
         insertDestination(location);
         System.out.println("Thank you for entering in your location!\n\n");
     }
 
     @Override
     public void getCustomerDestination() {
-        System.out.println("---------Where do you want to go?---------");
+        System.out.println(Colors.pink + "---------Where do you want to go?---------" + Colors.reset);
         insertDestination(destination);
     }
 

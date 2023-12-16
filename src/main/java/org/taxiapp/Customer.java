@@ -1,5 +1,7 @@
 package org.taxiapp;
 
+import org.taxiapp.Aesthetics.Colors;
+
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -10,12 +12,9 @@ import java.util.Scanner;
 public class Customer extends User{
 
     String username;
-   // Location destination = new Location();
     Location destination;
-    //Location currentLocation = new Location();
     double tip;
     double time;
-    String region;
     String regionLocation;
     int x, y;
     mapRegions regions;
@@ -56,7 +55,8 @@ public class Customer extends User{
     }
 
     public void signIn() throws NoSuchAlgorithmException {
-        System.out.println("Welcome to GoGoTaxi service!, please select an option:\n [1] login\n [2] sign up: ");
+        System.out.println(Colors.pink +"-- Welcome to GoGoTaxi service! --" + Colors.reset);
+        System.out.println("please select an option:\n [1] login\n [2] sign up: ");
         boolean validInput = false;
         while (!validInput) {
             try {
@@ -103,7 +103,7 @@ public class Customer extends User{
             inputRating = true;
             System.out.print("you rated this trip: ");
             for (int i = 0; i < rating; i++) {
-                System.out.print("★");
+                System.out.print( Colors.pink + "★" + Colors.reset);
             }
             System.out.println();
         }

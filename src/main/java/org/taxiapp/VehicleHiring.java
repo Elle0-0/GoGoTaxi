@@ -3,32 +3,26 @@ package org.taxiapp;
 import org.taxiapp.Aesthetics.Icons;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.lang.Math;
 import java.util.Scanner;
 
 public class VehicleHiring {
     Taxi[] possibleTaxis; // contains 70 taxis
     Taxi[] currentTaxis; // will contain 20 taxis
-    //ArrayList<Taxi> availableTaxis; // contains how many taxis will be available to the taxi
-    ownList availableTaxisList;
+    ownList availableTaxisList;  // contains how many taxis will be available to the taxi
     Map worldMap;
     int taxiRange;
     Taxi chosenTaxi;
-    int userChoice;
+
 
     public void setChosenTaxi(Taxi chosenTaxi) {
         this.chosenTaxi = chosenTaxi;
     }
 
-    public void setUserChoice(int userChoice) {
-        this.userChoice = userChoice;
-    }
 
     public VehicleHiring() throws IOException {
         possibleTaxis = new Taxi[70];
         currentTaxis = new Taxi[20];
-        //availableTaxis = new ArrayList<>();
         availableTaxisList = new ownList();
         worldMap = new Map();
         worldMap.establishMap();
@@ -45,7 +39,9 @@ public class VehicleHiring {
             taxi.assignRandomInformation();
         }
         // chose 20 random taxis from that list to be used in the current iteration
-        //ArrayList<Integer> usedNumbers = new ArrayList<Integer>();
+        /**the usedNumbers list is to ensure if there was a repeat assigning of information
+         * in the possible taxis list, it wont be repeated in the current taxi list
+        **/
         ownList<Integer> usedNumbers = new ownList<>();
         for (int i = 0; i < currentTaxis.length; i++) {
             while (currentTaxis[i] == null) {
@@ -55,11 +51,13 @@ public class VehicleHiring {
                 }
             }
         }
+        // move the taxis from the original position before they are selected
         moveTaxis();
     }
 
     public void moveTaxis() {
-        int random = (int) (Math.random() * (6) );
+        // moves the taxis before the are selected, simulates real life
+        int random = (int) (Math.random() * (10) );
         for (int i = 0; i < random; i++) {
             for (Taxi taxi : possibleTaxis) {
                 taxi.loopedMovement();
@@ -69,46 +67,51 @@ public class VehicleHiring {
 
     public Taxi getTaxisInRange(Customer customer) {
         Scanner scanner = new Scanner(System.in);
+
         int customerX = customer.location.getX();
         int customerY = customer.location.getY();
+        // puts the user visibly on the map
         worldMap.changeCoord(customerX, customerY, Icons.person);
-        //ArrayList<String> names = new ArrayList<>();
+
         ownList<String> names = new ownList<String>();
 
-        int i = 1;
         for (Taxi taxi : currentTaxis) {
             int taxiX = taxi.location.getX();
             int taxiY = taxi.location.getY();
+            // the next two lines calulate whether the taxi is within the 5 unit radius from the user
             double perpDistance = Math.sqrt(Math.pow((customerX - taxiX), 2) + Math.pow((customerY - taxiY), 2));
             if (!(perpDistance >= taxiRange) && taxiRange > 0 && customerX != taxiX && customerY != taxiY) {
-                if (names.contains(taxi.getName()) == false) {
+                // if they are and they are not already in the list off available taxis
+                if (!names.contains(taxi.getName())) {
+                    // add the user to list of available taxis
                     availableTaxisList.sortInsert(perpDistance, taxi);
                     worldMap.changeCoord(taxiX, taxiY, Icons.allcars);
+                    // adds their name to prevent duplication
                     names.simpleInsert(taxi.getName());
                 }
             }
         }
-        // if there are no taxis in range, expand range
+        // if there are no taxis in range, expand range by 1
         if (availableTaxisList.size == 0) {
             taxiRange++;
             getTaxisInRange(customer);
         }
-        // display taxi information
+        // display taxi information for the user by the nearest
         availableTaxisList.printList();
         worldMap.printMap();
 
-
-        userChoice = scanner.nextInt();
+        // takes the user choice
+        int userChoice = scanner.nextInt();
         setChosenTaxi((Taxi) availableTaxisList.getChosenTaxi(userChoice-1));
         return chosenTaxi;
     }
 
     public Taxi getATaxi(Customer customer) {
+        // assigns the user a taxi
         initialiseTaxis();
         System.out.println("Please choose a taxi");
-        System.out.println("Taxi's are sorted by nearest");
-        Taxi chosenTaxi = getTaxisInRange(customer);
-        return chosenTaxi;
+        System.out.println("The Taxi's nearest to you are: ");
+        return getTaxisInRange(customer);
 
 
     }

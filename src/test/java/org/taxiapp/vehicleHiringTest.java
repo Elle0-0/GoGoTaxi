@@ -1,6 +1,7 @@
 package org.taxiapp;
 
 import org.junit.jupiter.api.Test;
+import org.taxiapp.Aesthetics.Colors;
 import org.taxiapp.Aesthetics.Icons;
 
 import java.io.*;
@@ -111,12 +112,13 @@ public class vehicleHiringTest {
         Taxi chosenTaxi = vh.getATaxi(customer);
         int initialX = chosenTaxi.location.getX();
         int initialY = chosenTaxi.location.getY();
-        map.moveToTarget(chosenTaxi,customer.location.getX(), customer.location.getY(), Icons.person);
+        map.moveToTarget(chosenTaxi,customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
         /* as there is no point in the program where there is a constant display of the
         location of the chosen taxi, however, when the taxi is moved it leaves a trail.
          this test proves that the chosen taxi was displayed on the map at one point*/
+        String path = (Colors.blue + " + " + Colors.reset);
 
-        assertEquals(" + ", map.getIcon(initialX, initialY));
+        assertEquals(path, map.getIcon(initialX, initialY));
 
     }
 
@@ -144,7 +146,7 @@ public class vehicleHiringTest {
 
         int initialX = chosenTaxi.location.getX();
         int initialY = chosenTaxi.location.getY();
-        map.moveToTarget(chosenTaxi,customer.location.getX(), customer.location.getY(), Icons.person);
+        map.moveToTarget(chosenTaxi,customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
         ArrayList<Taxi> taxisInRange = vh.availableTaxisList.arrayOfTaxis();
         for (Taxi taxi : taxisInRange){
             assertNotEquals( Icons.allcars, map.getIcon(taxi.location.getX(), taxi.location.getY()));
@@ -173,7 +175,7 @@ public class vehicleHiringTest {
         System.setIn(inputStream);
 
         Taxi chosenTaxi = vh.getATaxi(customer);
-        map.moveToTarget(chosenTaxi, customer.location.getX(), customer.location.getY(), Icons.person);
+        map.moveToTarget(chosenTaxi, customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
         assertEquals(customer.location.getX(), chosenTaxi.location.getX());
         assertEquals(customer.location.getY(), chosenTaxi.location.getY());
     }
@@ -197,8 +199,8 @@ public class vehicleHiringTest {
         System.setIn(inputStream);
 
         Taxi chosenTaxi = vh.getATaxi(customer);
-        map.moveToTarget(chosenTaxi, customer.location.getX(), customer.location.getY(), Icons.person);
-        map.moveToTarget(chosenTaxi, customer.destination.getX(), customer.destination.getY(), Icons.destination);
+        map.moveToTarget(chosenTaxi, customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
+        map.moveToTarget(chosenTaxi, customer.destination.getX(), customer.destination.getY(), Icons.destination, Colors.pink);
         assertEquals(customer.destination.getX(), chosenTaxi.location.getX());
         assertEquals(customer.destination.getY(), chosenTaxi.location.getY());
     }
