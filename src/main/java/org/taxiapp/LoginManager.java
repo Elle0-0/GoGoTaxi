@@ -130,7 +130,6 @@ public class LoginManager {
             throw new RuntimeException(e);
         }
     }
-
     public static String getUsername() {
         return username;
     }

@@ -10,17 +10,15 @@ import java.util.Scanner;
 public class Customer extends User{
 
     String username;
-   // Location destination = new Location();
     Location destination;
-    //Location currentLocation = new Location();
     double tip;
     double time;
-    String region;
     String regionLocation;
     int x, y;
     mapRegions regions;
     String mapLocation;
     int rating;
+    double funds;
     VehicleHiring vehicleHiring = new VehicleHiring();
     ArrayList<String> customerExperience = new ArrayList<>();
     Scanner input = new Scanner(System.in);
@@ -110,6 +108,13 @@ public class Customer extends User{
     }
     public int getRating() {
         return rating;
+    }
+    public String getUsername() {
+        return username;
+    }
+
+    public double getFunds() {
+        return funds;
     }
     public void  tipTaxi() {
         boolean validInput = false;

@@ -23,7 +23,6 @@ public class TaxiRating extends Taxi{
                 if (taxi.getTaxi().getCarReg().equals(reg)) {
                     data[data.length - 1] += ", " + customerRating;
                     line = String.join(", ", data);
-                    //getAverageRating(taxi);
                 }
                 updatedData.add(line);
             }

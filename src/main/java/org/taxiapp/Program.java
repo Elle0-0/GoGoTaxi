@@ -15,9 +15,7 @@ public class Program {
     }
 
     public void launch() throws NoSuchAlgorithmException, FileNotFoundException {
-//      // Program myProgram = new Program();
-//        // myProgram.launch();
-        //customer.signIn();
+        customer.signIn();
         customer.getCustomerLocation();
         customer.getCustomerDestination();
         Taxi taxi = new TaxiRating();
