@@ -88,7 +88,7 @@ Lucas Bell, REGULAR, 285-J-2345, EVERGREEN, Pinecrest High School, 3
 Piper Turner, PREMIUM, 286-L-5678, EMBERWOOD, Riverside Park Community, 3, 4, 2
 Jasper Wood, REGULAR, 287-G-9012, SUNHAVEN, Birchwood Avenue, 3, 4
 Owen Mitchell, REGULAR, 288-H-2345, FROSTFIELD, Juniper Court, 3, 4
-Nolan Bell, PREMIUM, 289-P-5678, EVERGREEN, Evergreen University, 3
+Nolan Bell, PREMIUM, 289-P-5678, EVERGREEN, Evergreen University, 3, 4
 Violet Hill, REGULAR, 290-B-9012, EMBERWOOD, Pinecrest High School, 3, 1
 Aurora Davis, PREMIUM, 291-K-2345, SUNHAVEN, Riverside Park Community, 3
 Liam Richardson, REGULAR, 292-T-5678, FROSTFIELD, Sycamore, 3

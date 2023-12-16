@@ -53,7 +53,7 @@ public class LoginManager {
         customerLogin();
     }
 
-    private static String passwordHash(String password) throws NoSuchAlgorithmException {
+    static String passwordHash(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] passwordBytes = password.getBytes();
         byte[] hashBytes = digest.digest(passwordBytes);
@@ -90,11 +90,10 @@ public class LoginManager {
         }
     }
 
-    public static void userLogin() {
+    public static boolean userLogin() {
         String line;
         try(BufferedReader user = new BufferedReader(new FileReader(filePath))) {
             user.readLine();
-
                 while ((line = user.readLine()) != null) {
                     String[] data = line.split(",");
                     if (username.equals(data[0]) && passwordHash(password).equals(data[1])) {
@@ -105,9 +104,9 @@ public class LoginManager {
                 }
                 if (!userFound) {
                     System.out.println("user does not exist.");
+                    return false;
                 }
-
-
+                return true;
         } catch (IOException | NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
