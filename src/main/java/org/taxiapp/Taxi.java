@@ -168,28 +168,4 @@ public class Taxi extends User{
         location.setY(newCoords[1]);
     }
 
-    public void getAllTaxis() {
-        String line;
-        String name, rideType, carreg, region, location;
-        String filePath = "src/main/java/org/taxiapp/Files/taxiInformation.txt";
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            reader.readLine();
-            while((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                name = data[0];
-                rideType = data[1];
-                carreg = data[2];
-                region = data[3];
-                location = data[4];
-                System.out.println(name + " " + rideType + " " + carreg + " " + region + " " + location);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void main(String[] args) {
-        Taxi t = new Taxi();
-        t.getAllTaxis();
-    }
 }
