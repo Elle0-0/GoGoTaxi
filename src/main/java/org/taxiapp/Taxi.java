@@ -16,6 +16,7 @@ public class Taxi extends User{
     private final Vehicle Taxi;
     private mapRegions region;
     private String locationName;
+    private double kmTravelled;
 
     /*when calling this from the launcher, you will need to check that no other taxis in the array of taxis
      has the same info */
@@ -23,6 +24,7 @@ public class Taxi extends User{
         // initialises the objects
         Taxi = new Vehicle();
         location = new Location();
+        kmTravelled = 0;
     }
 
     public Vehicle getTaxi() {
@@ -41,6 +43,10 @@ public class Taxi extends User{
         this.locationName = locationName;
     }
 
+    public void setKmTravelled(double kmTravelled) {
+        this.kmTravelled = kmTravelled;
+    }
+
     public mapRegions getRegion() {
         return region;
     }
@@ -53,9 +59,14 @@ public class Taxi extends User{
         return name;
     }
 
+    public double getKmTravelled() {
+        return kmTravelled;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
+
 
     // is used, just overrided
     public void setRating(Taxi taxi, Customer customer) {}
