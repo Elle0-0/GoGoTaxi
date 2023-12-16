@@ -49,7 +49,7 @@ public class Map {
         int taxiY = selectedTaxi.location.getY();
         changeCoord(targetX, targetY, icon);
         // while the taxi is not at it's target
-        while ((taxiX != targetX) && (taxiY != targetY)) {
+        while (taxiX != targetX || taxiY != targetY) {
             // if the taxi is to the left of the target
             if (taxiY < targetY) {
                 //until they are at the right y coordinate
