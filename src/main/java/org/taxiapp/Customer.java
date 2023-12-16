@@ -1,7 +1,5 @@
 package org.taxiapp;
 
-import org.taxiapp.Aesthetics.Colors;
-
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -11,19 +9,18 @@ import java.util.Scanner;
 
 public class Customer extends User{
 
+    /** The main customer class, it is extended by the CustomerLocation class. Handles all
+     * input prompts and stores coordinates of the customer.*/
+
     String username;
     Location destination;
     double tip;
-    double time;
     String regionLocation;
-    int x, y;
     mapRegions regions;
     String mapLocation;
     int rating;
-    VehicleHiring vehicleHiring = new VehicleHiring();
     ArrayList<String> customerExperience = new ArrayList<>();
     Scanner input = new Scanner(System.in);
-    String filePath = "src/main/java/org/taxiapp/Files/mapLocations.txt";
     String experienceFilePath = "src/main/java/org/taxiapp/resources/experience.csv";
 
     public Customer() throws IOException {
@@ -35,10 +32,15 @@ public class Customer extends User{
     public mapRegions returnRegion(int i) {
         return null;
     }
+
     public void locationGetter() {}
+
     public void getCustomerLocation() {}
+
     public void getCustomerDestination() {}
-    public void getExprience() throws FileNotFoundException {
+
+    //randomly generates a user experience from the csv file and displays it to the user.
+    public void getExperience() {
         String line;
         try (BufferedReader reader = new BufferedReader(new FileReader(experienceFilePath))) {
             reader.readLine();
@@ -46,17 +48,17 @@ public class Customer extends User{
                 String[] data = line.split("\\|");
                 for (String column : data) {
                     String lineBreak = column.replace("\\n", "\n");
-                    customerExperience.add(lineBreak);}
-
+                    customerExperience.add(lineBreak);
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
+    //prompts the user to pick between sign up or login and then calls those functions from login manager.
     public void signIn() throws NoSuchAlgorithmException {
-        System.out.println(Colors.pink +"-- Welcome to GoGoTaxi service! --" + Colors.reset);
-        System.out.println("please select an option:\n [1] login\n [2] sign up: ");
+        System.out.println("Welcome to GoGoTaxi service!, please select an option:\n [1] login\n [2] sign up: ");
         boolean validInput = false;
         while (!validInput) {
             try {
@@ -80,11 +82,11 @@ public class Customer extends User{
         //double distanceTravelled = vehicleHiring.worldMap.getDistanceTravelled();
         //System.out.println("Your journey took " + (distanceTravelled*1.2) + "minutes.");
         //System.out.println("And you travelled " + distanceTravelled + "kilometers");
-
     }
 
-    public void tripExperience() throws FileNotFoundException {
-        getExprience();
+    //calls the getExperience() function then prompts the user to rate their experience out of 5.
+    public void tripExperience() {
+        getExperience();
         Random random = new Random();
         int randomExperience = random.nextInt(customerExperience.size());
         System.out.println(customerExperience.get(randomExperience));
@@ -103,7 +105,7 @@ public class Customer extends User{
             inputRating = true;
             System.out.print("you rated this trip: ");
             for (int i = 0; i < rating; i++) {
-                System.out.print( Colors.pink + "★" + Colors.reset);
+                System.out.print("★");
             }
             System.out.println();
         }
@@ -111,40 +113,45 @@ public class Customer extends User{
     public int getRating() {
         return rating;
     }
-    public void  tipTaxi() {
+    public String getUsername() {
+        return username;
+    }
+
+    // calculates funds in back account, if they are not broke, asks the user if they want to tip.
+    // adds the negative value to the file so it is subtracted from the total.
+    public void  tipTaxi(Customer customer) {
         boolean validInput = false;
-        while (!validInput) {
-            try {
-                System.out.println("Would you like to tip the driver?(yes/no): ");
-                String answer = input.nextLine();
-                if (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no")) continue;
-                if (answer.equalsIgnoreCase("yes")) {
-                    System.out.println("How much would you like to tip them?: ");
-                    tip = input.nextInt();
+        double balance = BankAccount.calculateFunds(customer);
+        if (balance > 0 ) {
+            while (!validInput) {
+                try {
+                    System.out.println("Would you like to tip the driver?\n[1] yes\n[2] no");
+                    int answer = input.nextInt();
+                    if (!(answer == 1) && !(answer == 2)) continue;
+                    if (answer == 2) {
+                        System.out.println("Thank you for using GoGoTaxi!");
+                        break;
+                    }
+                    else {
+                        System.out.println("How much would you like to tip them?: ");
+                        tip = input.nextDouble();
+                        input.nextLine();
+                        if (tip <= balance && tip > -1) {
+                            BankAccount.updateFunds(customer, Double.parseDouble("-" + tip));
+                            System.out.println("You tipped: " + tip + "\n Thank you!");
+                        }
+                        else if (tip > balance) {
+                            System.out.println("You do not have enough money in ur account. try again.");
+                            continue;
+                        }
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Enter valid input.");
                     input.nextLine();
-                    System.out.println("You tipped: " + tip + "\n Thankyou!");
+                    continue;
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Enter valid input.");
-                input.nextLine();
-                continue;
+                validInput = true;
             }
-            validInput = true;
         }
-    }
-
-    public void getTaxi() {
-
-    }
-
-    //testing purposes only.
-    public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-        Customer c = new CustomerLocation();
-//        c.signIn();
-//        c.insertDestination();
-//        c.tripExperience();
-//        c.tipTaxi();
-
-
     }
 }
