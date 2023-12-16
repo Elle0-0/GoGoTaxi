@@ -16,7 +16,6 @@ public class Customer extends User{
     mapRegions regions;
     String mapLocation;
     int rating;
-    double funds;
     ArrayList<String> customerExperience = new ArrayList<>();
     Scanner input = new Scanner(System.in);
     String experienceFilePath = "src/main/java/org/taxiapp/resources/experience.csv";
@@ -30,9 +29,13 @@ public class Customer extends User{
     public mapRegions returnRegion(int i) {
         return null;
     }
+
     public void locationGetter() {}
+
     public void getCustomerLocation() {}
+
     public void getCustomerDestination() {}
+
     public void getExprience() throws FileNotFoundException {
         String line;
         try (BufferedReader reader = new BufferedReader(new FileReader(experienceFilePath))) {
@@ -41,8 +44,8 @@ public class Customer extends User{
                 String[] data = line.split("\\|");
                 for (String column : data) {
                     String lineBreak = column.replace("\\n", "\n");
-                    customerExperience.add(lineBreak);}
-
+                    customerExperience.add(lineBreak);
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -108,9 +111,6 @@ public class Customer extends User{
         return username;
     }
 
-    public double getFunds() {
-        return funds;
-    }
     public void  tipTaxi(Customer customer) throws FileNotFoundException {
         boolean validInput = false;
         double balance = bankAccount.calculateFunds(customer);
@@ -145,15 +145,5 @@ public class Customer extends User{
                 validInput = true;
             }
         }
-    }
-    //testing purposes only.
-    public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-        Customer c = new CustomerLocation();
-//        c.signIn();
-//        c.insertDestination();
-//        c.tripExperience();
-//        c.tipTaxi();
-
-
     }
 }

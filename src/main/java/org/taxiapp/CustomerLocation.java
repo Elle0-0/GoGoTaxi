@@ -11,10 +11,9 @@ import java.util.Scanner;
 public class CustomerLocation extends Customer {
     Scanner input = new Scanner(System.in);
     String filePath = "src/main/java/org/taxiapp/Files/mapLocations.txt";
-    boolean checker = false;
-    int temp;
     Coordinates coordinates = new Coordinates();
     ArrayList<String> enteredLocations = new ArrayList<>();
+    int userInput;
 
     public CustomerLocation() throws IOException {
     }
@@ -22,7 +21,6 @@ public class CustomerLocation extends Customer {
     @Override
     public void insertDestination(Location location) {
         boolean enteredLocation = false;
-        int userInput;
         while (!enteredLocation) {
             try {
                 System.out.println("Enter region: \n[1] for EVERGREEN \n[2] for SUNHAVEN\n[3] for FROSTFIELD\n[4] for EMBERWOOD");
@@ -68,6 +66,7 @@ public class CustomerLocation extends Customer {
         else if (i == 2) regions = mapRegions.SUNHAVEN;
         else if (i == 3) regions = mapRegions.FROSTFIELD;
         else if (i == 4) regions = mapRegions.EMBERWOOD;
+        else return null;
         return regions;
     }
 
@@ -87,7 +86,6 @@ public class CustomerLocation extends Customer {
                     System.out.print(" ["+i+"] ");
                     System.out.println(regionLocation);
                     i++;
-                    //System.out.println(enteredLocations);
                 }
             }
         } catch (IOException e) {
