@@ -9,15 +9,18 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CustomerLocation extends Customer {
+
+    /** CustomerLocation extends Customer and overrides the location methods
+     * ive done this to maintain OOP and reduce the lines of code in a singular class. */
     Scanner input = new Scanner(System.in);
     String filePath = "src/main/java/org/taxiapp/Files/mapLocations.txt";
-    Coordinates coordinates = new Coordinates();
     ArrayList<String> enteredLocations = new ArrayList<>();
     int userInput;
 
     public CustomerLocation() throws IOException {
     }
 
+    // Gets the region and then its location and retrieves the coordinates for it.
     @Override
     public void insertDestination(Location location) {
         boolean enteredLocation = false;
@@ -33,7 +36,7 @@ public class CustomerLocation extends Customer {
                     int userLocationInput = input.nextInt();
                     if (userLocationInput > enteredLocations.size()) {System.out.println("--please pick a location from the given options--"); continue;};
                     mapLocation = enteredLocations.get(userLocationInput - 1);
-                    int [] coords = coordinates.retrieveCoordinates(returnRegion(userInput), mapLocation);
+                    int [] coords = Coordinates.retrieveCoordinates(returnRegion(userInput), mapLocation);
                     if (coords[0] != 0 && coords[1] != 0) {
                         location.setX(coords[0]);
                         location.setY(coords[1]);
@@ -47,6 +50,7 @@ public class CustomerLocation extends Customer {
         }
     }
 
+    // prompts the customer to enter in their location and calls insertDestination() method.
     @Override
     public void getCustomerLocation() {
         System.out.println("---------Where are you currently?---------");
@@ -54,12 +58,15 @@ public class CustomerLocation extends Customer {
         System.out.println("Thank you for entering in your location!\n\n");
     }
 
+    // prompts the customer to enter in their destination (where they want to go using the taxi service)
+    // and calls insertDestination() method.
     @Override
     public void getCustomerDestination() {
         System.out.println("---------Where do you want to go?---------");
         insertDestination(destination);
     }
 
+    //returns the region enum.
     @Override
     public mapRegions returnRegion(int i) {
         if (i == 1) regions = mapRegions.EVERGREEN;
@@ -70,6 +77,7 @@ public class CustomerLocation extends Customer {
         return regions;
     }
 
+    //gets the location after user enters their region.
     @Override
     public void locationGetter() {
         String line;
@@ -91,14 +99,5 @@ public class CustomerLocation extends Customer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-    public static void main(String[] args) throws IOException {
-        Customer c = new CustomerLocation();
-        c.getCustomerLocation();
-        System.out.println(c.location.getX());
-        System.out.println(c.location.getY());
-        c.getCustomerDestination();
-        System.out.println(c.destination.getX());
-        System.out.println(c.destination.getY());
     }
 }

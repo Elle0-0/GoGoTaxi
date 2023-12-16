@@ -1,16 +1,20 @@
 package org.taxiapp;
 
 import java.io.*;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class bankAccount {
+public class BankAccount {
+
+    /** The bank account class that handles adding and calculating the user funds. the methods
+     * are static with customer references.*/
+
     static double sum = 0;
     static String filePath = "src/main/java/org/taxiapp/resources/userData.csv";
     static Scanner input = new Scanner(System.in);
 
+    // prompts the user to add funds into their bank account at the start of the application after signing in.
     public static void addFunds(Customer customer) throws FileNotFoundException {
         System.out.println("Welcome " + customer.getUsername() + " would you like to add funds to your bank account,\n remaining balance is: " + calculateFunds(customer));
         System.out.println("[1] yes \n[2] no");
@@ -25,12 +29,12 @@ public class bankAccount {
                 }
                 System.out.println("How much would u like to add?: ");
                 double customerFunding = input.nextDouble();
-                if (customerFunding > 100 || customerFunding < 1 ) {
+                if (customerFunding > 500 || customerFunding < 1 ) {        //user cannot add more than 500
                     System.out.println("max amount you can add is 100. Do not enter negative values.");
                     continue;
                 }
                 updateFunds(customer, customerFunding);
-                System.out.println("Thankyou for updating ur account, ur new balance is: " + calculateFunds(customer));
+                System.out.println("Thank you for updating ur account, ur new balance is: " + calculateFunds(customer));
                 validInput = true;
             } catch (InputMismatchException e) {
                 System.out.println("invalid input.");
@@ -39,7 +43,8 @@ public class bankAccount {
         }
     }
 
-    public static void updateFunds(Customer customer, double newFunds) throws FileNotFoundException {
+    //adds the new funds and then rewrites the file.
+    public static void updateFunds(Customer customer, double newFunds) {
         String line;
         try (BufferedReader amount = new BufferedReader(new FileReader(filePath))) {
             ArrayList<String> money = new ArrayList<>();
@@ -60,7 +65,8 @@ public class bankAccount {
         }
     }
 
-    public static double calculateFunds(Customer customer) throws FileNotFoundException {
+    // Calculates the total funds the user has.
+    public static double calculateFunds(Customer customer) {
         String line;
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             reader.readLine();

@@ -9,6 +9,9 @@ import java.util.Scanner;
 
 public class Customer extends User{
 
+    /** The main customer class, it is extended by the CustomerLocation class. Handles all
+     * input prompts and stores coordinates of the customer.*/
+
     String username;
     Location destination;
     double tip;
@@ -36,7 +39,8 @@ public class Customer extends User{
 
     public void getCustomerDestination() {}
 
-    public void getExprience() throws FileNotFoundException {
+    //randomly generates a user experience from the csv file and displays it to the user.
+    public void getExperience() {
         String line;
         try (BufferedReader reader = new BufferedReader(new FileReader(experienceFilePath))) {
             reader.readLine();
@@ -52,6 +56,7 @@ public class Customer extends User{
         }
     }
 
+    //prompts the user to pick between sign up or login and then calls those functions from login manager.
     public void signIn() throws NoSuchAlgorithmException {
         System.out.println("Welcome to GoGoTaxi service!, please select an option:\n [1] login\n [2] sign up: ");
         boolean validInput = false;
@@ -79,8 +84,9 @@ public class Customer extends User{
         //System.out.println("And you travelled " + distanceTravelled + "kilometers");
     }
 
-    public void tripExperience() throws FileNotFoundException {
-        getExprience();
+    //calls the getExperience() function then prompts the user to rate their experience out of 5.
+    public void tripExperience() {
+        getExperience();
         Random random = new Random();
         int randomExperience = random.nextInt(customerExperience.size());
         System.out.println(customerExperience.get(randomExperience));
@@ -111,9 +117,11 @@ public class Customer extends User{
         return username;
     }
 
-    public void  tipTaxi(Customer customer) throws FileNotFoundException {
+    // calculates funds in back account, if they are not broke, asks the user if they want to tip.
+    // adds the negative value to the file so it is subtracted from the total.
+    public void  tipTaxi(Customer customer) {
         boolean validInput = false;
-        double balance = bankAccount.calculateFunds(customer);
+        double balance = BankAccount.calculateFunds(customer);
         if (balance > 0 ) {
             while (!validInput) {
                 try {
@@ -126,11 +134,11 @@ public class Customer extends User{
                     }
                     else {
                         System.out.println("How much would you like to tip them?: ");
-                        tip = input.nextInt();
+                        tip = input.nextDouble();
                         input.nextLine();
-                        if (tip <= balance) {
-                            bankAccount.updateFunds(customer, Double.parseDouble("-" + tip));
-                            System.out.println("You tipped: " + tip + "\n Thankyou!");
+                        if (tip <= balance && tip > -1) {
+                            BankAccount.updateFunds(customer, Double.parseDouble("-" + tip));
+                            System.out.println("You tipped: " + tip + "\n Thank you!");
                         }
                         else if (tip > balance) {
                             System.out.println("You do not have enough money in ur account. try again.");

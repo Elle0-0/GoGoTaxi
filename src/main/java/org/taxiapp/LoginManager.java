@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class LoginManager {
 
+    /** Controls the reading and writing to the csv file, also handles password hashing */
     static String username;
     static String password;
     static Scanner input = new Scanner(System.in);
@@ -108,24 +109,6 @@ public class LoginManager {
                 }
                 return true;
         } catch (IOException | NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void getAllUsers() {
-        String username;
-        String password;
-        String line = "";
-        try(BufferedReader user = new BufferedReader(new FileReader(filePath))) {
-            user.readLine();
-            while ((line = user.readLine()) != null) {
-                String[] data = line.split(",");
-                username = data[0];
-                password = data[1];
-                System.out.println(username);
-                //System.out.println(password); //password not required to be printed but i have established it anyways.
-            }
-        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
