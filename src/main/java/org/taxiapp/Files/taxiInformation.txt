@@ -7,7 +7,7 @@ Mia Thompson, REGULAR, 221-L-9012, SUNHAVEN, Riverside Park Community, 3, 1
 Liam Johnson, REGULAR, 203-O-2345, EVERGREEN, Evergreen University, 3
 Oliver Williams, REGULAR, 191-T-6789, SUNHAVEN, Birchwood Avenue, 3, 3
 Lucas Martinez, PREMIUM, 200-D-8901, FROSTFIELD, Juniper Court, 3
-Ethan Brown, REGULAR, 214-M-3456, EMBERWOOD, Greenfield Heights, 3
+Ethan Brown, REGULAR, 214-M-3456, EMBERWOOD, Greenfield Heights, 3, 1
 Mason Lee, PREMIUM, 195-G-6789, SUNHAVEN, People's Bank, 3
 Amelia Nguyen, PREMIUM, 193-F-5678, FROSTFIELD, Juniper Court, 3, 4
 William Stewart, REGULAR, 210-P-3456, EVERGREEN, Pinecrest High School, 3
@@ -60,12 +60,12 @@ Adeline Campbell, PREMIUM, 257-T-6789, EVERGREEN, Cedar Lane, 3
 Jasper King, REGULAR, 258-R-1234, EMBERWOOD, Redwood Drive, 3
 Piper Turner, REGULAR, 259-N-5678, SUNHAVEN, People's Bank, 3
 Aurora Diaz, PREMIUM, 260-C-9012, FROSTFIELD, Sycamore, 3
-Lincoln Powell, REGULAR, 261-M-2345, EVERGREEN, Pinecrest High School, 3, 1
+Lincoln Powell, REGULAR, 261-M-2345, EVERGREEN, Pinecrest High School, 3, 1, 5
 Leah Richardson, PREMIUM, 262-V-6789, EMBERWOOD, Riverside Park Community, 3, 1
 Leo Thompson, REGULAR, 263-W-9012, SUNHAVEN, Birchwood Avenue, 3
 Violet Hill, REGULAR, 264-G-2345, FROSTFIELD, Juniper Court, 3, 2, 4, 3
 Stella King, PREMIUM, 265-J-6789, EVERGREEN, Evergreen University, 3
-Claire Carter, REGULAR, 266-K-9012, EMBERWOOD, Pinecrest High School, 3, 4, 3
+Claire Carter, REGULAR, 266-K-9012, EMBERWOOD, Pinecrest High School, 3, 4, 3, 4
 Eva Mitchell, REGULAR, 267-D-2345, SUNHAVEN, Riverside Park Community, 3
 Ellie Fisher, PREMIUM, 268-R-5678, FROSTFIELD, Madge's Café, 3
 Elias Ramirez, REGULAR, 269-B-9012, EVERGREEN, Green Grove Apartments, 3
@@ -86,10 +86,10 @@ Stella Hill, REGULAR, 283-V-5678, SUNHAVEN, People's Bank, 3
 Avery Mitchell, PREMIUM, 284-F-9012, FROSTFIELD, Sycamore, 3
 Lucas Bell, REGULAR, 285-J-2345, EVERGREEN, Pinecrest High School, 3
 Piper Turner, PREMIUM, 286-L-5678, EMBERWOOD, Riverside Park Community, 3, 4, 2
-Jasper Wood, REGULAR, 287-G-9012, SUNHAVEN, Birchwood Avenue, 3
+Jasper Wood, REGULAR, 287-G-9012, SUNHAVEN, Birchwood Avenue, 3, 4
 Owen Mitchell, REGULAR, 288-H-2345, FROSTFIELD, Juniper Court, 3, 4
 Nolan Bell, PREMIUM, 289-P-5678, EVERGREEN, Evergreen University, 3
-Violet Hill, REGULAR, 290-B-9012, EMBERWOOD, Pinecrest High School, 3
+Violet Hill, REGULAR, 290-B-9012, EMBERWOOD, Pinecrest High School, 3, 1
 Aurora Davis, PREMIUM, 291-K-2345, SUNHAVEN, Riverside Park Community, 3
 Liam Richardson, REGULAR, 292-T-5678, FROSTFIELD, Sycamore, 3
 Jasper Davis, REGULAR, 293-N-9012, EVERGREEN, Pinecrest High School, 3

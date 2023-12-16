@@ -16,6 +16,7 @@ public class Program {
 
     public void launch() throws NoSuchAlgorithmException, FileNotFoundException {
         customer.signIn();
+        bankAccount.addFunds(customer);
         customer.getCustomerLocation();
         customer.getCustomerDestination();
         Taxi taxi = new TaxiRating();
@@ -25,6 +26,7 @@ public class Program {
         customer.tripExperience();
         taxi.setRating(vehicleHiring.chosenTaxi, customer);
         taxi.getAverageRating(vehicleHiring.chosenTaxi);
+        customer.tipTaxi(customer);
     }
 
 }

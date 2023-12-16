@@ -12,17 +12,13 @@ public class Customer extends User{
     String username;
     Location destination;
     double tip;
-    double time;
     String regionLocation;
-    int x, y;
     mapRegions regions;
     String mapLocation;
     int rating;
     double funds;
-    VehicleHiring vehicleHiring = new VehicleHiring();
     ArrayList<String> customerExperience = new ArrayList<>();
     Scanner input = new Scanner(System.in);
-    String filePath = "src/main/java/org/taxiapp/Files/mapLocations.txt";
     String experienceFilePath = "src/main/java/org/taxiapp/resources/experience.csv";
 
     public Customer() throws IOException {
@@ -78,7 +74,6 @@ public class Customer extends User{
         //double distanceTravelled = vehicleHiring.worldMap.getDistanceTravelled();
         //System.out.println("Your journey took " + (distanceTravelled*1.2) + "minutes.");
         //System.out.println("And you travelled " + distanceTravelled + "kilometers");
-
     }
 
     public void tripExperience() throws FileNotFoundException {
@@ -116,32 +111,41 @@ public class Customer extends User{
     public double getFunds() {
         return funds;
     }
-    public void  tipTaxi() {
+    public void  tipTaxi(Customer customer) throws FileNotFoundException {
         boolean validInput = false;
-        while (!validInput) {
-            try {
-                System.out.println("Would you like to tip the driver?(yes/no): ");
-                String answer = input.nextLine();
-                if (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no")) continue;
-                if (answer.equalsIgnoreCase("yes")) {
-                    System.out.println("How much would you like to tip them?: ");
-                    tip = input.nextInt();
+        double balance = bankAccount.calculateFunds(customer);
+        if (balance > 0 ) {
+            while (!validInput) {
+                try {
+                    System.out.println("Would you like to tip the driver?\n[1] yes\n[2] no");
+                    int answer = input.nextInt();
+                    if (!(answer == 1) && !(answer == 2)) continue;
+                    if (answer == 2) {
+                        System.out.println("Thank you for using GoGoTaxi!");
+                        break;
+                    }
+                    else {
+                        System.out.println("How much would you like to tip them?: ");
+                        tip = input.nextInt();
+                        input.nextLine();
+                        if (tip <= balance) {
+                            bankAccount.updateFunds(customer, Double.parseDouble("-" + tip));
+                            System.out.println("You tipped: " + tip + "\n Thankyou!");
+                        }
+                        else if (tip > balance) {
+                            System.out.println("You do not have enough money in ur account. try again.");
+                            continue;
+                        }
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Enter valid input.");
                     input.nextLine();
-                    System.out.println("You tipped: " + tip + "\n Thankyou!");
+                    continue;
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Enter valid input.");
-                input.nextLine();
-                continue;
+                validInput = true;
             }
-            validInput = true;
         }
     }
-
-    public void getTaxi() {
-
-    }
-
     //testing purposes only.
     public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
         Customer c = new CustomerLocation();
