@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class VehicleHiring {
     Taxi[] possibleTaxis; // contains 70 taxis
     Taxi[] currentTaxis; // will contain 20 taxis
-    ownList availableTaxisList;  // contains how many taxis will be available to the taxi
+    CustomLinkedList availableTaxisList;  // contains how many taxis will be available to the taxi
     Map worldMap;
     int taxiRange;
     Taxi chosenTaxi;
@@ -25,7 +25,7 @@ public class VehicleHiring {
     public VehicleHiring() throws IOException {
         possibleTaxis = new Taxi[70];
         currentTaxis = new Taxi[20];
-        availableTaxisList = new ownList();
+        availableTaxisList = new CustomLinkedList();
         worldMap = new Map();
         worldMap.establishMap();
         taxiRange = 5;
@@ -44,7 +44,7 @@ public class VehicleHiring {
         /**the usedNumbers list is to ensure if there was a repeat assigning of information
          * in the possible taxis list, it wont be repeated in the current taxi list
         **/
-        ownList<Integer> usedNumbers = new ownList<>();
+        CustomLinkedList<Integer> usedNumbers = new CustomLinkedList<>();
         for (int i = 0; i < currentTaxis.length; i++) {
             while (currentTaxis[i] == null) {
                 int random = (int) (Math.random() * (possibleTaxis.length - 1));
@@ -74,7 +74,7 @@ public class VehicleHiring {
         // puts the user visibly on the map
         worldMap.changeCoord(customerX, customerY, Icons.person);
 
-        ownList<String> names = new ownList<String>();
+        CustomLinkedList<String> names = new CustomLinkedList<String>();
 
         for (Taxi taxi : currentTaxis) {
             int taxiX = taxi.location.getX();

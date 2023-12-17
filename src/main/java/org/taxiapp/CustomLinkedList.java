@@ -1,6 +1,6 @@
 package org.taxiapp;
 import java.util.ArrayList;
-public class ownList <T> {
+public class CustomLinkedList <T> {
 
 
     private class Node {
@@ -26,7 +26,7 @@ public class ownList <T> {
     int size;
     int maxValue;
 
-    public ownList() {
+    public CustomLinkedList() {
         head = null;
         size = 0;
         maxValue = 5;
