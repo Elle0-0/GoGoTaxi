@@ -279,4 +279,35 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
 
     }
 
+    @Test
+    public void testPreferredTaxiType() throws IOException {
+        /** for the previous gettaxiInRange tests, i used the premium taxi type
+         *  for this test i will use regular and test to see that only regular taxis appear
+         */
+        VehicleHiring vh = new VehicleHiring();
+        Customer customer = new Customer();
+        vh.initialiseTaxis();
+        vh.moveTaxis();
+        // testing the most isolated location on the map
+        // FROSTFIELD, Oakridge Estates, 0, 6
+        customer.location.setX(0);
+        customer.location.setY(6);
+        // just incase there is only one taxi in range, it is safest to pick the first one
+        int testInput = 1;
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        InputStream inputStream = new ByteArrayInputStream(String.valueOf(testInput).getBytes());
+        System.setIn(inputStream);
+
+        VehicleTypes taxiType = VehicleTypes.REGULAR;
+        vh.getTaxisInRange(customer, taxiType);
+        ArrayList<Taxi> taxis = vh.availableTaxisList.arrayOfTaxis();
+        for (Taxi t : taxis){
+            assertEquals(VehicleTypes.REGULAR, t.getTaxi().getVehicleType());
+        }
+
+    }
+
 }

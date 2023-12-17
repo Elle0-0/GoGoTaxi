@@ -12,6 +12,7 @@ public class VehicleHiring {
     Taxi[] possibleTaxis; // contains 70 taxis
     Taxi[] currentTaxis; // will contain 20 taxis
     CustomLinkedList availableTaxisList;  // contains how many taxis will be available to the taxi
+    CustomLinkedList<String> names;
     Map worldMap;
     int taxiRange;
     Taxi chosenTaxi;
@@ -26,6 +27,7 @@ public class VehicleHiring {
         possibleTaxis = new Taxi[70];
         currentTaxis = new Taxi[20];
         availableTaxisList = new CustomLinkedList();
+        names = new CustomLinkedList<String>();
         worldMap = new Map();
         worldMap.establishMap();
         taxiRange = 5;
@@ -74,7 +76,6 @@ public class VehicleHiring {
         // puts the user visibly on the map
         worldMap.changeCoord(customerX, customerY, Icons.person);
 
-        CustomLinkedList<String> names = new CustomLinkedList<String>();
 
         for (Taxi taxi : currentTaxis) {
             int taxiX = taxi.location.getX();
