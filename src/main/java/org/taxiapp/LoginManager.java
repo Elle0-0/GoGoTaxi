@@ -7,17 +7,26 @@ import java.util.Scanner;
 
 public class LoginManager {
 
+    /** Controls the reading and writing to the csv file, also handles password hashing */
     static String username;
     static String password;
     static Scanner input = new Scanner(System.in);
     static boolean userFound = false;
     static boolean validInput = false;
-
     static String filePath = "src/main/java/org/taxiapp/resources/userData.csv";
 
+    //checks if input contains spaces.
     public static boolean isValidInput(String string) {
         return !string.contains(" ");
     }
+
+    //gets customer username.
+    public static String getUsername() {
+        return username;
+    }
+
+    //writes to the csv file with user information. NOTE: this method is not to be called directly
+    // it is called in the customer sign up.
     public static void userSignUp(String username, String password) {
         try (BufferedWriter user = new BufferedWriter(new FileWriter(filePath, true)) ) {
             user.append(username);
@@ -30,6 +39,7 @@ public class LoginManager {
         }
     }
 
+    //checks if signup information is valid then calls the userSignUp() method to write the user to the file.
     public static void customerSignUp() throws NoSuchAlgorithmException {
         System.out.println("------USER SIGN UP------");
         while (!validInput) {
@@ -53,7 +63,8 @@ public class LoginManager {
         customerLogin();
     }
 
-    private static String passwordHash(String password) throws NoSuchAlgorithmException {
+    //secure one way password hashing.
+    static String passwordHash(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] passwordBytes = password.getBytes();
         byte[] hashBytes = digest.digest(passwordBytes);
@@ -64,6 +75,7 @@ public class LoginManager {
         return stringBuilder.toString();
     }
 
+    //Prompts the customer to login and calls the userLogin() method. Checks if entered inputs are valid.
     public static void customerLogin() throws NoSuchAlgorithmException {
         System.out.println("------USER LOGIN------");
         while (!userFound) {
@@ -90,11 +102,12 @@ public class LoginManager {
         }
     }
 
-    public static void userLogin() {
+    //reads the csv file and looks for the entered user details. NOTE: this function is not supposed
+    // to be called directly, it is called through the customer log in.
+    public static boolean userLogin() {
         String line;
         try(BufferedReader user = new BufferedReader(new FileReader(filePath))) {
             user.readLine();
-
                 while ((line = user.readLine()) != null) {
                     String[] data = line.split(",");
                     if (username.equals(data[0]) && passwordHash(password).equals(data[1])) {
@@ -105,33 +118,11 @@ public class LoginManager {
                 }
                 if (!userFound) {
                     System.out.println("user does not exist.");
+                    return false;
                 }
-
-
+                return true;
         } catch (IOException | NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void getAllUsers() {
-        String username;
-        String password;
-        String line = "";
-        try(BufferedReader user = new BufferedReader(new FileReader(filePath))) {
-            user.readLine();
-            while ((line = user.readLine()) != null) {
-                String[] data = line.split(",");
-                username = data[0];
-                password = data[1];
-                System.out.println(username);
-                //System.out.println(password); //password not required to be printed but i have established it anyways.
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static String getUsername() {
-        return username;
     }
 }

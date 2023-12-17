@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 public class Program {
+
+    /** The app launcher */
     Customer customer = new CustomerLocation();
     VehicleHiring vehicleHiring = new VehicleHiring();
     Map map = new Map();
@@ -15,20 +17,18 @@ public class Program {
     }
 
     public void launch() throws NoSuchAlgorithmException, FileNotFoundException {
-//      // Program myProgram = new Program();
-//        // myProgram.launch();
-
         customer.signIn();
+        BankAccount.addFunds(customer);
         customer.getCustomerLocation();
         customer.getCustomerDestination();
-        System.out.println(customer.destination.getX());
-        System.out.println(customer.destination.getY());
-        Taxi taxi = vehicleHiring.getATaxi(customer);
+        Taxi taxi = new TaxiRating();
+        vehicleHiring.getATaxi(customer);
         map.moveToTarget(taxi, customer.location.getX(), customer.location.getY(), Icons.person);
         map.moveToTarget(taxi, customer.destination.getX(), customer.destination.getY(), Icons.destination);
         customer.tripExperience();
-
-
+        taxi.setRating(vehicleHiring.chosenTaxi, customer);
+        taxi.getAverageRating(vehicleHiring.chosenTaxi);
+        BankAccount.tipTaxi(customer);
     }
 
 }

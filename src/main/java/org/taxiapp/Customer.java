@@ -9,25 +9,21 @@ import java.util.Scanner;
 
 public class Customer extends User{
 
+    /** The main customer class, it is extended by the CustomerLocation class. Handles all
+     * input prompts and stores coordinates of the customer.*/
+
     String username;
-   // Location destination = new Location();
     Location destination;
-    //Location currentLocation = new Location();
     double tip;
-    double time;
-    String region;
     String regionLocation;
-    int x, y;
     mapRegions regions;
     String mapLocation;
     int rating;
-    VehicleHiring vehicleHiring = new VehicleHiring();
     ArrayList<String> customerExperience = new ArrayList<>();
     Scanner input = new Scanner(System.in);
-    String filePath = "src/main/java/org/taxiapp/Files/mapLocations.txt";
     String experienceFilePath = "src/main/java/org/taxiapp/resources/experience.csv";
 
-    public Customer() throws IOException {
+    public Customer() {
         location = new Location();
         destination = new Location();
     }
@@ -36,10 +32,15 @@ public class Customer extends User{
     public mapRegions returnRegion(int i) {
         return null;
     }
+
     public void locationGetter() {}
+
     public void getCustomerLocation() {}
+
     public void getCustomerDestination() {}
-    public void getExprience() throws FileNotFoundException {
+
+    //randomly generates a user experience from the csv file and displays it to the user.
+    public void getExperience() {
         String line;
         try (BufferedReader reader = new BufferedReader(new FileReader(experienceFilePath))) {
             reader.readLine();
@@ -47,14 +48,15 @@ public class Customer extends User{
                 String[] data = line.split("\\|");
                 for (String column : data) {
                     String lineBreak = column.replace("\\n", "\n");
-                    customerExperience.add(lineBreak);}
-
+                    customerExperience.add(lineBreak);
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
+    //prompts the user to pick between sign up or login and then calls those functions from login manager.
     public void signIn() throws NoSuchAlgorithmException {
         System.out.println("Welcome to GoGoTaxi service!, please select an option:\n [1] login\n [2] sign up: ");
         boolean validInput = false;
@@ -80,11 +82,11 @@ public class Customer extends User{
         //double distanceTravelled = vehicleHiring.worldMap.getDistanceTravelled();
         //System.out.println("Your journey took " + (distanceTravelled*1.2) + "minutes.");
         //System.out.println("And you travelled " + distanceTravelled + "kilometers");
-
     }
 
-    public void tripExperience() throws FileNotFoundException {
-        getExprience();
+    //calls the getExperience() function then prompts the user to rate their experience out of 5.
+    public void tripExperience() {
+        getExperience();
         Random random = new Random();
         int randomExperience = random.nextInt(customerExperience.size());
         System.out.println(customerExperience.get(randomExperience));
@@ -111,40 +113,11 @@ public class Customer extends User{
     public int getRating() {
         return rating;
     }
-    public void  tipTaxi() {
-        boolean validInput = false;
-        while (!validInput) {
-            try {
-                System.out.println("Would you like to tip the driver?(yes/no): ");
-                String answer = input.nextLine();
-                if (!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("no")) continue;
-                if (answer.equalsIgnoreCase("yes")) {
-                    System.out.println("How much would you like to tip them?: ");
-                    tip = input.nextInt();
-                    input.nextLine();
-                    System.out.println("You tipped: " + tip + "\n Thankyou!");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Enter valid input.");
-                input.nextLine();
-                continue;
-            }
-            validInput = true;
-        }
+    public String getUsername() {
+        return username;
     }
 
-    public void getTaxi() {
+    // calculates funds in back account, if they are not broke, asks the user if they want to tip.
+    // adds the negative value to the file so it is subtracted from the total.
 
-    }
-
-    //testing purposes only.
-    public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-        Customer c = new CustomerLocation();
-//        c.signIn();
-//        c.insertDestination();
-//        c.tripExperience();
-//        c.tipTaxi();
-
-
-    }
 }
