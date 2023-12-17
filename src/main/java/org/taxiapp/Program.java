@@ -12,6 +12,7 @@ public class Program {
     /** The app launcher */
     Customer customer = new CustomerLocation();
     VehicleHiring vehicleHiring = new VehicleHiring();
+    Taxi taxi = new TaxiRating();
     Map map = new Map();
 
     public Program() throws IOException {
@@ -20,16 +21,20 @@ public class Program {
     public void launch() throws NoSuchAlgorithmException, FileNotFoundException {
         customer.signIn();
         BankAccount.addFunds(customer);
-        customer.getCustomerLocation();
-        customer.getCustomerDestination();
-        Taxi taxi = new TaxiRating();
-        vehicleHiring.getATaxi(customer);
-        map.moveToTarget(taxi, customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
-        map.moveToTarget(taxi, customer.destination.getX(), customer.destination.getY(), Icons.destination, Colors.pink);
-        customer.tripExperience();
-        taxi.setRating(vehicleHiring.chosenTaxi, customer);
-        //taxi.getAverageRating(vehicleHiring.chosenTaxi);
-        BankAccount.tipTaxi(customer);
+        if (BankAccount.checkFunds(customer)) {
+            customer.getCustomerLocation();
+            customer.getCustomerDestination();
+            vehicleHiring.getATaxi(customer);
+            map.moveToTarget(vehicleHiring.chosenTaxi, customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
+            map.moveToTarget(vehicleHiring.chosenTaxi, customer.destination.getX(), customer.destination.getY(), Icons.destination, Colors.pink);
+            customer.tripCost(customer, vehicleHiring.chosenTaxi);
+            customer.tripExperience();
+            taxi.setRating(vehicleHiring.chosenTaxi, customer);
+            BankAccount.tipTaxi(customer);
+        }
+        else {
+            System.out.println("Not enough money in your account, please add funds to continue.\n Ending application");
+        }
     }
 
 }

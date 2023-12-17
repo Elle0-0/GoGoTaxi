@@ -42,7 +42,7 @@ Lily Baker, REGULAR, 239-M-9012, SUNHAVEN, Birchwood Avenue, 3
 Isaac Williams, REGULAR, 240-Q-5678, FROSTFIELD, Frostfield Community Center, 3
 Camila Bell, PREMIUM, 241-J-1234, EVERGREEN, Green Grove Apartments, 3
 Audrey Mitchell, REGULAR, 242-C-6789, EMBERWOOD, Redwood Drive, 3, 1
-Parker Hughes, REGULAR, 243-K-9012, SUNHAVEN, Sunhaven Elementary School, 3, 5
+Parker Hughes, REGULAR, 243-K-9012, SUNHAVEN, Sunhaven Elementary School, 3, 5, 4
 Savannah Wood, PREMIUM, 244-G-2345, FROSTFIELD, Juniper Court, 3
 Aria Nelson, REGULAR, 245-N-5678, EVERGREEN, Pinecrest High School, 3
 Nolan Ward, PREMIUM, 246-T-8901, EMBERWOOD, Pinecrest High School, 3
@@ -55,7 +55,7 @@ Aurora Davis, REGULAR, 252-F-9012, FROSTFIELD, Madge's Café, 3
 Bentley Garcia, PREMIUM, 253-L-3456, EVERGREEN, Green Grove Apartments, 3
 Paisley Hill, REGULAR, 254-J-6789, EMBERWOOD, Emberwood Central Park, 3, 5
 Savannah Wood, REGULAR, 255-P-9012, SUNHAVEN, Birchwood Avenue, 3
-Ian Morgan, PREMIUM, 256-H-2345, FROSTFIELD, Frostfield Mall, 3
+Ian Morgan, PREMIUM, 256-H-2345, FROSTFIELD, Frostfield Mall, 3, 4
 Adeline Campbell, PREMIUM, 257-T-6789, EVERGREEN, Cedar Lane, 3
 Jasper King, REGULAR, 258-R-1234, EMBERWOOD, Redwood Drive, 3
 Piper Turner, REGULAR, 259-N-5678, SUNHAVEN, People's Bank, 3
@@ -92,7 +92,7 @@ Nolan Bell, PREMIUM, 289-P-5678, EVERGREEN, Evergreen University, 3, 4, 5
 Violet Hill, REGULAR, 290-B-9012, EMBERWOOD, Pinecrest High School, 3, 1
 Aurora Davis, PREMIUM, 291-K-2345, SUNHAVEN, Riverside Park Community, 3
 Liam Richardson, REGULAR, 292-T-5678, FROSTFIELD, Sycamore, 3
-Jasper Davis, REGULAR, 293-N-9012, EVERGREEN, Pinecrest High School, 3
+Jasper Davis, REGULAR, 293-N-9012, EVERGREEN, Pinecrest High School, 3, 1
 Leia Mitchell, PREMIUM, 294-R-2345, EMBERWOOD, Emberwood Central Park, 3
 Aurora Diaz, REGULAR, 295-V-5678, SUNHAVEN, People's Bank, 3
 Bentley Garcia, PREMIUM, 296-M-9012, FROSTFIELD, Juniper Court, 3
@@ -106,5 +106,5 @@ Jasper Davis, PREMIUM, 304-K-5678, FROSTFIELD, Sycamore, 3
 Leia Mitchell, REGULAR, 305-L-9012, EVERGREEN, Pinecrest High School, 3
 Jasper Wood, PREMIUM, 306-M-2345, EMBERWOOD, Riverside Park Community, 3, 4
 Elias Richardson, REGULAR, 307-Q-5678, SUNHAVEN, Birchwood Avenue, 3
-Lillian Carter, PREMIUM, 308-N-9012, FROSTFIELD, Juniper Court, 3
+Lillian Carter, PREMIUM, 308-N-9012, FROSTFIELD, Juniper Court, 3, 1
 Jasper Bell, REGULAR, 309-V-2345, EVERGREEN, Green Grove Apartments, 3
