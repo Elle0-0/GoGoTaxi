@@ -85,6 +85,8 @@ public class BankAccount {
         }
     }
 
+    // calculates funds in back account, if they are not broke, asks the user if they want to tip.
+    // adds the negative value to the file so it is subtracted from the total.
     public static void tipTaxi(Customer customer) {
         boolean validInput = false;
         double balance = calculateFunds(customer);
