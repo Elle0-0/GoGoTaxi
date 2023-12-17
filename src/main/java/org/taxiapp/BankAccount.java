@@ -1,6 +1,9 @@
 package org.taxiapp;
 
+import org.taxiapp.TaxiManagement.VehicleTypes;
+
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -85,12 +88,27 @@ public class BankAccount {
         }
     }
 
+    public static boolean checkFunds(Customer customer){
+        return !(calculateFunds(customer) < 20);
+    }
+
+    public static double getCostOfTrip(Taxi taxi) {
+        double cost = 0;
+        if (taxi.getTaxi().getVehicleType().equals(VehicleTypes.REGULAR)) {
+            cost = taxi.getKmTravelled() * VehicleTypes.REGULAR.rate;
+        }
+        else if (taxi.getTaxi().getVehicleType().equals(VehicleTypes.PREMIUM)) {
+            cost = taxi.getKmTravelled() * VehicleTypes.PREMIUM.rate;
+        }
+        DecimalFormat df = new DecimalFormat("#.##");
+        return Double.parseDouble(df.format(cost));
+    }
+
     // calculates funds in back account, if they are not broke, asks the user if they want to tip.
     // adds the negative value to the file so it is subtracted from the total.
     public static void tipTaxi(Customer customer) {
         boolean validInput = false;
         double balance = calculateFunds(customer);
-        System.out.println(balance);
         if (balance > 0 ) {
             while (!validInput) {
                 try {
