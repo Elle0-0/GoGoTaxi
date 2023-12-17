@@ -16,7 +16,6 @@ public class CustomerLocation extends Customer {
     String filePath = "src/main/java/org/taxiapp/Files/mapLocations.txt";
     ArrayList<String> enteredLocations = new ArrayList<>();
     int userInput;
-
     public CustomerLocation() throws IOException {
     }
 

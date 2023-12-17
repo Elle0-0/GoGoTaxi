@@ -10,7 +10,6 @@ public class BankAccount {
     /** The bank account class that handles adding and calculating the user funds. the methods
      * are static with customer references.*/
 
-    static double sum = 0;
     static String filePath = "src/main/java/org/taxiapp/resources/userData.csv";
     static Scanner input = new Scanner(System.in);
 
@@ -68,6 +67,7 @@ public class BankAccount {
     // Calculates the total funds the user has.
     public static double calculateFunds(Customer customer) {
         String line;
+        double sum = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             reader.readLine();
             while ((line = reader.readLine()) != null) {
@@ -82,6 +82,43 @@ public class BankAccount {
             return sum;
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public static void tipTaxi(Customer customer) {
+        boolean validInput = false;
+        double balance = calculateFunds(customer);
+        System.out.println(balance);
+        if (balance > 0 ) {
+            while (!validInput) {
+                try {
+                    System.out.println("Would you like to tip the driver?\n[1] yes\n[2] no");
+                    int answer = input.nextInt();
+                    if (!(answer == 1) && !(answer == 2)) continue;
+                    if (answer == 2) {
+                        System.out.println("Thank you for using GoGoTaxi!");
+                        break;
+                    }
+                    else {
+                        System.out.println("How much would you like to tip them?: ");
+                        customer.tip = input.nextDouble();
+                        input.nextLine();
+                        if (customer.tip < balance && customer.tip > -1) {
+                            BankAccount.updateFunds(customer, Double.parseDouble("-" + customer.tip));
+                            System.out.println("You tipped: " + customer.tip + "\n Thank you!");
+                        }
+                        else if (customer.tip > balance) {
+                            System.out.println("You do not have enough money in ur account. try again.");
+                            continue;
+                        }
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Enter valid input.");
+                    input.nextLine();
+                    continue;
+                }
+                validInput = true;
+            }
         }
     }
 }
