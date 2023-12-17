@@ -53,7 +53,7 @@ Leah Richardson, PREMIUM, 250-M-2345, EMBERWOOD, Redwood Drive, 3
 Jaxon Foster, REGULAR, 251-W-5678, SUNHAVEN, People's Bank, 3
 Aurora Davis, REGULAR, 252-F-9012, FROSTFIELD, Madge's Café, 3
 Bentley Garcia, PREMIUM, 253-L-3456, EVERGREEN, Green Grove Apartments, 3
-Paisley Hill, REGULAR, 254-J-6789, EMBERWOOD, Emberwood Central Park, 3
+Paisley Hill, REGULAR, 254-J-6789, EMBERWOOD, Emberwood Central Park, 3, 5
 Savannah Wood, REGULAR, 255-P-9012, SUNHAVEN, Birchwood Avenue, 3
 Ian Morgan, PREMIUM, 256-H-2345, FROSTFIELD, Frostfield Mall, 3
 Adeline Campbell, PREMIUM, 257-T-6789, EVERGREEN, Cedar Lane, 3

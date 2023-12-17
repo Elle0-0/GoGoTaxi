@@ -1,8 +1,6 @@
 package org.taxiapp;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-public class ownList <T> {
+public class CustomLinkedList <T> {
 
 
     private class Node {
@@ -28,23 +26,17 @@ public class ownList <T> {
     int size;
     int maxValue;
 
-    public ownList() {
+    public CustomLinkedList() {
         head = null;
         size = 0;
         maxValue = 5;
     }
 
     public boolean isEmpty() {
-        if (head == null) {
-            return true;
-        }
-        return false;
+        return head == null;
     }
     public boolean isFull(){
-        if (size > maxValue){
-            return true;
-        }
-        return  false;
+        return size > maxValue;
     }
 
 
@@ -153,7 +145,6 @@ public class ownList <T> {
         // purely for testing purposes
         ArrayList<Taxi> arrayofTaxis = new ArrayList<>();
         Node current = head;
-        int i = 0;
         while (current != null) {
             Taxi taxi = (Taxi) current.data;
             arrayofTaxis.add(taxi);

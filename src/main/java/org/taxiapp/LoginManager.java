@@ -1,5 +1,7 @@
 package org.taxiapp;
 
+import org.taxiapp.Aesthetics.Colors;
+
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -41,7 +43,7 @@ public class LoginManager {
 
     //checks if signup information is valid then calls the userSignUp() method to write the user to the file.
     public static void customerSignUp() throws NoSuchAlgorithmException {
-        System.out.println("------USER SIGN UP------");
+        System.out.println(Colors.pink + "------USER SIGN UP------" + Colors.reset);
         while (!validInput) {
             System.out.println("Enter username: ");
             username = input.nextLine();
@@ -77,7 +79,7 @@ public class LoginManager {
 
     //Prompts the customer to login and calls the userLogin() method. Checks if entered inputs are valid.
     public static void customerLogin() throws NoSuchAlgorithmException {
-        System.out.println("------USER LOGIN------");
+        System.out.println( Colors.pink + "------USER LOGIN------"+ Colors.reset);
         while (!userFound) {
             System.out.println("Enter username: ");
             username = input.nextLine();
