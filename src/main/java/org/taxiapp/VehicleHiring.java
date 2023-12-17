@@ -43,7 +43,7 @@ public class VehicleHiring {
         currentTaxis = new Taxi[20];
         availableTaxisList = new CustomLinkedList();
         names = new CustomLinkedList<String>();
-        worldMap = new Map();
+        worldMap = new MoveToTarget();
         worldMap.establishMap();
         taxiRange = 5;
     }

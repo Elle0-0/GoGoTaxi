@@ -92,7 +92,7 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
      public void testAddToMap2() throws IOException{
         // adding the chosenTaxi to the map
         VehicleHiring vh = new VehicleHiring();
-        Map map = new Map();
+        Map map = new MoveToTarget();
         vh.initialiseTaxis();
 
         Customer customer = new Customer();
@@ -133,7 +133,7 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
         /* test to show that once a taxi has been selected, all unselected
         taxis have been removed from the map */
         VehicleHiring vh = new VehicleHiring();
-        Map map = new Map();
+        Map map = new MoveToTarget();
         vh.initialiseTaxis();
 
         Customer customer = new Customer();
@@ -172,7 +172,7 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
     public void testMoveVehicle() throws IOException{
         // moving the vehicle to the customer
         VehicleHiring vh = new VehicleHiring();
-        Map map = new Map();
+        Map map = new MoveToTarget();
         vh.initialiseTaxis();
 
         Customer customer = new Customer();
@@ -203,7 +203,7 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
     public void testMoveVehicle2() throws IOException{
         // moving to the destination
         VehicleHiring vh = new VehicleHiring();
-        Map map = new Map();
+        Map map = new MoveToTarget();
         vh.initialiseTaxis();
 
         Customer customer = new Customer();

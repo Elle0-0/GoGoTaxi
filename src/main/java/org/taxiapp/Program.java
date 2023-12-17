@@ -12,7 +12,7 @@ public class Program {
     /** The app launcher */
     Customer customer = new CustomerLocation();
     VehicleHiring vehicleHiring = new VehicleHiring();
-    Map map = new Map();
+    Map map = new MoveToTarget();
 
     public Program() throws IOException {
     }
@@ -24,7 +24,7 @@ public class Program {
         customer.getCustomerDestination();
         Taxi taxi = new TaxiRating();
         Taxi chosenTaxi = vehicleHiring.getATaxi(customer);
-        map.moveToTarget(chosenTaxi, customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
+        map.moveToTarget(chosenTaxi, customer.location.getX(), customer.location.getY(), Icons.person);
         map.moveToTarget(chosenTaxi, customer.destination.getX(), customer.destination.getY(), Icons.destination, Colors.pink);
         System.out.println(chosenTaxi.getKmTravelled());
         customer.tripExperience();
