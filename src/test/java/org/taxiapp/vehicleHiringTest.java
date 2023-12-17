@@ -9,16 +9,11 @@ import java.io.*;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-public class vehicleHiringTest {
-    // tests to implement
-    // adding a taxi to the map
-    // moving the taxi towards the target
-    // moving the taxi before the taxi is chosen
-    // getting the chosen taxi
-    // getting vehicles in range
+public class vehicleHiringTest implements vehicleHiringTestInterface {
 
     @Test
-    void getTaxisInRangeTest1() throws IOException {
+    @Override
+    public void testGetVehiclesInRange() throws IOException {
         VehicleHiring vh = new VehicleHiring();
         Customer customer = new Customer();
         vh.initialiseTaxis();
@@ -42,7 +37,7 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void getTaxisInRangeTest2() throws IOException{
+    public void testGetVehiclesInRange2() throws IOException{
         VehicleHiring vh = new VehicleHiring();
         Customer customer = new Customer();
         vh.initialiseTaxis();
@@ -67,7 +62,8 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void addToMapTest1() throws IOException {
+    @Override
+    public void testAddToMap() throws IOException {
         // adding the taxis in range to the map
         VehicleHiring vh = new VehicleHiring();
         vh.initialiseTaxis();
@@ -93,7 +89,7 @@ public class vehicleHiringTest {
 
     }
     @Test
-    void addToMapTest2() throws IOException{
+     public void testAddToMap2() throws IOException{
         // adding the chosenTaxi to the map
         VehicleHiring vh = new VehicleHiring();
         Map map = new Map();
@@ -132,7 +128,8 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void removeVehicles() throws IOException{
+    @Override
+    public void testRemoveVehicle() throws IOException{
         /* test to show that once a taxi has been selected, all unselected
         taxis have been removed from the map */
         VehicleHiring vh = new VehicleHiring();
@@ -171,7 +168,9 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void moveVehicleToCustomer() throws IOException{
+    @Override
+    public void testMoveVehicle() throws IOException{
+        // moving the vehicle to the customer
         VehicleHiring vh = new VehicleHiring();
         Map map = new Map();
         vh.initialiseTaxis();
@@ -201,7 +200,8 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void moveVehicleToCustomerDestination() throws IOException{
+    public void testMoveVehicle2() throws IOException{
+        // moving to the destination
         VehicleHiring vh = new VehicleHiring();
         Map map = new Map();
         vh.initialiseTaxis();
@@ -232,7 +232,8 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void getVehicle() throws IOException {
+    @Override
+    public void testGetVehicle() throws IOException {
         VehicleHiring vh = new VehicleHiring();
         Customer customer = new Customer();
         vh.initialiseTaxis();
@@ -260,7 +261,7 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void loopedMovementTest(){
+    public void testLoopedMovement(){
         Taxi taxi = new Taxi();
         // ensuring that the loopeed movement loops around
         // edge case, testing that after the looped movement function has been ran
@@ -277,4 +278,5 @@ public class vehicleHiringTest {
         assertEquals(6, taxi.location.getY());
 
     }
+
 }
