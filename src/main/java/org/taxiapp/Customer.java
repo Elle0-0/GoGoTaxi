@@ -23,7 +23,7 @@ public class Customer extends User{
     Scanner input = new Scanner(System.in);
     String experienceFilePath = "src/main/java/org/taxiapp/resources/experience.csv";
 
-    public Customer() throws IOException {
+    public Customer() {
         location = new Location();
         destination = new Location();
     }
@@ -117,41 +117,4 @@ public class Customer extends User{
         return username;
     }
 
-    // calculates funds in back account, if they are not broke, asks the user if they want to tip.
-    // adds the negative value to the file so it is subtracted from the total.
-    public void  tipTaxi(Customer customer) {
-        boolean validInput = false;
-        double balance = BankAccount.calculateFunds(customer);
-        if (balance > 0 ) {
-            while (!validInput) {
-                try {
-                    System.out.println("Would you like to tip the driver?\n[1] yes\n[2] no");
-                    int answer = input.nextInt();
-                    if (!(answer == 1) && !(answer == 2)) continue;
-                    if (answer == 2) {
-                        System.out.println("Thank you for using GoGoTaxi!");
-                        break;
-                    }
-                    else {
-                        System.out.println("How much would you like to tip them?: ");
-                        tip = input.nextDouble();
-                        input.nextLine();
-                        if (tip <= balance && tip > -1) {
-                            BankAccount.updateFunds(customer, Double.parseDouble("-" + tip));
-                            System.out.println("You tipped: " + tip + "\n Thank you!");
-                        }
-                        else if (tip > balance) {
-                            System.out.println("You do not have enough money in ur account. try again.");
-                            continue;
-                        }
-                    }
-                } catch (InputMismatchException e) {
-                    System.out.println("Enter valid input.");
-                    input.nextLine();
-                    continue;
-                }
-                validInput = true;
-            }
-        }
-    }
 }

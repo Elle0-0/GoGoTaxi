@@ -29,7 +29,7 @@ public class Program {
         customer.tripExperience();
         taxi.setRating(vehicleHiring.chosenTaxi, customer);
         taxi.getAverageRating(vehicleHiring.chosenTaxi);
-        customer.tipTaxi(customer);
+        BankAccount.tipTaxi(customer);
     }
 
 }
