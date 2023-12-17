@@ -137,6 +137,7 @@ public class Customer extends User{
                 valid = true;
             } catch (InputMismatchException e) {
                 System.out.println("enter valid input.");
+                input.nextLine();
             }
         }
     }

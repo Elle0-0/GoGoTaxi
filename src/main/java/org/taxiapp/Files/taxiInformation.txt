@@ -10,7 +10,7 @@ Lucas Martinez, PREMIUM, 200-D-8901, FROSTFIELD, Juniper Court, 3
 Ethan Brown, REGULAR, 214-M-3456, EMBERWOOD, Greenfield Heights, 3, 1, 1
 Mason Lee, PREMIUM, 195-G-6789, SUNHAVEN, People's Bank, 3
 Amelia Nguyen, PREMIUM, 193-F-5678, FROSTFIELD, Juniper Court, 3, 4
-William Stewart, REGULAR, 210-P-3456, EVERGREEN, Pinecrest High School, 3
+William Stewart, REGULAR, 210-P-3456, EVERGREEN, Pinecrest High School, 3, 5
 Victoria Scott, PREMIUM, 222-B-7890, EMBERWOOD, Redwood Drive, 3, 4
 Daniel Price, REGULAR, 204-Q-1234, SUNHAVEN, Riverside Park Community, 3, 5, 5
 Harper Baker, REGULAR, 223-N-9012, FROSTFIELD, Sycamore, 3
