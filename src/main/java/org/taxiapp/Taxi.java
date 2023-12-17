@@ -16,6 +16,7 @@ public class Taxi extends User{
     private Vehicle Taxi;
     private mapRegions region;
     private String locationName;
+    private double kmTravelled;
 
     /*when calling this from the launcher, you will need to check that no other taxis in the array of taxis
      has the same info */
@@ -23,6 +24,14 @@ public class Taxi extends User{
         // initialises the objects
         Taxi = new Vehicle();
         location = new Location();
+    }
+
+    public double getKmTravelled() {
+        return kmTravelled;
+    }
+
+    public void setKmTravelled(double kmTravelled) {
+        this.kmTravelled = kmTravelled;
     }
 
     public Vehicle getTaxi() {
@@ -150,23 +159,5 @@ public class Taxi extends User{
         location.setY(newCoords[1]);
     }
 
-    public void getAllTaxis() {
-        String line;
-        String name, rideType, carreg, region, location;
-        String filePath = "src/main/java/org/taxiapp/Files/taxiInformation.txt";
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            reader.readLine();
-            while((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                name = data[0];
-                rideType = data[1];
-                carreg = data[2];
-                region = data[3];
-                location = data[4];
-                System.out.println(name + " " + rideType + " " + carreg + " " + region + " " + location);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 }
