@@ -78,11 +78,6 @@ public class Customer extends User{
         }
         username = LoginManager.getUsername();
     }
-    public void calculateTimeTaken(VehicleHiring vehicleHiring) {
-        //double distanceTravelled = vehicleHiring.worldMap.getDistanceTravelled();
-        //System.out.println("Your journey took " + (distanceTravelled*1.2) + "minutes.");
-        //System.out.println("And you travelled " + distanceTravelled + "kilometers");
-    }
 
     //calls the getExperience() function then prompts the user to rate their experience out of 5.
     public void tripExperience() {

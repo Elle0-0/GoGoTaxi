@@ -28,8 +28,8 @@ public class Program {
         map.moveToTarget(chosenTaxi, customer.destination.getX(), customer.destination.getY(), Icons.destination, Colors.pink);
         System.out.println(chosenTaxi.getKmTravelled());
         customer.tripExperience();
-        taxi.setRating(vehicleHiring.chosenTaxi, customer);
-        taxi.getAverageRating(vehicleHiring.chosenTaxi);
+        taxi.setRating(vehicleHiring.getChosenTaxi(), customer);
+        taxi.getAverageRating(vehicleHiring.getChosenTaxi());
         BankAccount.tipTaxi(customer);
     }
 

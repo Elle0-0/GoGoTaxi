@@ -49,19 +49,14 @@ public class Taxi extends User{
     public mapRegions getRegion() {
         return region;
     }
-
     public String getLocationName() {
         return locationName;
     }
-
     public String getName() {
         return name;
     }
-
     public void setRating(Taxi taxi, Customer customer) {}
     public double getAverageRating(Taxi taxi) {return Rating;}
-
-
     public void assignRandomInformation(){
         File file = new File("src/main/java/org/taxiapp/Files/taxiInformation.txt");
         int length = 0;

@@ -34,10 +34,10 @@ public class CustomLinkedListTest {
         System.setIn(inputStream);
         VehicleTypes taxiType = VehicleTypes.PREMIUM;
         vh.getTaxisInRange(customer, taxiType );
-        ArrayList<Taxi> taxis =vh.availableTaxisList.arrayOfTaxis();
+        ArrayList<Taxi> taxis =vh.getAvailableTaxisList().arrayOfTaxis();
         // proves that all the taxi names that have been recorded to avoid duplication
         for (Taxi t : taxis){
-            assertEquals(true, vh.names.contains(t.getName()));
+            assertEquals(true, vh.getNames().contains(t.getName()));
         }
     }
 
@@ -65,8 +65,8 @@ public class CustomLinkedListTest {
         System.setIn(inputStream);
         VehicleTypes taxiType = VehicleTypes.PREMIUM;
         vh.getTaxisInRange(customer, taxiType );
-        ArrayList<Taxi> taxis =vh.availableTaxisList.arrayOfTaxis();
-       Taxi closestTaxi = (Taxi) vh.availableTaxisList.getChosenTaxi(1);
+        ArrayList<Taxi> taxis =vh.getAvailableTaxisList().arrayOfTaxis();
+       Taxi closestTaxi = (Taxi) vh.getAvailableTaxisList().getChosenTaxi(1);
        int taxiX = closestTaxi.location.getX();
        int taxiY = closestTaxi.location.getY();
        double perpDistance = Math.sqrt(Math.pow((customerX - taxiX), 2) + Math.pow((customerY - taxiY), 2));

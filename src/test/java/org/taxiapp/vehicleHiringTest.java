@@ -32,7 +32,7 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
         System.setIn(inputStream);
         VehicleTypes taxiType = VehicleTypes.PREMIUM;
         vh.getTaxisInRange(customer, taxiType );
-        assertNotEquals(0, vh.availableTaxisList.size);
+        assertNotEquals(0, vh.getAvailableTaxisList().size);
 
     }
 
@@ -57,7 +57,7 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
 
         VehicleTypes taxiType = VehicleTypes.PREMIUM;
         vh.getTaxisInRange(customer, taxiType);
-        assertNotEquals(0, vh.availableTaxisList.size);
+        assertNotEquals(0, vh.getAvailableTaxisList().size);
 
     }
 
@@ -81,9 +81,9 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
         System.setIn(inputStream);
         VehicleTypes taxiType = VehicleTypes.PREMIUM;
         vh.getTaxisInRange(customer, taxiType);
-        ArrayList<Taxi> taxisInRange = vh.availableTaxisList.arrayOfTaxis();
+        ArrayList<Taxi> taxisInRange = vh.getAvailableTaxisList().arrayOfTaxis();
         for (Taxi taxi : taxisInRange){
-           assertEquals( Icons.allcars, vh.worldMap.getIcon(taxi.location.getX(), taxi.location.getY()));
+           assertEquals( Icons.allcars, vh.getWorldMap().getIcon(taxi.location.getX(), taxi.location.getY()));
         }
 
 
@@ -158,7 +158,7 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
         int initialX = chosenTaxi.location.getX();
         int initialY = chosenTaxi.location.getY();
         map.moveToTarget(chosenTaxi,customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
-        ArrayList<Taxi> taxisInRange = vh.availableTaxisList.arrayOfTaxis();
+        ArrayList<Taxi> taxisInRange = vh.getAvailableTaxisList().arrayOfTaxis();
         for (Taxi taxi : taxisInRange){
             assertNotEquals( Icons.allcars, map.getIcon(taxi.location.getX(), taxi.location.getY()));
         }
@@ -255,7 +255,7 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
         System.out.println("The Taxi's nearest to you are: ");
         System.setIn(inputStream);
         Taxi actualChosenTaxi = vh.getTaxisInRange(customer, taxiType);
-        Taxi expectedActualTaxi = (Taxi) vh.availableTaxisList.getChosenTaxi(testInput-1);
+        Taxi expectedActualTaxi = (Taxi) vh.getAvailableTaxisList().getChosenTaxi(testInput-1);
         assertEquals(expectedActualTaxi, actualChosenTaxi);
 
     }
@@ -303,7 +303,7 @@ public class vehicleHiringTest implements vehicleHiringTestInterface {
 
         VehicleTypes taxiType = VehicleTypes.REGULAR;
         vh.getTaxisInRange(customer, taxiType);
-        ArrayList<Taxi> taxis = vh.availableTaxisList.arrayOfTaxis();
+        ArrayList<Taxi> taxis = vh.getAvailableTaxisList().arrayOfTaxis();
         for (Taxi t : taxis){
             assertEquals(VehicleTypes.REGULAR, t.getTaxi().getVehicleType());
         }
