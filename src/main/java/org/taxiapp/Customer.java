@@ -1,11 +1,15 @@
 package org.taxiapp;
 
+import org.taxiapp.TaxiManagement.VehicleTypes;
+
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+
+import static org.taxiapp.BankAccount.*;
 
 public class Customer extends User{
 
@@ -78,11 +82,6 @@ public class Customer extends User{
         }
         username = LoginManager.getUsername();
     }
-    public void calculateTimeTaken(VehicleHiring vehicleHiring) {
-        //double distanceTravelled = vehicleHiring.worldMap.getDistanceTravelled();
-        //System.out.println("Your journey took " + (distanceTravelled*1.2) + "minutes.");
-        //System.out.println("And you travelled " + distanceTravelled + "kilometers");
-    }
 
     //calls the getExperience() function then prompts the user to rate their experience out of 5.
     public void tripExperience() {
@@ -115,6 +114,31 @@ public class Customer extends User{
     }
     public String getUsername() {
         return username;
+    }
+
+    public void tripCost(Customer customer, Taxi taxi) {
+        boolean valid = false;
+        while (!valid) {
+            try {
+                double costOfTrip = getCostOfTrip(taxi);
+                System.out.println("The journey will cost: " + costOfTrip);
+                System.out.println("Proceed with payment? \nCurrent funds: " + calculateFunds(customer));
+                System.out.println("[1] yes \n[2] no");
+                int answer = input.nextInt();
+                if (answer == 1) {
+                    updateFunds(customer, costOfTrip);
+                } else if (answer == 2) {
+                    System.out.println("you have to pay.");
+                    continue;
+                } else {
+                    System.out.println("1 or 2.");
+                    continue;
+                }
+                valid = true;
+            } catch (InputMismatchException e) {
+                System.out.println("enter valid input.");
+            }
+        }
     }
 
 }
