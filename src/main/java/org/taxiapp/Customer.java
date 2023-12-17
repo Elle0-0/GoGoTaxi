@@ -15,8 +15,6 @@ public class Customer extends User{
 
     /** The main customer class, it is extended by the CustomerLocation class. Handles all
      * input prompts and stores coordinates of the customer.*/
-
-    String username;
     Location destination;
     double tip;
     String regionLocation;
@@ -80,7 +78,7 @@ public class Customer extends User{
                 input.nextLine();
             }
         }
-        username = LoginManager.getUsername();
+        name = LoginManager.getUsername();
     }
 
     //calls the getExperience() function then prompts the user to rate their experience out of 5.
@@ -113,7 +111,7 @@ public class Customer extends User{
         return rating;
     }
     public String getUsername() {
-        return username;
+        return name;
     }
 
     public void tripCost(Customer customer, Taxi taxi) {

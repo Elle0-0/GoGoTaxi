@@ -63,7 +63,7 @@ Aurora Diaz, PREMIUM, 260-C-9012, FROSTFIELD, Sycamore, 3
 Lincoln Powell, REGULAR, 261-M-2345, EVERGREEN, Pinecrest High School, 3, 1, 5
 Leah Richardson, PREMIUM, 262-V-6789, EMBERWOOD, Riverside Park Community, 3, 1, 1
 Leo Thompson, REGULAR, 263-W-9012, SUNHAVEN, Birchwood Avenue, 3
-Violet Hill, REGULAR, 264-G-2345, FROSTFIELD, Juniper Court, 3, 2, 4, 3
+Violet Hill, REGULAR, 264-G-2345, FROSTFIELD, Juniper Court, 3, 2, 4, 3, 5
 Stella King, PREMIUM, 265-J-6789, EVERGREEN, Evergreen University, 3
 Claire Carter, REGULAR, 266-K-9012, EMBERWOOD, Pinecrest High School, 3, 4, 3, 4
 Eva Mitchell, REGULAR, 267-D-2345, SUNHAVEN, Riverside Park Community, 3
