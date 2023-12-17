@@ -27,7 +27,7 @@ public class Program {
         map.moveToTarget(taxi, customer.destination.getX(), customer.destination.getY(), Icons.destination);
         customer.tripExperience();
         taxi.setRating(vehicleHiring.chosenTaxi, customer);
-        taxi.getAverageRating(vehicleHiring.chosenTaxi);
+        //taxi.getAverageRating(vehicleHiring.chosenTaxi);
         BankAccount.tipTaxi(customer);
     }
 

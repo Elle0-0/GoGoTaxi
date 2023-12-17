@@ -85,6 +85,9 @@ public class BankAccount {
         }
     }
 
+
+    // calculates funds in back account, if they are not broke, asks the user if they want to tip.
+    // adds the negative value to the file so it is subtracted from the total.
     public static void tipTaxi(Customer customer) {
         boolean validInput = false;
         double balance = calculateFunds(customer);
@@ -103,12 +106,17 @@ public class BankAccount {
                         System.out.println("How much would you like to tip them?: ");
                         customer.tip = input.nextDouble();
                         input.nextLine();
-                        if (customer.tip < balance && customer.tip > -1) {
+                        if (customer.tip <= balance && customer.tip > -1) {
                             BankAccount.updateFunds(customer, Double.parseDouble("-" + customer.tip));
                             System.out.println("You tipped: " + customer.tip + "\n Thank you!");
+                            System.out.println("Your remaining balance is: " + calculateFunds(customer));
                         }
                         else if (customer.tip > balance) {
                             System.out.println("You do not have enough money in ur account. try again.");
+                            continue;
+                        }
+                        else {
+                            System.out.println("Invalid.");
                             continue;
                         }
                     }
