@@ -51,7 +51,7 @@ public class VehicleHiring {
     public void initialiseTaxis() {
         // first create 70 null taxis
         for (int i = 0; i < possibleTaxis.length; i++) {
-            possibleTaxis[i] = new Taxi();
+            possibleTaxis[i] = new TaxiRating();
         }
         // next randomly assign these 70 taxis information
         for (Taxi taxi : possibleTaxis) {
