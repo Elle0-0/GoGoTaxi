@@ -51,7 +51,7 @@ Adam Brooks, REGULAR, 248-V-6789, FROSTFIELD, Sycamore, 3
 Emma Cox, PREMIUM, 249-B-9012, EVERGREEN, Evergreen University, 3
 Leah Richardson, PREMIUM, 250-M-2345, EMBERWOOD, Redwood Drive, 3
 Jaxon Foster, REGULAR, 251-W-5678, SUNHAVEN, People's Bank, 3
-Aurora Davis, REGULAR, 252-F-9012, FROSTFIELD, Madge's Café, 3
+Aurora Davis, REGULAR, 252-F-9012, FROSTFIELD, Madge's Café, 3, 2
 Bentley Garcia, PREMIUM, 253-L-3456, EVERGREEN, Green Grove Apartments, 3
 Paisley Hill, REGULAR, 254-J-6789, EMBERWOOD, Emberwood Central Park, 3, 5
 Savannah Wood, REGULAR, 255-P-9012, SUNHAVEN, Birchwood Avenue, 3
@@ -73,7 +73,7 @@ Isla Morgan, PREMIUM, 270-L-2345, EMBERWOOD, Emberwood Central Park, 3
 Violet Bennett, REGULAR, 271-F-5678, SUNHAVEN, People's Bank, 3
 Leah Richardson, PREMIUM, 272-M-9012, FROSTFIELD, Sycamore, 3
 Jasper Davis, REGULAR, 273-Q-2345, EVERGREEN, Pinecrest High School, 3, 3
-Leah Richardson, REGULAR, 274-T-6789, EMBERWOOD, Riverside Park Community, 3
+Leah Richardson, REGULAR, 274-T-6789, EMBERWOOD, Riverside Park Community, 3, 2
 Lucas Bell, PREMIUM, 275-G-9012, SUNHAVEN, Birchwood Avenue, 3, 4
 Owen Mitchell, PREMIUM, 276-P-2345, FROSTFIELD, Juniper Court, 3, 4
 Aurora Davis, REGULAR, 277-N-5678, EVERGREEN, Evergreen University, 3
@@ -84,7 +84,7 @@ Jasper Wood, PREMIUM, 281-C-9012, EVERGREEN, Green Grove Apartments, 3
 Adeline Garcia, REGULAR, 282-M-2345, EMBERWOOD, Emberwood Central Park, 3
 Stella Hill, REGULAR, 283-V-5678, SUNHAVEN, People's Bank, 3
 Avery Mitchell, PREMIUM, 284-F-9012, FROSTFIELD, Sycamore, 3
-Lucas Bell, REGULAR, 285-J-2345, EVERGREEN, Pinecrest High School, 3
+Lucas Bell, REGULAR, 285-J-2345, EVERGREEN, Pinecrest High School, 3, 4
 Piper Turner, PREMIUM, 286-L-5678, EMBERWOOD, Riverside Park Community, 3, 4, 2
 Jasper Wood, REGULAR, 287-G-9012, SUNHAVEN, Birchwood Avenue, 3, 4
 Owen Mitchell, REGULAR, 288-H-2345, FROSTFIELD, Juniper Court, 3, 4, 3

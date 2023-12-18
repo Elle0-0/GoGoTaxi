@@ -41,7 +41,7 @@ public class TaxiRating extends Taxi{
 
     //calculates the average rating for the given taxi.
     @Override
-    public double getAverageRating(Taxi taxi){
+    public void getAverageRating(String CarReg){
         String line;
         double avgValue=0;
         try (BufferedReader reader = new BufferedReader(new FileReader(taxiFilePath))) {
@@ -51,7 +51,7 @@ public class TaxiRating extends Taxi{
                 double sum = 0.0;
                 String[] data = line.split(", ");
                 String reg = data[2];
-                if (taxi.getTaxi().getCarReg().equals(reg)) {
+                if (CarReg.equals(reg)) {
                     for (int i = 5; i < data.length; i++) {
                         sum += Double.parseDouble(data[i].trim());
                         counter++;
@@ -62,9 +62,15 @@ public class TaxiRating extends Taxi{
             //System.out.println(avgValue);
             //System.out.println(df.format(avgValue));
             avgRating = Double.parseDouble(df.format(avgValue));
-        return avgRating;
+       setRate(avgRating);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void main(String[] args) {
+        Taxi t = new TaxiRating();
+        t.assignRandomInformation();
+        t.displayInformation();
     }
 }
