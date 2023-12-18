@@ -129,7 +129,7 @@ public class Customer extends User{
                 System.out.println("[1] yes \n[2] no");
                 int answer = input.nextInt();
                 if (answer == 1) {
-                    updateFunds(customer, costOfTrip);
+                    updateFunds(customer, Double.parseDouble("-" + costOfTrip));
                 } else if (answer == 2) {
                     System.out.println("you have to pay.");
                     continue;
