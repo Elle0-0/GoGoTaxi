@@ -60,7 +60,7 @@ public class TaxiRating extends Taxi{
                 }
             }
             //System.out.println(avgValue);
-            System.out.println(df.format(avgValue));
+            //System.out.println(df.format(avgValue));
             avgRating = Double.parseDouble(df.format(avgValue));
         return avgRating;
         } catch (IOException e) {

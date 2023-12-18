@@ -49,19 +49,14 @@ public class Taxi extends User{
     public mapRegions getRegion() {
         return region;
     }
-
     public String getLocationName() {
         return locationName;
     }
-
     public String getName() {
         return name;
     }
-
     public void setRating(Taxi taxi, Customer customer) {}
     public double getAverageRating(Taxi taxi) {return Rating;}
-
-
     public void assignRandomInformation(){
         File file = new File("src/main/java/org/taxiapp/Files/taxiInformation.txt");
         int length = 0;
@@ -90,7 +85,7 @@ public class Taxi extends User{
                   name = fileData[0];
                   Taxi.setVehicleType(VehicleTypes.valueOf(fileData[1]));
                   Rate = Taxi.getVehicleType().rate;
-                  //Rating = Integer.parseInt(fileData[2]);
+                  //Rating = getAverageRating();
                   Taxi.setCarReg(fileData[2]);
                   setRegion(mapRegions.valueOf(fileData[3]));
                   setLocationName(fileData[4]);
@@ -111,10 +106,7 @@ public class Taxi extends User{
         System.out.println("Name: " + name);
         System.out.println("Ride Type: " + Taxi.getVehicleType());
         System.out.println("Rate per km: €" + Rate);
-        System.out.print("Rating: ");
-        for (int i = 0; i < Rating; i++){
-            System.out.print("★");
-        }
+        //System.out.print("Rating: " + getAverageRating());
         System.out.println();
         System.out.println("Car Registration: " + Taxi.getCarReg());
         System.out.println("Location: " + getRegion() + ", " + getLocationName());
