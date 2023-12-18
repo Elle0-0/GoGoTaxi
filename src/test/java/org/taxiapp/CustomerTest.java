@@ -1,18 +1,14 @@
 package org.taxiapp;
 
 import org.junit.jupiter.api.Test;
+import org.taxiapp.TaxiManagement.Vehicle;
+import org.taxiapp.TaxiManagement.VehicleTypes;
 
-import java.io.IOException;
+import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerTest {
-
-    @Test
-    public void insertDestinationTest() throws IOException {
-
-    }
-
     @Test
     public void returnRegion() throws IOException {
         Customer c = new CustomerLocation();
@@ -22,4 +18,5 @@ public class CustomerTest {
         assertEquals(c.returnRegion(4), mapRegions.EMBERWOOD);
         assertNull(c.returnRegion(5));
     }
+
 }

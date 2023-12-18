@@ -78,7 +78,7 @@ public class Customer extends User{
                 input.nextLine();
             }
         }
-        name = LoginManager.getUsername();
+        setUsername(LoginManager.getUsername());
     }
 
     //calls the getExperience() function then prompts the user to rate their experience out of 5.
@@ -112,6 +112,9 @@ public class Customer extends User{
     }
     public String getUsername() {
         return name;
+    }
+    public void setUsername(String username) {
+        this.name = username;
     }
 
     public void tripCost(Customer customer, Taxi taxi) {

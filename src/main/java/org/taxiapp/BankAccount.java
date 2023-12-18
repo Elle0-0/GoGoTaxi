@@ -16,6 +16,8 @@ public class BankAccount {
     static String filePath = "src/main/java/org/taxiapp/resources/userData.csv";
     static Scanner input = new Scanner(System.in);
 
+    static double fundLimit = 20;
+
     // prompts the user to add funds into their bank account at the start of the application after signing in.
     public static void addFunds(Customer customer) throws FileNotFoundException {
         System.out.println("Welcome " + customer.getUsername() + " would you like to add funds to your bank account,\n remaining balance is: " + calculateFunds(customer));
@@ -89,7 +91,7 @@ public class BankAccount {
     }
 
     public static boolean checkFunds(Customer customer){
-        return !(calculateFunds(customer) < 20);
+        return !(calculateFunds(customer) < fundLimit);
     }
 
     public static double getCostOfTrip(Taxi taxi) {
