@@ -27,11 +27,11 @@ public class Program {
             customer.getCustomerLocation();
             customer.getCustomerDestination();
             vehicleHiring.getATaxi(customer);
-            map.moveToTarget(vehicleHiring.chosenTaxi, customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
-            map.moveToTarget(vehicleHiring.chosenTaxi, customer.destination.getX(), customer.destination.getY(), Icons.destination, Colors.pink);
-            customer.tripCost(customer, vehicleHiring.chosenTaxi);
+            map.moveToTarget(vehicleHiring.getChosenTaxi(), customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
+            map.moveToTarget(vehicleHiring.getChosenTaxi(), customer.destination.getX(), customer.destination.getY(), Icons.destination, Colors.pink);
+            customer.tripCost(customer, vehicleHiring.getChosenTaxi());
             customer.tripExperience();
-            taxi.setRating(vehicleHiring.chosenTaxi, customer);
+            taxi.setRating(vehicleHiring.getChosenTaxi(), customer);
             BankAccount.tipTaxi(customer);
         }
         else {
