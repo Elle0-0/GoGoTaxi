@@ -9,16 +9,11 @@ import java.io.*;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-public class vehicleHiringTest {
-    // tests to implement
-    // adding a taxi to the map
-    // moving the taxi towards the target
-    // moving the taxi before the taxi is chosen
-    // getting the chosen taxi
-    // getting vehicles in range
+public class vehicleHiringTest implements vehicleHiringTestInterface {
 
     @Test
-    void getTaxisInRangeTest1() throws IOException {
+    @Override
+    public void testGetVehiclesInRange() throws IOException {
         VehicleHiring vh = new VehicleHiring();
         Customer customer = new Customer();
         vh.initialiseTaxis();
@@ -37,12 +32,12 @@ public class vehicleHiringTest {
         System.setIn(inputStream);
         VehicleTypes taxiType = VehicleTypes.PREMIUM;
         vh.getTaxisInRange(customer, taxiType );
-        assertNotEquals(0, vh.availableTaxisList.size);
+        assertNotEquals(0, vh.getAvailableTaxisList().size);
 
     }
 
     @Test
-    void getTaxisInRangeTest2() throws IOException{
+    public void testGetVehiclesInRange2() throws IOException{
         VehicleHiring vh = new VehicleHiring();
         Customer customer = new Customer();
         vh.initialiseTaxis();
@@ -62,12 +57,13 @@ public class vehicleHiringTest {
 
         VehicleTypes taxiType = VehicleTypes.PREMIUM;
         vh.getTaxisInRange(customer, taxiType);
-        assertNotEquals(0, vh.availableTaxisList.size);
+        assertNotEquals(0, vh.getAvailableTaxisList().size);
 
     }
 
     @Test
-    void addToMapTest1() throws IOException {
+    @Override
+    public void testAddToMap() throws IOException {
         // adding the taxis in range to the map
         VehicleHiring vh = new VehicleHiring();
         vh.initialiseTaxis();
@@ -85,18 +81,18 @@ public class vehicleHiringTest {
         System.setIn(inputStream);
         VehicleTypes taxiType = VehicleTypes.PREMIUM;
         vh.getTaxisInRange(customer, taxiType);
-        ArrayList<Taxi> taxisInRange = vh.availableTaxisList.arrayOfTaxis();
+        ArrayList<Taxi> taxisInRange = vh.getAvailableTaxisList().arrayOfTaxis();
         for (Taxi taxi : taxisInRange){
-           assertEquals( Icons.allcars, vh.worldMap.getIcon(taxi.location.getX(), taxi.location.getY()));
+           assertEquals( Icons.allcars, vh.getWorldMap().getIcon(taxi.location.getX(), taxi.location.getY()));
         }
 
 
     }
     @Test
-    void addToMapTest2() throws IOException{
+     public void testAddToMap2() throws IOException{
         // adding the chosenTaxi to the map
         VehicleHiring vh = new VehicleHiring();
-        Map map = new Map();
+        Map map = new MoveToTarget();
         vh.initialiseTaxis();
 
         Customer customer = new Customer();
@@ -132,11 +128,12 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void removeVehicles() throws IOException{
+    @Override
+    public void testRemoveVehicle() throws IOException{
         /* test to show that once a taxi has been selected, all unselected
         taxis have been removed from the map */
         VehicleHiring vh = new VehicleHiring();
-        Map map = new Map();
+        Map map = new MoveToTarget();
         vh.initialiseTaxis();
 
         Customer customer = new Customer();
@@ -161,7 +158,7 @@ public class vehicleHiringTest {
         int initialX = chosenTaxi.location.getX();
         int initialY = chosenTaxi.location.getY();
         map.moveToTarget(chosenTaxi,customer.location.getX(), customer.location.getY(), Icons.person, Colors.blue);
-        ArrayList<Taxi> taxisInRange = vh.availableTaxisList.arrayOfTaxis();
+        ArrayList<Taxi> taxisInRange = vh.getAvailableTaxisList().arrayOfTaxis();
         for (Taxi taxi : taxisInRange){
             assertNotEquals( Icons.allcars, map.getIcon(taxi.location.getX(), taxi.location.getY()));
         }
@@ -171,9 +168,11 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void moveVehicleToCustomer() throws IOException{
+    @Override
+    public void testMoveVehicle() throws IOException{
+        // moving the vehicle to the customer
         VehicleHiring vh = new VehicleHiring();
-        Map map = new Map();
+        Map map = new MoveToTarget();
         vh.initialiseTaxis();
 
         Customer customer = new Customer();
@@ -201,9 +200,10 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void moveVehicleToCustomerDestination() throws IOException{
+    public void testMoveVehicle2() throws IOException{
+        // moving to the destination
         VehicleHiring vh = new VehicleHiring();
-        Map map = new Map();
+        Map map = new MoveToTarget();
         vh.initialiseTaxis();
 
         Customer customer = new Customer();
@@ -232,7 +232,8 @@ public class vehicleHiringTest {
     }
 
     @Test
-    void getVehicle() throws IOException {
+    @Override
+    public void testGetVehicle() throws IOException {
         VehicleHiring vh = new VehicleHiring();
         Customer customer = new Customer();
         vh.initialiseTaxis();
@@ -254,13 +255,13 @@ public class vehicleHiringTest {
         System.out.println("The Taxi's nearest to you are: ");
         System.setIn(inputStream);
         Taxi actualChosenTaxi = vh.getTaxisInRange(customer, taxiType);
-        Taxi expectedActualTaxi = (Taxi) vh.availableTaxisList.getChosenTaxi(testInput-1);
+        Taxi expectedActualTaxi = (Taxi) vh.getAvailableTaxisList().getChosenTaxi(testInput-1);
         assertEquals(expectedActualTaxi, actualChosenTaxi);
 
     }
 
     @Test
-    void loopedMovementTest(){
+    public void testLoopedMovement(){
         Taxi taxi = new Taxi();
         // ensuring that the loopeed movement loops around
         // edge case, testing that after the looped movement function has been ran
@@ -277,4 +278,36 @@ public class vehicleHiringTest {
         assertEquals(6, taxi.location.getY());
 
     }
+
+    @Test
+    public void testPreferredTaxiType() throws IOException {
+        /** for the previous gettaxiInRange tests, i used the premium taxi type
+         *  for this test i will use regular and test to see that only regular taxis appear
+         */
+        VehicleHiring vh = new VehicleHiring();
+        Customer customer = new Customer();
+        vh.initialiseTaxis();
+        vh.moveTaxis();
+        // testing the most isolated location on the map
+        // FROSTFIELD, Oakridge Estates, 0, 6
+        customer.location.setX(0);
+        customer.location.setY(6);
+        // just incase there is only one taxi in range, it is safest to pick the first one
+        int testInput = 1;
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        InputStream inputStream = new ByteArrayInputStream(String.valueOf(testInput).getBytes());
+        System.setIn(inputStream);
+
+        VehicleTypes taxiType = VehicleTypes.REGULAR;
+        vh.getTaxisInRange(customer, taxiType);
+        ArrayList<Taxi> taxis = vh.getAvailableTaxisList().arrayOfTaxis();
+        for (Taxi t : taxis){
+            assertEquals(VehicleTypes.REGULAR, t.getTaxi().getVehicleType());
+        }
+
+    }
+
 }

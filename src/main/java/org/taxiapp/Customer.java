@@ -78,7 +78,9 @@ public class Customer extends User{
                 input.nextLine();
             }
         }
+
         setUsername(LoginManager.getUsername());
+
     }
 
     //calls the getExperience() function then prompts the user to rate their experience out of 5.

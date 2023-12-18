@@ -12,8 +12,10 @@ public class Program {
     /** The app launcher */
     Customer customer = new CustomerLocation();
     VehicleHiring vehicleHiring = new VehicleHiring();
+
     Taxi taxi = new TaxiRating();
-    Map map = new Map();
+    Map map = new MoveToTarget();
+
 
     public Program() throws IOException {
     }

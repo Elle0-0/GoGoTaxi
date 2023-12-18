@@ -127,8 +127,6 @@ public class CustomLinkedList <T> {
 
         }
     }
-
-
     public T getChosenTaxi(int userChoice){
         Node current = head;
         if (!isEmpty()){

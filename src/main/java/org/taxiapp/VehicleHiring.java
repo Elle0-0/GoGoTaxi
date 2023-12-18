@@ -9,24 +9,41 @@ import java.lang.Math;
 import java.util.Scanner;
 
 public class VehicleHiring {
-    Taxi[] possibleTaxis; // contains 70 taxis
-    Taxi[] currentTaxis; // will contain 20 taxis
-    CustomLinkedList availableTaxisList;  // contains how many taxis will be available to the taxi
-    Map worldMap;
-    int taxiRange;
-    Taxi chosenTaxi;
+    private Taxi[] possibleTaxis; // contains 70 taxis
+    private Taxi[] currentTaxis; // will contain 20 taxis
+    private CustomLinkedList availableTaxisList;  // contains how many taxis will be available to the taxi
+    private CustomLinkedList<String> names;
+    private Map worldMap;
+    private int taxiRange;
+    private Taxi chosenTaxi;
 
 
     public void setChosenTaxi(Taxi chosenTaxi) {
         this.chosenTaxi = chosenTaxi;
     }
 
+    public Taxi getChosenTaxi() {
+        return chosenTaxi;
+    }
+
+    public CustomLinkedList getAvailableTaxisList() {
+        return availableTaxisList;
+    }
+
+    public Map getWorldMap() {
+        return worldMap;
+    }
+
+    public CustomLinkedList<String> getNames() {
+        return names;
+    }
 
     public VehicleHiring() throws IOException {
         possibleTaxis = new Taxi[70];
         currentTaxis = new Taxi[20];
         availableTaxisList = new CustomLinkedList();
-        worldMap = new Map();
+        names = new CustomLinkedList<String>();
+        worldMap = new MoveToTarget();
         worldMap.establishMap();
         taxiRange = 5;
     }
@@ -43,7 +60,7 @@ public class VehicleHiring {
         // chose 20 random taxis from that list to be used in the current iteration
         /**the usedNumbers list is to ensure if there was a repeat assigning of information
          * in the possible taxis list, it wont be repeated in the current taxi list
-        **/
+         **/
         CustomLinkedList<Integer> usedNumbers = new CustomLinkedList<>();
         for (int i = 0; i < currentTaxis.length; i++) {
             while (currentTaxis[i] == null) {
@@ -59,7 +76,7 @@ public class VehicleHiring {
 
     public void moveTaxis() {
         // moves the taxis before the are selected, simulates real life
-        int random = (int) (Math.random() * (10) );
+        int random = (int) (Math.random() * (10));
         for (int i = 0; i < random; i++) {
             for (Taxi taxi : possibleTaxis) {
                 taxi.loopedMovement();
@@ -74,7 +91,6 @@ public class VehicleHiring {
         // puts the user visibly on the map
         worldMap.changeCoord(customerX, customerY, Icons.person);
 
-        CustomLinkedList<String> names = new CustomLinkedList<String>();
 
         for (Taxi taxi : currentTaxis) {
             int taxiX = taxi.location.getX();
@@ -83,7 +99,7 @@ public class VehicleHiring {
             double perpDistance = Math.sqrt(Math.pow((customerX - taxiX), 2) + Math.pow((customerY - taxiY), 2));
             if (!(perpDistance >= taxiRange) && taxiRange > 0 && customerX != taxiX && customerY != taxiY) {
                 // if they are and they are not already in the list off available taxis
-                if (!names.contains(taxi.getName()) && taxi.getTaxi().getVehicleType().equals(taxiType) ) {
+                if (!names.contains(taxi.getName()) && taxi.getTaxi().getVehicleType().equals(taxiType)) {
                     // add the user to list of available taxis
                     availableTaxisList.sortInsert(perpDistance, taxi);
                     worldMap.changeCoord(taxiX, taxiY, Icons.allcars);
@@ -103,7 +119,7 @@ public class VehicleHiring {
             // takes the user choice
             Scanner scanner = new Scanner(System.in);
             int userChoice = scanner.nextInt();
-            setChosenTaxi((Taxi) availableTaxisList.getChosenTaxi(userChoice-1));
+            setChosenTaxi((Taxi) availableTaxisList.getChosenTaxi(userChoice - 1));
         }
         return chosenTaxi;
     }
@@ -143,10 +159,6 @@ public class VehicleHiring {
         return null;
     }
 
-    public static void main(String[] args) throws IOException {
-        VehicleHiring vh = new VehicleHiring();
-        vh.preferredTaxiType();
-    }
 }
 
 

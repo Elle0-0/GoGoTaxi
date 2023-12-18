@@ -74,7 +74,7 @@ Violet Bennett, REGULAR, 271-F-5678, SUNHAVEN, People's Bank, 3
 Leah Richardson, PREMIUM, 272-M-9012, FROSTFIELD, Sycamore, 3
 Jasper Davis, REGULAR, 273-Q-2345, EVERGREEN, Pinecrest High School, 3, 3
 Leah Richardson, REGULAR, 274-T-6789, EMBERWOOD, Riverside Park Community, 3
-Lucas Bell, PREMIUM, 275-G-9012, SUNHAVEN, Birchwood Avenue, 3
+Lucas Bell, PREMIUM, 275-G-9012, SUNHAVEN, Birchwood Avenue, 3, 4
 Owen Mitchell, PREMIUM, 276-P-2345, FROSTFIELD, Juniper Court, 3, 4
 Aurora Davis, REGULAR, 277-N-5678, EVERGREEN, Evergreen University, 3
 Nolan Bell, REGULAR, 278-K-9012, EMBERWOOD, Pinecrest High School, 3
