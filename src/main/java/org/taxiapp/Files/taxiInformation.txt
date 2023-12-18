@@ -17,7 +17,7 @@ Harper Baker, REGULAR, 223-N-9012, FROSTFIELD, Sycamore, 3
 Elijah Murphy, PREMIUM, 215-W-2345, EVERGREEN, Evergreen University, 3
 Scarlett Parker, REGULAR, 216-R-6789, SUNHAVEN, People's Bank, 3, 2
 Addison Turner, PREMIUM, 217-G-8901, FROSTFIELD, Madge's Café, 3, 2
-Mia Roberts, REGULAR, 218-T-4567, EMBERWOOD, Pinecrest High School, 3, 3
+Mia Roberts, REGULAR, 218-T-4567, EMBERWOOD, Pinecrest High School, 3, 3, 1
 Lincoln Hill, PREMIUM, 219-H-2345, SUNHAVEN, Birchwood Avenue, 3
 Evelyn Cooper, REGULAR, 220-K-8901, FROSTFIELD, Frostfield Mall, 3
 Carter Ward, REGULAR, 221-V-5678, EVERGREEN, Cedar Lane, 3, 3

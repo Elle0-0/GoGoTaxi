@@ -25,7 +25,7 @@ public class BankAccountTest {
         Customer customer = new Customer();
         customer.setUsername("a");
         double fundLimit = 20;
-        double customerFunds =BankAccount.calculateFunds(customer);
+        double customerFunds = BankAccount.calculateFunds(customer);
         boolean expected = !(fundLimit > customerFunds);
         boolean actual = BankAccount.checkFunds(customer);
         assertEquals(actual,expected);

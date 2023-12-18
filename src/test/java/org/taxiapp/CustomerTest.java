@@ -1,8 +1,6 @@
 package org.taxiapp;
 
 import org.junit.jupiter.api.Test;
-import org.taxiapp.TaxiManagement.Vehicle;
-import org.taxiapp.TaxiManagement.VehicleTypes;
 
 import java.io.*;
 
