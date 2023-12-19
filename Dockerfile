@@ -1,14 +1,21 @@
-FROM openjdk:21
-WORKDIR /opt
+#
+# Build stage
+#
+FROM maven:latest AS build
+ENV HOME=/usr/app
+RUN mkdir -p $HOME
+WORKDIR $HOME
+ADD . $HOME
+RUN --mount=type=cache,target=/root/.m2 mvn -f $HOME/pom.xml clean package
 
-# Copy .class files from the target directory into the image
-COPY target/classes/*.class /opt/
+#
+# Package stage
+#
+FROM eclipse-temurin:17-jre-jammy 
 
-# Create a JAR file from the .class files
-RUN jar cvf app.jar *.class
+WORKDIR /app
 
-# Remove the individual .class files (optional)
-RUN rm -rf *.class
+ARG JAR_FILE=/usr/app/target/taxi_app.jar
+COPY --from=build $JAR_FILE /app/runner.jar
 
-# Set the command to run the Java application
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT java -jar /app/runner.jar

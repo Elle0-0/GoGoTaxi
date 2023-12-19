@@ -1,0 +1,7 @@
+org\taxiapp\LoginManagerTest.class
+org\taxiapp\BankAccountTest.class
+org\taxiapp\MapTest.class
+org\taxiapp\CustomLinkedListTest.class
+org\taxiapp\vehicleHiringTest.class
+org\taxiapp\CoordinatesTest.class
+org\taxiapp\CustomerTest.class
