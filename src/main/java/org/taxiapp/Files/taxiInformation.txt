@@ -106,5 +106,5 @@ Jasper Davis, PREMIUM, 304-K-5678, FROSTFIELD, Sycamore, 3
 Leia Mitchell, REGULAR, 305-L-9012, EVERGREEN, Pinecrest High School, 3
 Jasper Wood, PREMIUM, 306-M-2345, EMBERWOOD, Riverside Park Community, 3, 4
 Elias Richardson, REGULAR, 307-Q-5678, SUNHAVEN, Birchwood Avenue, 3
-Lillian Carter, PREMIUM, 308-N-9012, FROSTFIELD, Juniper Court, 3, 1
+Lillian Carter, PREMIUM, 308-N-9012, FROSTFIELD, Juniper Court, 3, 1, -1
 Jasper Bell, REGULAR, 309-V-2345, EVERGREEN, Green Grove Apartments, 3

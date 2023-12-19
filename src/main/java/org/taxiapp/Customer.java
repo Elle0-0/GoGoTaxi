@@ -100,7 +100,7 @@ public class Customer extends User{
                 input.nextLine();
                 continue;
             }
-            if (rating > 5) continue;
+            if (rating > 5 || rating < 1) continue;
             inputRating = true;
             System.out.print("you rated this trip: ");
             for (int i = 0; i < rating; i++) {
